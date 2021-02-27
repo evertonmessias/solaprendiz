@@ -125,7 +125,13 @@ if (is_user_logged_in()) {
 
                   <fieldset>
                      <legend>8. EQUIPE DA CAPACITAÇÃO</legend>
-                     <?php $equipe = get_field('equipe'); ?>
+                     <?php $equipe = get_field('equipe[]'); 
+                     print_r($equipe);
+                     
+                     
+                     
+                     ?>
+                     
                      <ul class="equipe">
                      <li><strong>Nome Completo: </strong><?php echo $equipe['nome']; ?></li>
                      <li><strong>Superior imediato: </strong><?php echo $equipe['superior']; ?></li>
@@ -134,6 +140,7 @@ if (is_user_logged_in()) {
                      <li><strong>Atuação: </strong><?php echo $equipe['atuacao']; ?></li>
                      <li><strong>Carga horária: </strong><?php echo $equipe['cargaeq']; ?></li>
                      </ul>
+
                   </fieldset>
                   
                   <fieldset>
