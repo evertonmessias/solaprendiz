@@ -1,0 +1,85 @@
+.educorp-logo img{
+    transform: scale(1.5);
+}
+.texto-slide, .about p, .about li{
+    text-align: justify;
+}
+p.retomada{
+    text-align: justify;
+    font-weight: 300;
+    font-size: 14px !important;
+}
+.btn-retomada{
+    width: 150px;
+    text-align: center;
+}
+.services .proposta{ 
+    display: block;
+    position: relative;
+    margin: 0 auto !important;
+}
+.services .quadro{     
+    padding-top: 20px;  
+    width: 300px;
+    height: 150px;
+    border: 2px solid #ccc !important;
+    border-radius: 5px;
+}
+.services .quadro h4{
+    color: #666 !important;   
+}
+.services .quadro:hover{
+    background-color: #fff !important;
+    color: #f00 !important;
+    border: 2px solid #f00 !important;
+}
+.services .quadro:hover h4,.services .quadro:hover a{    
+    color: #f00 !important; 
+}
+.services .quadro:hover p{    
+    color: #666 !important; 
+}
+
+.portfolio-info{
+    padding: 15px !important;
+    width: 300px !important;
+    height: 50px !important; 
+    text-align: center; 
+    margin-bottom: 10px !important;  
+}
+
+.portfolio-description{
+    margin-bottom: 60px !important;
+}
+
+.portfolio-description fieldset{
+    padding: 10px;
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: 60px !important;
+    border: 1px solid #777;
+    min-height: 70px;
+}
+.portfolio-description fieldset legend{    
+    position: absolute;
+    top: -38px !important;
+    left: -1px;
+    padding-left: 10px;
+    border: 1px solid #777;
+    background-color: #ccc;    
+}
+#contact .sent{
+    text-align: center;    
+}
+.carga{
+    border-spacing: 0px;
+}
+.carga td{
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid black;
+}
+.equipe{
+    list-style-type: square !important;
+}

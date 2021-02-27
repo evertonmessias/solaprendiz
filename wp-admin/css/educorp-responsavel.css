@@ -1,0 +1,13 @@
+/*author DISPLAY CSS*/
+
+#user-1,
+.current,
+#adminmenu #menu-dashboard,
+#adminmenu #menu-media,
+#adminmenu #menu-comments,
+#adminmenu #menu-tools,
+#adminmenu #menu-users ul li:nth-child(5)
+{
+    display: none !important;
+}
+

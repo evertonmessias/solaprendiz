@@ -1,0 +1,28 @@
+/*EVERTON CSS*/
+#title{
+    font-size: 16px !important;
+}
+.titulo-principal{
+    font-weight: bolder !important;
+}
+input[type="checkbox"],input[type="radio"]{
+    transform: scale(1.5);
+}
+#conteudista .bootstrap-select{
+    width: 100% !important;
+}
+#carga .acf-field::before, #carga .acf-field-number{
+   width: 100% !important;
+    height: 50px !important;
+}
+#carga .acf-label{
+    width: 70% !important;
+ }
+ #carga .acf-field .acf-input{
+    width: 20% !important;    
+    margin-left: 75% !important;
+    top: -25px !important;
+ }
+ #calendario #mceu_59, #pagamento #mceu_103{
+     display: none;
+ }

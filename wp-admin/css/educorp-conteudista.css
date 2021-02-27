@@ -1,0 +1,101 @@
+/*conteudista DISPLAY CSS*/
+
+body {
+    background-color: #fff;
+}
+
+.page-title-action {
+    display: none !important;
+}
+
+.titulo-principal {
+    font-weight: 700 !important;
+    font-size: 22px !important;
+}
+
+#ativado, #conteudista{
+    display: none;
+}
+
+.mceu_28-body {
+    height: 40px !important;
+}
+
+h3.wp-heading-inline, p.post-sub-title {
+    font-size: 14px !important;
+    margin-left: 10px;
+}
+
+p.post-sub-title.sem-negrito {
+    font-weight: 400 !important;
+}
+
+span.acf-required {
+    display: none !important;
+}
+
+html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
+    background-color: #fff !important;
+}
+
+#wpwrap{
+    display: block !important;
+    position: relative !important;
+    margin: 0 auto !important;    
+    width: 80% !important; 
+    top: 30px !important;
+    left: -100px !important;
+}
+
+#post-body{
+    width: 100% !important;  
+}
+
+#poststuff{
+    display: block !important;
+    position: relative !important;
+    margin: 0 auto !important;
+ 
+}
+
+@media(max-width:650px) {
+    #wpwrap {
+        width: 100% !important;
+        left: 0 !important;
+    }
+}
+
+#wpadminbar, #adminmenuback, #adminmenuwrap, #show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink {
+    display: none !important;
+}
+
+#advanced-sortables {
+    display: block;
+    position: relative;
+    bottom: 0px !important;
+}
+
+#submitdiv, #publishing-action, #major-publishing-actions, #advanced-sortables {
+    background-color: rgba(0, 0, 0, 0);
+    border: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0) !important;
+}
+
+#publishing-action {
+    display: block;
+    position: absolute;
+}
+
+#publishing-action .button {
+    border: rgba(0, 0, 0, 0);
+    background-color: #f00 !important;
+    border-bottom: 100px !important;
+}
+
+#publishing-action .button:hover {
+    background-color: #ef6445 !important;
+}
+
+#carga label{
+    font-weight: 400 !important;
+}
