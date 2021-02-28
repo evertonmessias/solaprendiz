@@ -78,8 +78,23 @@ p.retomada{
 .carga td{
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
 }
-.equipe{
+
+#portfolio-details .equipe{
+    padding-top: 15px;
+    display: block;
+    position: relative;
+    width: 33%;
+    min-height: 200px;
+    border: 1px solid #ccc;    
+}
+@media(min-width:650px){
+    #portfolio-details .equipe{
+        float: left;
+    }
+}
+
+#portfolio-details .equipe ul{
     list-style-type: square !important;
 }

@@ -125,21 +125,23 @@ if (is_user_logged_in()) {
 
                   <fieldset>
                      <legend>8. EQUIPE DA CAPACITAÇÃO</legend>
-                     <?php $equipe = get_field('equipe[]'); 
-                     print_r($equipe);
-                     
-                     
-                     
-                     ?>
-                     
-                     <ul class="equipe">
-                     <li><strong>Nome Completo: </strong><?php echo $equipe['nome']; ?></li>
-                     <li><strong>Superior imediato: </strong><?php echo $equipe['superior']; ?></li>
-                     <li><strong>Unidade/Depto: </strong><?php echo $equipe['unidade']; ?></li>
-                     <li><strong>E-mail: </strong><?php echo $equipe['email']; ?></li>
-                     <li><strong>Atuação: </strong><?php echo $equipe['atuacao']; ?></li>
-                     <li><strong>Carga horária: </strong><?php echo $equipe['cargaeq']; ?></li>
-                     </ul>
+                     <?php 
+                     $equipe = get_field('equipe');
+                     $atuacao = explode(',',get_field('equipe_atuacao_hidden'));                                         
+                     $n = count($equipe['nome']); 
+                     for($i=0;$i<$n;$i++){
+                     ?> 
+                     <div class="equipe">                                      
+                     <ul>
+                     <li><strong>Nome Completo: </strong><?php echo $equipe['nome'][$i]; ?></li>
+                     <li><strong>Superior imediato: </strong><?php echo $equipe['superior'][$i]; ?></li>
+                     <li><strong>Unidade/Depto: </strong><?php echo $equipe['unidade'][$i]; ?></li>
+                     <li><strong>E-mail: </strong><?php echo $equipe['email'][$i]; ?></li>
+                     <li><strong>Atuação: </strong><?php echo $atuacao[$i]; ?></li>
+                     <li><strong>Carga horária: </strong><?php echo $equipe['cargaeq'][$i]; ?></li>
+                     </ul> 
+                     </div>                    
+                     <?php } ?>
 
                   </fieldset>
                   

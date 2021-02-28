@@ -40,13 +40,13 @@ input[type="checkbox"],input[type="radio"]{
  #equipe .btnp-equipe-capacitacao{
      display: block;
      position: absolute;
-     bottom:0;left: 0;
+     bottom:0;left: 0px;
      cursor: pointer;
  }
  #equipe .btnm-equipe-capacitacao{
     display: block;
     position: absolute;
-    bottom:0;left: 20;
+    bottom:0;left: 20px;
     cursor: pointer;
 }
 #equipe .btnp-equipe-capacitacao i,#equipe .btnm-equipe-capacitacao i{

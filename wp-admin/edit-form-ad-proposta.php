@@ -928,53 +928,16 @@ if (get_field('conteudista')[0] == "") {
 	carga4.setAttribute("oninput","calcularcarga()");
 	carga5.setAttribute("oninput","calcularcarga()");
 
-	/* equipes da capacitação, criação de campos array */
-	var equipenome = document.querySelector("#equipe-nome .acf-input");
-	equipenome.setAttribute('class','acf-input acf-input1');
-	equipenome = document.querySelector("#equipe-nome .acf-input input");
-    equipenome.setAttribute('name','acf[field_6021db8cbc637][field_6021dc1f7e0c2][]');
-
-	var equipesuperior = document.querySelector("#equipe-superior .acf-input");
-	equipesuperior.setAttribute('class','acf-input acf-input1');
-	equipesuperior = document.querySelector("#equipe-superior .acf-input input");
-    equipesuperior.setAttribute('name','acf[field_6021db8cbc637][field_6021dc7ce9663][]');
+	/* ------- equipes da capacitação -------   */	
 	
-	var equipeunidade = document.querySelector("#equipe-unidade .acf-input");
-	equipeunidade.setAttribute('class','acf-input acf-input1');
-	equipeunidade = document.querySelector("#equipe-unidade .acf-input input");
-    equipeunidade.setAttribute('name','acf[field_6021db8cbc637][field_6021dcdae6dba][]');
-
-	var equipeemail = document.querySelector("#equipe-email .acf-input");
-	equipeemail.setAttribute('class','acf-input acf-input1');
-	equipeemail = document.querySelector("#equipe-email .acf-input input");
-    equipeemail.setAttribute('name','acf[field_6021db8cbc637][field_6021dd0a7ee6f][]');
-
-	var equipeatuacao = document.querySelector("#equipe-atuacao .acf-input");
-	equipeatuacao.setAttribute('class','acf-input acf-input1');
-	equipeatuacao = document.querySelector("#equipe-atuacao .acf-input select");
-    equipeatuacao.setAttribute('name','acf[field_6021db8cbc637][field_6021dd92761ea][]');
-    equipeatuacao.setAttribute('onchange','addatuacao(1)');
-	var equipe_atuacao_hidden = document.querySelector("#equipe_atuacao_hidden .acf-input input");
-	equipe_atuacao_hidden.setAttribute('type','hidden');	
-    equipe_atuacao_hidden_array = equipe_atuacao_hidden.value.split(','); 	
-	var eqvertor = [];
-	function addatuacao(x){
-		var qtdequipe = document.querySelector("#qtdequipe").value;				
-		for(var i=0;i<x;i++){
-			eqvertor[i] = equipe_atuacao_hidden_array[i];
-		}				
-        var equipeatuacaovar = document.querySelector("#equipe-atuacao .acf-input"+qtdequipe+" select");
-		eqvertor[qtdequipe-1] = equipeatuacaovar.value;
-		equipe_atuacao_hidden.value = eqvertor;
-		console.log(eqvertor);
+    function addatuacao(val,indice){ //select
+		var arrayeq = document.querySelector("#equipe_atuacao_hidden .acf-input input").value.split(',');
+		arrayeq[indice] = val;			
+		document.querySelector("#equipe_atuacao_hidden .acf-input input").value = arrayeq;
     }
-
-	var equipecargaeq = document.querySelector("#equipe-cargaeq .acf-input");
-	equipecargaeq.setAttribute('class','acf-input acf-input1');
-	equipecargaeq = document.querySelector("#equipe-cargaeq .acf-input input");
-    equipecargaeq.setAttribute('name','acf[field_6021db8cbc637][field_6021dde570989][]');
 	
-	var btnequipe = document.querySelector("#equipe .acf-table");	
+	var btnequipe = document.querySelector("#equipe .acf-table");		
+
 	var span = document.createElement("span");
 	span.setAttribute("class","btnp-equipe-capacitacao");
 	span.innerHTML = "<i class='bx bxs-plus-square'></i>";
@@ -984,7 +947,6 @@ if (get_field('conteudista')[0] == "") {
 	span.setAttribute("class","btnm-equipe-capacitacao");
 	span.innerHTML = "<i class='bx bxs-minus-square'></i>";
 	btnequipe.after(span);
-
 
 	/*III caracterização*/
 	var caractcurso = document.querySelector("#bibliografia");	

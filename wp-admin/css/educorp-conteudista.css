@@ -99,3 +99,6 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
 #carga label{
     font-weight: 400 !important;
 }
+.update-nag{
+    display: none;
+}
