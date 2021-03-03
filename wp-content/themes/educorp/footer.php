@@ -30,7 +30,7 @@
 					<ul>
 						<li><i class="bx bx-chevron-right"></i><a href="/">Inicio</a></li>
 						<li><i class="bx bx-chevron-right"></i><a href="<?php echo hashtag() ?>about">O que é</a></li>
-						<li><i class="bx bx-chevron-right"></i><a href="proposta">Proposta</a></li>
+						<li><i class="bx bx-chevron-right"></i><a href="/propostas">Propostas</a></li>
 						<li><i class="bx bx-chevron-right"></i><a href="<?php echo hashtag() ?>retomada">Retomada</a></li>
 						<li><i class="bx bx-chevron-right"></i><a href="<?php echo hashtag() ?>contact">Contato</a></li>
 					</ul>

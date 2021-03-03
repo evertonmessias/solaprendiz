@@ -203,11 +203,7 @@ switch ( $action ) {
 			enqueue_comment_hotkeys_js();
 		}
 
-		if ($post_type == 'page' || $post_type == 'acf-field-group') {
-			require ABSPATH . 'wp-admin/edit-form-advanced.php';
-		} else {
-			require ABSPATH . 'wp-admin/edit-form-ad-proposta.php';
-		}
+		require ABSPATH . 'wp-admin/edit-form-advanced.php';
 
 		break;
 

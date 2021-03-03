@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
-<link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
 <?php
 /**
  * WordPress Administration Template Header
@@ -304,14 +301,4 @@ do_action( 'all_admin_notices' );
 
 if ( 'options-general.php' === $parent_file ) {
 	require ABSPATH . 'wp-admin/options-head.php';
-}?>
-<link rel="stylesheet" href="/wp-admin/css/educorp.css"/>
-<?php
-$user = wp_get_current_user();
-if (in_array( 'contributor', (array) $user->roles )) { ?>
-	<link rel="stylesheet" href="/wp-admin/css/educorp-conteudista.css"/>
-<?php }
-if (in_array( 'author', (array) $user->roles )) { ?>
-	<link rel="stylesheet" href="/wp-admin/css/educorp-responsavel.css"/>
-<?php }
-?>
+}

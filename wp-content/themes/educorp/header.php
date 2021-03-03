@@ -43,7 +43,7 @@
 			<ul>
 				<li class="active"><a href="/">Inicio</a></li>
 				<li><a href="<?php echo hashtag() ?>about">O que é</a></li>	
-        <li><a href="proposta">Proposta</a></li>			
+        <li><a href="/propostas">Propostas</a></li>			
 				<li><a href="<?php echo hashtag() ?>retomada">Retomada</a></li>				
 				<li><a href="<?php echo hashtag() ?>contact">Contato</a></li>
 			</ul>

@@ -165,9 +165,9 @@ msgstr "Anteriores"
 msgid "Next"
 msgstr "Próximo"
 
-#: image.php:52 template-parts/content/content-page.php:27
-#: template-parts/content/content.php:49
+#: image.php:52 template-parts/content/content.php:49
 #: template-parts/content/content-single.php:40
+#: template-parts/content/content-page.php:27
 msgid "Pages:"
 msgstr "Páginas"
 
@@ -284,8 +284,8 @@ msgid "Post Type Archives: "
 msgstr "Arquivos de tipo de post:"
 
 #. translators: %s: Post title. Only visible to screen readers.
-#: template-parts/content/content-page.php:41
-#: template-parts/header/entry-header.php:32 inc/template-tags.php:120
+#: inc/template-tags.php:120 template-parts/content/content-page.php:41
+#: template-parts/header/entry-header.php:32
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Editar <span class=\"screen-reader-text\">%s</span>"
 

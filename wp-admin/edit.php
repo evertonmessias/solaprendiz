@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Edit Posts Administration Screen.
  *
@@ -10,11 +8,6 @@
 
 /** WordPress Administration Bootstrap */
 require_once __DIR__ . '/admin.php';
-
-$user = wp_get_current_user();
-if (in_array( 'contributor', (array) $user->roles )) { 
-	header("Location: /", true, 301);
-}else { 
 
 if ( ! $typenow ) {
 	wp_die( __( 'Invalid post type.' ) );
@@ -494,5 +487,3 @@ if ( $wp_list_table->has_items() ) {
 
 <?php
 require_once ABSPATH . 'wp-admin/admin-footer.php';
-
-}

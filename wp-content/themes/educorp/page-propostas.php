@@ -20,7 +20,7 @@
             $user = wp_get_current_user();
             if (in_array('administrator', (array) $user->roles) || in_array('author', (array) $user->roles)) { ?>
                <script>
-                  window.location.href = "/wp-admin/edit.php"
+                  window.location.href = "/wp-admin/edit.php?post_type=proposta"
                </script>
                <?php } else {
 
@@ -28,7 +28,7 @@
                $permitido = false;
 
                $lastupdated_args = array(
-                  'cat' => 1,
+                  'post_type' => 'proposta',
                   'posts_per_page' => 10,
                   'order' => 'DESC'
                );
@@ -59,6 +59,7 @@
                wp_reset_postdata();
 
                if (!$permitido) {
+                  echo get_current_user_id();
                   echo "Nenhuma proposta disponível !";
                }
             }
