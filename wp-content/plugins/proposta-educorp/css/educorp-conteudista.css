@@ -93,7 +93,9 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
 #side-sortables{
     display: block;
     position: absolute;
-    bottom: -250px !important;
+    width: 200px;
+    min-height: 100px !important;
+    top: 100% !important;    
     left: -180px !important;    
 }
 

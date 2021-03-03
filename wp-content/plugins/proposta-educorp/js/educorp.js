@@ -25,7 +25,7 @@ window.onload = function () {
 	//BARRA
 	var inicial = 0;
 	var largura = $(document).width();
-	var altura = $(document).height() - $(window).height();
+	var altura = $(document).height()-10;
 	var razao = largura / altura;
 	$(window).scroll(function () {
 		var atualscroll = $(this).scrollTop();
