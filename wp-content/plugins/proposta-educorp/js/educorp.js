@@ -50,6 +50,8 @@ window.onload = function () {
 
 	/* FUNÇÕES EXTRAS DO FORMULÁRIO */
 
+	$("#wpbody h1.wp-heading-inline").html("Editar Proposta:");
+
 	/*Cabeçalho*/
 
 	/*var cabh1 = document.createElement("h1");
@@ -62,7 +64,7 @@ window.onload = function () {
 
 	var cabh2 = document.createElement("h2");
 	cabh2.setAttribute("class", "wp-heading-inline");
-	cabh2.innerHTML = "I. CARACTERIZAÇÃO DA DEMANDA<br><br>1. TÍTULO DA CAPACITAÇÃO";
+	cabh2.innerHTML = "<strong>I. CARACTERIZAÇÃO DA DEMANDA</strong><br><br>1. TÍTULO DA CAPACITAÇÃO";
 
 	var cabp2 = document.createElement("p");
 	cabp2.setAttribute("class", "post-sub-title");

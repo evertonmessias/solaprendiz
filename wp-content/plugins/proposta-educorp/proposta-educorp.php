@@ -1,12 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="/wp-content/plugins/proposta-educorp/js/educorp.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
-<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp.css'>
 
 <?php
 
@@ -78,6 +76,17 @@ class PropostaEducorp
 		//$wpdb->get_results("DELETE from wp_posts where post_type='proposta';");
 	}
 }
+
+// add style & script
+function style_and_script()
+{
+	if(get_post_type() == 'proposta'){
+	wp_enqueue_style( 'stilos', '/wp-content/plugins/proposta-educorp/css/educorp.css');		
+	wp_enqueue_script( 'scripts', '/wp-content/plugins/proposta-educorp/js/educorp.js');
+	}
+}
+add_action('admin_enqueue_scripts', 'style_and_script');
+
 
 // BARRAS TOP
 function barras() { 

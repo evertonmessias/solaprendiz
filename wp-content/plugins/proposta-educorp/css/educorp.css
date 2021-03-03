@@ -9,7 +9,7 @@ p, a, li, span, strong, fieldset {
 #back, #menu, #barra {
     display: block;
     position: fixed;
-    top: 0px !important;
+    top: 30px;
     left: 0px !important;
     width: 100%;
     height: 35px;
