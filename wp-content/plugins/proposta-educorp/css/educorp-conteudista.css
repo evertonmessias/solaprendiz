@@ -8,13 +8,18 @@ body {
     top: 0px !important;    
 }
 
+#BlocoTab {  
+    bottom: -30px !important;
+    left: 30%;
+}
+
 #header{
-    top:30px !important;
+    top:20px !important;
     border-bottom: 1px solid #888;
 }
 
-.page-title-action {
-    display: none !important;
+.page-title-action, #submitdiv {
+    display: none;
 }
 
 .titulo-principal {

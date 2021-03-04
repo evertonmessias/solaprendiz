@@ -1,9 +1,5 @@
 /*EVERTON CSS*/
 
-p, a, li, span, strong, fieldset {
-    font-size: 14px !important;
-}
-
 /*barra*/
 
 #back, #menu, #barra {
@@ -12,8 +8,8 @@ p, a, li, span, strong, fieldset {
     top: 30px;
     left: 0px !important;
     width: 100%;
-    height: 35px;
-    line-height: 35px;
+    height: 20px;
+    line-height: 20px;
     z-index: 1100;
 }
 
@@ -29,8 +25,8 @@ p, a, li, span, strong, fieldset {
 #menu {
     color: #fff;
     text-align: center;
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .scrollToTop {
@@ -48,10 +44,75 @@ p, a, li, span, strong, fieldset {
     opacity: 1;
 }
 
+/*abas*/
+
+#BlocoTab {
+    display: block;
+    position: absolute;
+    left: 35%;
+    bottom: 30px;
+    z-index: 1000;
+}
+
+#BlocoTab .abas {
+    display: inline;
+}
+
+#BlocoTab .abas li {
+    float: left;
+    list-style: none;
+    margin-left: 2px;
+}
+
+#BlocoTab .aba {
+    width: 100px;
+    height: 30px;
+    line-height: 20px;
+    border: solid 1px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 5px;
+    background: #ccc;
+    color: #fff;
+    cursor: pointer;
+}
+
+#BlocoTab .ativa {
+    width: 100px;
+    height: 30px;
+    border: solid 1 px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 5px;
+    background: #aaa;
+}
+
+#BlocoTab .ativa span,
+#BlocoTab .selected span {
+    color: #fff
+}
+
+#BlocoTab .selected {
+    width: 100px;
+    height: 30px;
+    border: solid 1 px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 5px;
+    background: #666
+}
+
+.conteudo {  
+    display: none;
+}
+
 /*conteudo*/
 
 #wpbody{
     top: 50px !important;
+}
+#screen-meta-links, .page-title-action{
+    display: none !important;
 }
 
 #title {
@@ -68,6 +129,10 @@ input[type="checkbox"], input[type="radio"] {
 
 #conteudista .bootstrap-select {
     width: 100% !important;
+}
+#conteudista select {
+    position: absolute;
+    left: 0px !important;
 }
 
 #carga .acf-field::before, #carga .acf-field-number {

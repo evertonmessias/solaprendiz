@@ -77,7 +77,10 @@ class PropostaEducorp
 	}
 }
 
-// add style & script
+
+
+
+// ADD style & script
 function style_and_script()
 {
 	if(get_post_type() == 'proposta'){
@@ -88,6 +91,27 @@ function style_and_script()
 add_action('admin_enqueue_scripts', 'style_and_script');
 
 
+
+
+
+
+
+//TITLE
+function title() { ?>
+	<div class="conteudo conteudo1">
+	<br><p>Roteiro para elaboração de solução de capacitação preenchido conjuntamente entre CONTEUDISTA E EQUIPE, até a validação da versão final.</p><br>
+	<h2 style='font-size:20px;font-weight:bold;'>I. CARACTERIZAÇÃO DA DEMANDA</h2><br>
+	<strong>1. TÍTULO DA CAPACITAÇÃO</strong><br><br>
+	<span>Escreva o nome final exato do curso</span>
+	</div>
+<?php }
+add_action( 'edit_form_top', 'title');
+
+
+
+
+
+
 // BARRAS TOP
 function barras() { 
 	if (get_post_type() == 'proposta') {?>
@@ -95,7 +119,13 @@ function barras() {
 <div id="barra"></div>
 <div id="menu">DESENVOLVIMENTO DE SOLUÇÃO DE APRENDIZAGEM</div> 
 <?php }}
-add_action('edit_form_after_title', 'barras');
+add_action('edit_form_top', 'barras');
+
+
+
+
+
+
 
 
 // VERIFICAR PERMISSÕES  : ********************
@@ -122,7 +152,48 @@ if (($ativado[0] == "Ativado" && $permitido) || in_array('administrator', (array
 	echo "<script>window.location.href = '/naopermitido'</script>";
 }
 }
-add_action('edit_form_after_title', 'permissao');
+add_action('edit_form_top', 'permissao');
+
+
+
+
+
+
+// BOTOES ABAS
+function abas() { 
+	if (get_post_type() == 'proposta') {?>
+
+	<div id="BlocoTab">
+		<ul class="abas">
+			<li>
+				<div class="aba">
+					<span>Passo 1</span>
+				</div>
+			</li>
+			<li>
+				<div class="aba">
+					<span>Passo 2</span>
+				</div>
+			</li>
+			<li>
+				<div class="aba">
+					<span>Passo 3</span>
+				</div>
+			</li>
+			<li>
+				<div class="aba">
+					<span>Passo 4</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+<?php }}
+add_action('edit_form_advanced', 'abas');
+
+
+
+
 
 
 // get conteudistas
@@ -163,6 +234,9 @@ function conteudista()
 add_action('edit_form_advanced', 'conteudista');
 
 
+
+// OBJETO
+
 if (class_exists('PropostaEducorp')) {
 	$prop = new PropostaEducorp();
 	register_activation_hook(__FILE__, array($prop, 'activate'));
@@ -170,9 +244,10 @@ if (class_exists('PropostaEducorp')) {
 }
 
 
-//********************************************************************* */
 
 
+
+//****************************  NAO USADO *************************** */
 
 /* CAMPOS POSTMETA EX - não usado nesse projeto !!!!
 function campos_educorp()

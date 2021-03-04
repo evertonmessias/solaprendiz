@@ -1,4 +1,14 @@
 <style>
+body{
+	background-color: #fff !important;
+}
+#login{
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	width: 300px !important;
+	top: -80px;
+}
 #login #nav a, #login #backtoblog a {
     display: none;
 }
@@ -1683,8 +1693,8 @@ function login_header($title = 'Log In', $message = '', $wp_error = null)
 		?>
 		<script type="text/javascript">
 			window.onload = function() {
-				document.querySelector(".galogin-or").innerHTML = "OU";
-				var galogin = document.querySelector(".galogin");
+				$("h3.galogin-or").html("ou");
+				var galogin = $(".galogin");
 				var atencao = document.createElement("p");
 				atencao.setAttribute("style","color:#888;text-align:center");
 				atencao.innerHTML = "Faça o login com sua conta @unicamp.br, clicando no ícone acima.";

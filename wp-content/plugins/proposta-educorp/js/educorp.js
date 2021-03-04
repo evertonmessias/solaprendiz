@@ -1,5 +1,6 @@
 /*EVERTON JS*/
 
+//funções externas ao onload
 function calcularcarga() {
 	var carga1 = document.querySelector("#carga1 input");
 	var carga2 = document.querySelector("#carga2 input");
@@ -22,11 +23,14 @@ function addatuacao(val, indice) { //select
 
 window.onload = function () {
 
+	function Razao(altura){
+	var largura = $(document).width();    
+	return largura / altura;
+	}
+	var razao = Razao(1600);
+
 	//BARRA
-	var inicial = 0;
-	var largura = $(document).width();
-	var altura = $(document).height()-10;
-	var razao = largura / altura;
+	var inicial = 0;	
 	$(window).scroll(function () {
 		var atualscroll = $(this).scrollTop();
 		if (atualscroll > inicial) {
@@ -48,33 +52,10 @@ window.onload = function () {
 		return false;
 	});
 
+
 	/* FUNÇÕES EXTRAS DO FORMULÁRIO */
 
 	$("#wpbody h1.wp-heading-inline").html("Editar Proposta:");
-
-	/*Cabeçalho*/
-
-	/*var cabh1 = document.createElement("h1");
-	cabh1.setAttribute("class", "titulo-principal");
-	cabh1.innerHTML = "DESENVOLVIMENTO DE SOLUÇÃO DE APRENDIZAGEM";*/
-
-	var cabp1 = document.createElement("p");
-	cabp1.setAttribute("class", "post-sub-title");
-	cabp1.innerHTML = "Roteiro para elaboração de solução de capacitação preenchido conjuntamente entre CONTEUDISTA E EQUIPE, até a validação da versão final.";
-
-	var cabh2 = document.createElement("h2");
-	cabh2.setAttribute("class", "wp-heading-inline");
-	cabh2.innerHTML = "<strong>I. CARACTERIZAÇÃO DA DEMANDA</strong><br><br>1. TÍTULO DA CAPACITAÇÃO";
-
-	var cabp2 = document.createElement("p");
-	cabp2.setAttribute("class", "post-sub-title");
-	cabp2.innerHTML = "Escreva o nome final exato do curso";
-
-	var cabecalho = $("#titlediv");
-	//cabecalho.before(cabh1);
-	cabecalho.before(cabp1);
-	cabecalho.before(cabh2);
-	cabecalho.before(cabp2);
 
 	/* objetivo */
 
@@ -125,8 +106,9 @@ window.onload = function () {
 
 	var caracterizacao = $("#ementa");
 	var h2 = document.createElement("h2");
-	h2.setAttribute("style", "font-weight:600;font-size:17px;margin-left:-10px");
-	h2.innerHTML = "<hr><br>II. CARACTERIZAÇÃO DO CURSO";
+	h2.setAttribute("style", "font-weight:600;font-size:20px;margin-left:-10px");
+	h2.setAttribute("class", "conteudo conteudo2");
+	h2.innerHTML = "<br>II. CARACTERIZAÇÃO DO CURSO";
 	caracterizacao.before(h2);
 
 	/* carga */
@@ -243,11 +225,12 @@ window.onload = function () {
 
 
 	/*III caracterização*/
-	var caractcurso = $("#bibliografia");
+	var quantidade = $("#quantidade");
 	var h2 = document.createElement("h2");
-	h2.setAttribute("style", "font-weight:600;font-size:17px;margin-left:-10px;margin-top:30px;");
+	h2.setAttribute("style", "font-weight:600;font-size:20px;margin-left:-10px");
+	h2.setAttribute("class", "conteudo conteudo3");
 	h2.innerHTML = "III. CARACTERIZAÇÃO DO OFERECIMENTO";
-	caractcurso.after(h2);
+	quantidade.before(h2);
 
 	/* calendario */
 	$pretabela = "<table style='border-spacing: 0px;width: 100%;'><tbody><tr><td style='width=100px;padding:10px;border: 1px solid #000;'>Turma</td><td style='width=100px;padding:10px;border: 1px solid#000;'>Data</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Dia da semana</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Horário</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Instrutor</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Carga Horária</td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr></tbody></table>";
@@ -258,11 +241,12 @@ window.onload = function () {
 	}
 
 	/*IV gerencial*/
-	var gerencial = $("#local");
+	var pagamento = $("#pagamento");
 	var h2 = document.createElement("h2");
-	h2.setAttribute("style", "font-weight:600;font-size:17px;margin-left:-10px;margin-top:20px;");
+	h2.setAttribute("style", "font-weight:600;font-size:20px;margin-left:-10px");
+	h2.setAttribute("class", "conteudo conteudo4");
 	h2.innerHTML = "IV. INFORMAÇÕES GERENCIAIS";
-	gerencial.after(h2);
+	pagamento.before(h2);
 
 	/*pagamento*/
 	$prepagamento = "<table style='border-spacing: 0px;width: 100%;'><tbody><tr><td style='width=120px;padding:10px;border: 1px solid #000;'>Nome</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Dias</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Atuação</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Carga Horária</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Valor</td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr></tbody></table>";
@@ -270,6 +254,47 @@ window.onload = function () {
 	if (pagamento.value == "") {
 		pagamento.value = $prepagamento;
 	}
+
+	//advanced-sortables 
+	var submit = document.querySelector("#advanced-sortables");
+	submit.setAttribute("class", "conteudo conteudo4");
+
+
+
+	/*BOTOES ABAS*/
+	var titulo = $("#titlediv");//titulo
+	var submitdiv = $("#submitdiv");//submitdiv	
+	$(".conteudo1").show();
+	$(".abas li:first div").addClass("selected");
+	$(".aba").click(function () {
+		$(".aba").removeClass("selected");
+		$(this).addClass("selected");
+		var indice = $(this).parent().index();
+		indice++;
+		$(".conteudo").hide();
+		$(".conteudo" + indice).show();
+		if (indice == 1) {
+			razao = Razao(1600);
+			titulo.removeClass("conteudo conteudo1");
+		} else {
+			titulo.addClass("conteudo conteudo1");
+		}
+		if (indice == 2)razao = Razao(2300);
+		if (indice == 3)razao = Razao(600);
+		if (indice == 4) {
+			razao = Razao(100);
+			submitdiv.css({"display":"block"});
+		} else {
+			submitdiv.css({"display":"none"});
+		}
+		$('html, body').animate({ scrollTop: 0 }, 500);
+	});
+
+	$(".aba").hover(
+		function () { $(this).addClass("ativa") },
+		function () { $(this).removeClass("ativa") }
+	);
+
 
 
 	/* preparar email para o(s) conteudista(s) */

@@ -39,7 +39,7 @@
 
 		<a href="/" class="logo mr-auto educorp-logo"><img src="<?php echo SITEPATH; ?>assets/img/educorp-logo.png" alt="" class="img-fluid"></a>
 
-		<nav class="nav-menu d-none d-lg-block">
+		<!--<nav class="nav-menu d-none d-lg-block">
 			<ul>
 				<li class="active"><a href="/">Inicio</a></li>
 				<li><a href="<?php echo hashtag() ?>about">O que é</a></li>	
@@ -47,7 +47,8 @@
 				<li><a href="<?php echo hashtag() ?>retomada">Retomada</a></li>				
 				<li><a href="<?php echo hashtag() ?>contact">Contato</a></li>
 			</ul>
-		</nav><!-- .nav-menu -->
+		</nav>-->
+
     <?php if(is_user_logged_in()){?>
       <a href="/wp-login.php?action=logout" class="get-started-btn">Sair</a>
     <?php  }else{ ?>
