@@ -77,6 +77,18 @@ class PropostaEducorp
 	}
 }
 
+//AVISO
+function aviso() { 
+	if (get_post_type() == 'proposta') {?>
+<div id="quadro">
+		<i class="bx bxs-x-square"></i>
+		<h2>Atenção</h2>
+		<p>Preencha todos os campos antes de avançar.</p>			
+</div>	
+<?php } }
+add_action( 'edit_form_top', 'aviso');
+
+
 
 
 
@@ -97,14 +109,15 @@ add_action('admin_enqueue_scripts', 'style_and_script');
 
 
 //TITLE
-function title() { ?>
+function title() { 
+	if (get_post_type() == 'proposta') {?>
 	<div class="conteudo conteudo1">
 	<br><p>Roteiro para elaboração de solução de capacitação preenchido conjuntamente entre CONTEUDISTA E EQUIPE, até a validação da versão final.</p><br>
 	<h2 style='font-size:20px;font-weight:bold;'>I. CARACTERIZAÇÃO DA DEMANDA</h2><br>
 	<strong>1. TÍTULO DA CAPACITAÇÃO</strong><br><br>
 	<span>Escreva o nome final exato do curso</span>
 	</div>
-<?php }
+<?php } }
 add_action( 'edit_form_top', 'title');
 
 
@@ -131,6 +144,7 @@ add_action('edit_form_top', 'barras');
 // VERIFICAR PERMISSÕES  : ********************
 function permissao()
 {
+	if (get_post_type() == 'proposta') {
 $user = wp_get_current_user();
 if (in_array('contributor', (array) $user->roles)) {	
 	get_header();
@@ -139,6 +153,16 @@ if (in_array('contributor', (array) $user->roles)) {
 	<?php
 	echo "<br><br>";
 }
+
+$ehresp = 0;
+if(in_array('administrator', (array) $user->roles) || in_array('author', (array) $user->roles)){
+	$ehresp = 1;
+}
+?>
+<input type="hidden" id="ehresp" value="<?php echo $ehresp; ?>">
+<?php
+
+
 $ativado = get_field('ativado');  
 $permitido = false;
 foreach (get_field('conteudista') as $cont) {
@@ -146,12 +170,12 @@ foreach (get_field('conteudista') as $cont) {
       $permitido = true;
    }   
 } 
-if (($ativado[0] == "Ativado" && $permitido) || in_array('administrator', (array) $user->roles) || in_array('author', (array) $user->roles)) {
+if (($ativado[0] == "Ativado" && $permitido) || $ehresp) {
 	echo "";
 }else{
 	echo "<script>window.location.href = '/naopermitido'</script>";
 }
-}
+}}
 add_action('edit_form_top', 'permissao');
 
 

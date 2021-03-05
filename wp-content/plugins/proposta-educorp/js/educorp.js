@@ -23,14 +23,14 @@ function addatuacao(val, indice) { //select
 
 window.onload = function () {
 
-	function Razao(altura){
-	var largura = $(document).width();    
-	return largura / altura;
+	function Razao(altura) {
+		var largura = $(document).width();
+		return largura / altura;
 	}
 	var razao = Razao(1600);
 
 	//BARRA
-	var inicial = 0;	
+	var inicial = 0;
 	$(window).scroll(function () {
 		var atualscroll = $(this).scrollTop();
 		if (atualscroll > inicial) {
@@ -260,16 +260,53 @@ window.onload = function () {
 	submit.setAttribute("class", "conteudo conteudo4");
 
 
+	$("#quadro").click(function () {
+		$("#quadro").css({ 'display': 'none' });
+	})
+
 
 	/*BOTOES ABAS*/
 	var titulo = $("#titlediv");//titulo
 	var submitdiv = $("#submitdiv");//submitdiv	
 	$(".conteudo1").show();
 	$(".abas li:first div").addClass("selected");
+	var ehresp = $("#ehresp").val();
+
 	$(".aba").click(function () {
+		var indice = $(this).attr("value");
+
+		//teste campos
+		var ementa = $("#ementa textarea").val();
+		var conteudo = $("#conteudo textarea").val();
+		var metodologia = $("#metodologia textarea").val();
+		var avaliacao = $("#avaliacao textarea").val();
+		var criterios = $("#criterios textarea").val();
+		var equipenome = $("#equipenome input").val();
+		var bibliografia = $("#bibliografia textarea").val();
+		
+		/*
+		console.log("Ementa " + ementa);
+		console.log("Conteudo " + conteudo);
+		console.log("Metodologia " + metodologia);
+		console.log("Avaliacao " + avaliacao);
+		console.log("Criter " + criterios);
+		console.log("Equipe " + equipenome);
+		console.log("Biblio " + bibliografia);
+		*/
+
+		var teste;
+		if (ementa == "" || conteudo == "" || metodologia == "" || avaliacao == "" || criterios == "" || equipenome == "" || bibliografia == "") {
+			teste = 0;
+		} else {
+			teste = 1;
+		}
+
+		if ((indice == 3 || indice == 4) && ehresp == "0" && teste == 0) {
+				$("#quadro").show();
+		}else{
 		$(".aba").removeClass("selected");
 		$(this).addClass("selected");
-		var indice = $(this).attr("value");
+
 		$(".conteudo").hide();
 		$(".conteudo" + indice).show();
 		if (indice == 1) {
@@ -278,15 +315,16 @@ window.onload = function () {
 		} else {
 			titulo.addClass("conteudo conteudo1");
 		}
-		if (indice == 2)razao = Razao(2300);
-		if (indice == 3)razao = Razao(600);
+		if (indice == 2) razao = Razao(2300);
+		if (indice == 3) razao = Razao(600);
 		if (indice == 4) {
 			razao = Razao(100);
-			submitdiv.css({"display":"block"});
+			submitdiv.css({ "display": "block" });
 		} else {
-			submitdiv.css({"display":"none"});
+			submitdiv.css({ "display": "none" });
 		}
 		$('html, body').animate({ scrollTop: 0 }, 500);
+	}
 	});
 
 	$(".aba").hover(
