@@ -269,8 +269,7 @@ window.onload = function () {
 	$(".aba").click(function () {
 		$(".aba").removeClass("selected");
 		$(this).addClass("selected");
-		var indice = $(this).parent().index();
-		indice++;
+		var indice = $(this).attr("value");
 		$(".conteudo").hide();
 		$(".conteudo" + indice).show();
 		if (indice == 1) {
