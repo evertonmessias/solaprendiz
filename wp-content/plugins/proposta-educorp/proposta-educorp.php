@@ -257,6 +257,17 @@ function conteudista()
 }
 add_action('edit_form_advanced', 'conteudista');
 
+//Sobre
+
+function mensagem(){
+    echo "<h1>Sobre o Proposta Educorp</h1>";
+}
+
+function sobre(){
+    add_submenu_page('edit.php?post_type=proposta','Sobre esse o Proposta Educorp','Sobre','manage_options','proposta-educorp','mensagem',10 );
+}add_action('admin_menu', 'sobre');
+
+
 
 
 // OBJETO
