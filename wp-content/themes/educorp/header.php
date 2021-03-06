@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,6 @@
   <link href="<?php echo SITEPATH; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -38,16 +37,6 @@
 	<div class="container d-flex align-items-center">
 
 		<a href="/" class="logo mr-auto educorp-logo"><img src="<?php echo SITEPATH; ?>assets/img/educorp-logo.png" alt="" class="img-fluid"></a>
-
-		<!--<nav class="nav-menu d-none d-lg-block">
-			<ul>
-				<li class="active"><a href="/">Inicio</a></li>
-				<li><a href="<?php echo hashtag() ?>about">O que é</a></li>	
-        <li><a href="/propostas">Propostas</a></li>			
-				<li><a href="<?php echo hashtag() ?>retomada">Retomada</a></li>				
-				<li><a href="<?php echo hashtag() ?>contact">Contato</a></li>
-			</ul>
-		</nav>-->
 
     <?php if(is_user_logged_in()){?>
       <a href="/wp-login.php?action=logout" class="get-started-btn">Sair</a>

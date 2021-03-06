@@ -1,16 +1,4 @@
 <!-- ======= Footer ======= -->
-<footer id="footer">
-
-	<div class="container">	
-		<div class="credits">
-			<a href="https://educorp.unicamp.br" target="_blank">Educorp</a>
-		</div>
-	</div>
-</footer><!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
 <!-- Vendor JS Files -->
 <script src="<?php echo SITEPATH; ?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo SITEPATH; ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -28,5 +16,4 @@
 <script src="<?php echo SITEPATH; ?>assets/js/educorp.js"></script>
 <?php wp_footer(); ?>
 </body>
-
 </html>

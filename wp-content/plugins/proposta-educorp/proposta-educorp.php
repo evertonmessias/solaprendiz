@@ -77,21 +77,6 @@ class PropostaEducorp
 	}
 }
 
-//AVISO
-function aviso() { 
-	if (get_post_type() == 'proposta') {?>
-<div id="quadro">
-		<i class="bx bxs-x-square"></i>
-		<h2>Atenção</h2>
-		<p>Preencha todos os campos antes de avançar.</p>			
-</div>	
-<?php } }
-add_action( 'edit_form_top', 'aviso');
-
-
-
-
-
 // ADD style & script
 function style_and_script()
 {
@@ -104,7 +89,16 @@ add_action('admin_enqueue_scripts', 'style_and_script');
 
 
 
-
+//AVISO
+function aviso() { 
+	if (get_post_type() == 'proposta') {?>
+<div id="quadro">
+		<i class="bx bxs-x-square"></i>
+		<h2>Atenção</h2>
+		<p>Preencha todos os campos antes de avançar.</p>			
+</div>	
+<?php } }
+add_action( 'edit_form_top', 'aviso');
 
 
 
@@ -122,9 +116,6 @@ add_action( 'edit_form_top', 'title');
 
 
 
-
-
-
 // BARRAS TOP
 function barras() { 
 	if (get_post_type() == 'proposta') {?>
@@ -133,11 +124,6 @@ function barras() {
 <div id="menu">DESENVOLVIMENTO DE SOLUÇÃO DE APRENDIZAGEM</div> 
 <?php }}
 add_action('edit_form_top', 'barras');
-
-
-
-
-
 
 
 
@@ -180,9 +166,6 @@ add_action('edit_form_top', 'permissao');
 
 
 
-
-
-
 // BOTOES ABAS
 function abas() { 
 	if (get_post_type() == 'proposta') {?>
@@ -214,9 +197,6 @@ function abas() {
 
 <?php }}
 add_action('edit_form_advanced', 'abas');
-
-
-
 
 
 
@@ -272,8 +252,6 @@ function sobre(){
 }add_action('admin_menu', 'sobre');
 
 
-
-
 // OBJETO
 
 if (class_exists('PropostaEducorp')) {
@@ -281,9 +259,6 @@ if (class_exists('PropostaEducorp')) {
 	register_activation_hook(__FILE__, array($prop, 'activate'));
 	register_deactivation_hook(__FILE__, array($prop, 'deactivate'));
 }
-
-
-
 
 
 //****************************  NAO USADO *************************** */
