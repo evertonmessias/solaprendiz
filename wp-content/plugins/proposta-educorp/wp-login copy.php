@@ -6,8 +6,20 @@ body{
 	display: block;
 	position: relative;
 	margin: 0 auto;
-	width: 300px !important;
-	top: -80px;
+	width: 450px !important;
+	top: -50px;
+}
+@media(max-width:650px){
+	#login{
+	top: 0px;
+}
+}
+#login #blocologin{
+	display: block !important;
+	position: relative !important;
+	margin: 0 auto;
+	width: 410px !important;
+	margin-bottom: 15px;
 }
 #login #nav a, #login #backtoblog a {
     display: none;
@@ -1697,7 +1709,7 @@ function login_header($title = 'Log In', $message = '', $wp_error = null)
 				var galogin = $(".galogin");
 				var atencao = document.createElement("p");
 				atencao.setAttribute("style","color:#888;text-align:center");
-				atencao.innerHTML = "Faça o login com sua conta @unicamp.br, clicando no ícone acima.";
+				atencao.innerHTML = "Faça o login com sua conta @unicamp clicando no ícone acima.";
 				galogin.after(atencao);
 			}
 			<?php echo $login_script; ?>
