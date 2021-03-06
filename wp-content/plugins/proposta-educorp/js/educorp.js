@@ -1,7 +1,7 @@
 /*EVERTON JS*/
 
 //funções externas ao onload
-function calcularcarga() {
+function calcularcarga() { //calcula o valor total da carga horária 
 	var carga1 = document.querySelector("#carga1 input");
 	var carga2 = document.querySelector("#carga2 input");
 	var carga3 = document.querySelector("#carga3 input");
@@ -15,13 +15,30 @@ function calcularcarga() {
 	}
 }
 
-function addatuacao(val, indice) { //select
+function addatuacao(val, indice) { //atualiza o hidden com o valor do select
 	var arrayeq = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
 	arrayeq[indice] = val;
 	$("#equipe_atuacao_hidden .acf-input input").val(arrayeq);
+	var tr = indice + 1;
+	var nome = $("#equipe .acf-table .acf-row"+tr+" #equipenome .acf-input input").val();
+	var carga = $("#equipe .acf-table .acf-row"+tr+" #equipecargaeq .acf-input input").val();
+	$("#calendario .acf-table .acf-row"+tr+" #cal-instrutor .acf-input input").val(nome);
+	$("#calendario .acf-table .acf-row"+tr+" #cal-carga .acf-input input").val(carga);	
 }
 
-window.onload = function () {
+function addCalend(indice) { //atualiza o calendario com os campos da equipe
+	var tr = indice + 1;
+	var nome = $("#equipe .acf-table .acf-row"+tr+" #equipenome .acf-input input").val();
+	var carga = $("#equipe .acf-table .acf-row"+tr+" #equipecargaeq .acf-input input").val();
+	$("#calendario .acf-table .acf-row"+tr+" #cal-instrutor .acf-input input").val(nome);
+	$("#calendario .acf-table .acf-row"+tr+" #cal-carga .acf-input input").val(carga);
+}
+
+function restringeChar(campo){ // não permite barra/ na data
+	$(campo).val($(campo).val().replace(/\//gi, ''));
+}
+
+window.onload = function () { // inicio do onload
 
 	function Razao(altura) {
 		var largura = $(document).width();
@@ -142,7 +159,7 @@ window.onload = function () {
 	carga5.attr("oninput", "calcularcarga()");
 
 
-	/*************** equipe da capacitação - arrays **************/
+	/*************** equipe da capacitação e calendário - arrays **************/
 
 	var btnequipe = $("#equipe .acf-table");
 
@@ -156,7 +173,7 @@ window.onload = function () {
 	span.innerHTML = "<i class='bx bxs-minus-square'></i>";
 	btnequipe.after(span);
 
-
+	//equipe
 	$("#equipe .acf-table .acf-row").attr('class', 'acf-row acf-row1');
 	$("#equipe .acf-table .acf-row1 #equipenome .acf-input input").attr('name', 'acf[field_6021db8cbc637][field_6021dc1f7e0c2][]');
 	$("#equipe .acf-table .acf-row1 #equipesuperior .acf-input input").attr('name', 'acf[field_6021db8cbc637][field_6021dc7ce9663][]');
@@ -165,7 +182,21 @@ window.onload = function () {
 	$("#equipe .acf-table .acf-row1 #equipeatuacao .acf-input select").attr('name', 'acf[field_6021db8cbc637][field_6021dd92761ea][]');
 	$("#equipe .acf-table .acf-row1 #equipecargaeq .acf-input input").attr('name', 'acf[field_6021db8cbc637][field_6021dde570989][]');
 
+	// calendario
+	$("#calendario .acf-table .acf-row").attr('class', 'acf-row acf-row1');
+	$("#calendario .acf-table .acf-row1 #cal-turma .acf-input input").attr("name", "acf[field_602203f95c468][field_60437e3f4ef25][]");
+	$("#calendario .acf-table .acf-row1 #cal-quantidade .acf-input input").attr("name", "acf[field_602203f95c468][field_60437eebe1f97][]");
+	$("#calendario .acf-table .acf-row1 #cal-capacidade .acf-input input").attr("name", "acf[field_602203f95c468][field_60437f1ee1f98][]");
+	$("#calendario .acf-table .acf-row1 #cal-data .acf-input input").attr("name", "acf[field_602203f95c468][field_60437f854732a][]").attr("oninput","restringeChar(this);");
+	$("#calendario .acf-table .acf-row1 #cal-semana .acf-input input").attr("name", "acf[field_602203f95c468][field_60437fd74732b][]");
+	$("#calendario .acf-table .acf-row1 #cal-horario .acf-input input").attr("name", "acf[field_602203f95c468][field_60437ff64732c][]");
+	$("#calendario .acf-table .acf-row1 #cal-instrutor .acf-input input").attr("name", "acf[field_602203f95c468][field_604380254732d][]").attr('readonly',true);
+	$("#calendario .acf-table .acf-row1 #cal-carga .acf-input input").attr("name", "acf[field_602203f95c468][field_6043803a4732e][]").attr('readonly',true);
+
+
 	var arrayeq = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
+	var arraynome = $("#equipe .acf-table .acf-row1 #equipenome .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
+	var arraycarga = $("#equipe .acf-table .acf-row1 #equipecargaeq .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 
 	function atualizaValor(campo, indice, type) {
 		var tr = indice + 1;
@@ -173,18 +204,34 @@ window.onload = function () {
 		if (type == "input") {
 			var valor = td.val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 			td.val(valor[indice]);
+			if(campo == "equipenome" || campo == "equipecargaeq") td.attr("oninput", "addCalend(" + indice + ")");
 		} else if (type == "select") {
 			array = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
 			td.val(array[indice]).attr("onchange", "addatuacao(this.value," + indice + ")");
 		}
 	}
 
+	function atualizaValorCal(campo, indice, grupo) {
+		var tr = indice + 1;
+		var td = $("#calendario .acf-table .acf-row" + tr + " #" + campo + " .acf-input input");
+		if (grupo == "calendario") {
+			var valor = td.val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
+			td.val(valor[indice]);			
+		} else if (grupo == "equipenome") {
+			td.val(arraynome[indice]);
+		} else if (grupo == "equipecarga") {
+			td.val(arraycarga[indice]);
+		}
+	}
+
 	var campoeq = 1;
 	while (arrayeq.length > campoeq) {
 		var ind = campoeq;
-		var linha = $("#equipe .acf-table .acf-row" + campoeq)
+		var linhaeq = $("#equipe .acf-table .acf-row" + campoeq);
+		var linhaca = $("#calendario .acf-table .acf-row" + campoeq)
 		campoeq++;
-		linha.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
+		linhaeq.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
+		linhaca.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#calendario .acf-table");
 	}
 
 	var ind = 0;
@@ -195,50 +242,67 @@ window.onload = function () {
 		atualizaValor("equipeemail", ind, "input");
 		atualizaValor("equipeatuacao", ind, "select");
 		atualizaValor("equipecargaeq", ind, "input");
+
+		atualizaValorCal("cal-turma", ind, "calendario");
+		atualizaValorCal("cal-quantidade", ind, "calendario");
+		atualizaValorCal("cal-capacidade", ind, "calendario");
+		atualizaValorCal("cal-data", ind, "calendario");
+		atualizaValorCal("cal-semana", ind, "calendario");
+		atualizaValorCal("cal-horario", ind, "calendario");
+		atualizaValorCal("cal-instrutor", ind, "equipenome");
+		atualizaValorCal("cal-carga", ind, "equipecarga");
 		ind++;
 	}
 
 	$("#equipe .btnp-equipe-capacitacao").click(() => {
-		var linha = $("#equipe .acf-table .acf-row" + campoeq)
+		var linhaeq = $("#equipe .acf-table .acf-row" + campoeq)
+		var linhaca = $("#calendario .acf-table .acf-row" + campoeq)
 		var indice = campoeq;
 		campoeq++;
-		linha.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
-		$("#equipe .acf-table .acf-row" + campoeq + " #equipenome .acf-input input").val("");
+
+		linhaeq.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
+		$("#equipe .acf-table .acf-row" + campoeq + " #equipenome .acf-input input").val("").attr("oninput", "addCalend(this.value," + indice + ")");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipesuperior .acf-input input").val("");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipeunidade .acf-input input").val("");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipeemail .acf-input input").val("");
-		$("#equipe .acf-table .acf-row" + campoeq + " #equipeatuacao .acf-input select").val("").attr("onchange", "addatuacao(this.value," + indice + ")");
-		$("#equipe .acf-table .acf-row" + campoeq + " #equipecargaeq .acf-input input").val("");
+		$("#equipe .acf-table .acf-row" + campoeq + " #equipeatuacao .acf-input select").val("").attr("oninput", "addatuacao(this.value," + indice + ")");
+		$("#equipe .acf-table .acf-row" + campoeq + " #equipecargaeq .acf-input input").val("").attr("oninput", "addCalend(this.value," + indice + ")");
+		
+		linhaca.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#calendario .acf-table");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-turma .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-quantidade .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-capacidade .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-data .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-semana .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-horario .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-instrutor .acf-input input").val("");
+		$("#calendario .acf-table .acf-row" + campoeq + " #cal-carga .acf-input input").val("");
+
 		arrayeq[campoeq - 1] = ".";
 		$("#equipe_atuacao_hidden .acf-input input").val(arrayeq);
-
+		
 	})
 
 	$("#equipe .btnm-equipe-capacitacao").click(() => {
 		if (campoeq > 1) {
 			$("#equipe .acf-table .acf-row" + campoeq).remove();
+			$("#calendario .acf-table .acf-row" + campoeq).remove();
 			campoeq--;
 			arrayeq.pop();
 			$("#equipe_atuacao_hidden .acf-input input").val(arrayeq);
-		}
+		}		
 	})
 
 
+
 	/*III caracterização*/
-	var quantidade = $("#quantidade");
+	var calendario = $("#calendario");
 	var h2 = document.createElement("h2");
 	h2.setAttribute("style", "font-weight:600;font-size:20px;margin-left:-10px");
 	h2.setAttribute("class", "conteudo conteudo3");
 	h2.innerHTML = "III. CARACTERIZAÇÃO DO OFERECIMENTO";
-	quantidade.before(h2);
+	calendario.before(h2);
 
-	/* calendario */
-	$pretabela = "<table style='border-spacing: 0px;width: 100%;'><tbody><tr><td style='width=100px;padding:10px;border: 1px solid #000;'>Turma</td><td style='width=100px;padding:10px;border: 1px solid#000;'>Data</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Dia da semana</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Horário</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Instrutor</td><td style='width=100px;padding:10px;border: 1px solid #000;'>Carga Horária</td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td><td style='width=100px;padding:10px;border: 1px solid #000;'></td></tr></tbody></table>";
-
-	var calendario = $("#calendario textarea");
-	if (calendario.value == "") {
-		calendario.value = $pretabela;
-	}
 
 	/*IV gerencial*/
 	var pagamento = $("#pagamento");
@@ -266,15 +330,14 @@ window.onload = function () {
 
 
 	/*BOTOES ABAS*/
-	var titulo = $("#titlediv");//titulo
 	var submitdiv = $("#submitdiv");//submitdiv	
 	$(".conteudo1").show();
 	$(".abas li:first div").addClass("selected");
 	var ehresp = $("#ehresp").val();
 
 	$(".aba").click(function () {
+		var titulo = $("#titlediv");//titulo
 		var indice = $(this).attr("value");
-
 		//teste campos
 		var ementa = $("#ementa textarea").val();
 		var conteudo = $("#conteudo textarea").val();
@@ -283,16 +346,6 @@ window.onload = function () {
 		var criterios = $("#criterios textarea").val();
 		var equipenome = $("#equipenome input").val();
 		var bibliografia = $("#bibliografia textarea").val();
-		
-		/*
-		console.log("Ementa " + ementa);
-		console.log("Conteudo " + conteudo);
-		console.log("Metodologia " + metodologia);
-		console.log("Avaliacao " + avaliacao);
-		console.log("Criter " + criterios);
-		console.log("Equipe " + equipenome);
-		console.log("Biblio " + bibliografia);
-		*/
 
 		var teste;
 		if (ementa == "" || conteudo == "" || metodologia == "" || avaliacao == "" || criterios == "" || equipenome == "" || bibliografia == "") {
@@ -302,29 +355,29 @@ window.onload = function () {
 		}
 
 		if ((indice == 3 || indice == 4) && ehresp == "0" && teste == 0) {
-				$("#quadro").show();
-		}else{
-		$(".aba").removeClass("selected");
-		$(this).addClass("selected");
+			$("#quadro").show();
+		} else {
+			$(".aba").removeClass("selected");
+			$(this).addClass("selected");
 
-		$(".conteudo").hide();
-		$(".conteudo" + indice).show();
-		if (indice == 1) {
-			razao = Razao(1600);
-			titulo.removeClass("conteudo conteudo1");
-		} else {
-			titulo.addClass("conteudo conteudo1");
+			$(".conteudo").hide();
+			$(".conteudo" + indice).show();
+			if (indice == 1) {
+				razao = Razao(1600);
+				titulo.removeClass("conteudo conteudo1");
+			} else {
+				titulo.addClass("conteudo conteudo1");
+			}
+			if (indice == 2) razao = Razao(2300);
+			if (indice == 3) razao = Razao(600);
+			if (indice == 4) {
+				razao = Razao(100);
+				submitdiv.css({ "display": "block" });
+			} else {
+				submitdiv.css({ "display": "none" });
+			}
+			$('html, body').animate({ scrollTop: 0 }, 500);
 		}
-		if (indice == 2) razao = Razao(2300);
-		if (indice == 3) razao = Razao(600);
-		if (indice == 4) {
-			razao = Razao(100);
-			submitdiv.css({ "display": "block" });
-		} else {
-			submitdiv.css({ "display": "none" });
-		}
-		$('html, body').animate({ scrollTop: 0 }, 500);
-	}
 	});
 
 	$(".aba").hover(

@@ -227,3 +227,35 @@ input[type="checkbox"], input[type="radio"] {
     height: 1px;
     opacity: 0;
 }
+
+
+/*calendario */
+
+#calendario .acf-table {
+    margin-bottom: 15px !important;
+}
+
+#calendario .acf-input {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+#calendario .btnp-calendario-capacitacao {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    cursor: pointer;
+}
+
+#calendario .btnm-calendario-capacitacao {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    cursor: pointer;
+}
+
+#calendario .btnp-calendario-capacitacao i, #calendario .btnm-calendario-capacitacao i {
+    font-size: 20px;
+}
