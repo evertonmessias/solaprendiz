@@ -44,7 +44,7 @@ window.onload = function () { // inicio do onload
 		var largura = $(document).width();
 		return largura / altura;
 	}
-	var razao = Razao(1600);
+	var razao = Razao($(document).height()*2);
 
 	//BARRA
 	var inicial = 0;
@@ -363,15 +363,15 @@ window.onload = function () { // inicio do onload
 			$(".conteudo").hide();
 			$(".conteudo" + indice).show();
 			if (indice == 1) {
-				razao = Razao(1600);
+				razao = Razao($(document).height()*2);
 				titulo.removeClass("conteudo conteudo1");
 			} else {
 				titulo.addClass("conteudo conteudo1");
 			}
-			if (indice == 2) razao = Razao(2300);
-			if (indice == 3) razao = Razao(600);
+			if (indice == 2) razao = Razao($(document).height()/1.35);
+			if (indice == 3) razao = Razao($(document).height()/3.5);
 			if (indice == 4) {
-				razao = Razao(100);
+				razao = Razao($(document).height()/9);
 				submitdiv.css({ "display": "block" });
 			} else {
 				submitdiv.css({ "display": "none" });
