@@ -259,9 +259,13 @@ add_action('edit_form_advanced', 'conteudista');
 
 //Sobre
 
-function mensagem(){
-    echo "<h1>Sobre o Proposta Educorp</h1>";
-}
+function mensagem(){?>
+	<br>
+    <h1 style="color:#f00;">Sobre o Proposta Educorp</h1>
+	<p style="text-align:justify;font-size:16px">
+	O plugin 'Proposta Educorp' foi criado para permitir a inclusão de propostas pelo Wordpress.<br><br>
+	<a href="https://github.com/evertonmessias/solaprendiz" target="_blank">Projeto</a></p>
+<?php }
 
 function sobre(){
     add_submenu_page('edit.php?post_type=proposta','Sobre esse o Proposta Educorp','Sobre','manage_options','proposta-educorp','mensagem',10 );
