@@ -1,6 +1,25 @@
 /*EVERTON JS*/
 
 //funções externas ao onload
+
+// **** CALCULA PAGAMENTO *****
+function calculaPagamento(valor,indice){
+	if (!isNaN(valor)) {
+	var tr = indice + 1;	
+	var atuacao = $("#pagamento .acf-table .acf-row"+tr+" #pag-atuacao .acf-input input").val();
+	var valorpag;
+	if(atuacao == "instrutor")valorpag = $("#valor_instrutor").val(); 
+	else if(atuacao == "tutor")valorpag = $("#valor_tutor").val();
+	else if(atuacao == "monitor")valorpag = $("#valor_monitor").val();
+	else if(atuacao == "conteudista presencial")valorpag = $("#valor_cont_presencial").val();
+	else if(atuacao == "conteudista remoto síncrono")valorpag = $("#valor_cont_sincrono").val();
+	else if(atuacao == "conteudista remoto assíncrono")valorpag = $("#valor_cont_assincrono").val();
+	else valorpag = 0;
+	var valortotal = valor * valorpag;
+	$("#pagamento .acf-table .acf-row"+tr+" #pag-valor .acf-input input").val(valortotal);
+}}
+
+
 function calcularcarga() { //calcula o valor total da carga horária 
 	var carga1 = document.querySelector("#carga1 input");
 	var carga2 = document.querySelector("#carga2 input");
@@ -22,20 +41,29 @@ function addatuacao(val, indice) { //atualiza o hidden com o valor do select
 	var tr = indice + 1;
 	var nome = $("#equipe .acf-table .acf-row"+tr+" #equipenome .acf-input input").val();
 	var carga = $("#equipe .acf-table .acf-row"+tr+" #equipecargaeq .acf-input input").val();
+	var atuacao = $("#equipe .acf-table .acf-row"+tr+" #equipeatuacao .acf-input select").val();
 	$("#calendario .acf-table .acf-row"+tr+" #cal-instrutor .acf-input input").val(nome);
 	$("#calendario .acf-table .acf-row"+tr+" #cal-carga .acf-input input").val(carga);	
+	$("#pagamento .acf-table .acf-row"+tr+" #pag-nome .acf-input input").val(nome);
+	$("#pagamento .acf-table .acf-row"+tr+" #pag-atuacao .acf-input input").val(atuacao);
 }
 
-function addCalend(indice) { //atualiza o calendario com os campos da equipe
+function addValores(indice) { //atualiza o calendario com os campos da equipe
 	var tr = indice + 1;
 	var nome = $("#equipe .acf-table .acf-row"+tr+" #equipenome .acf-input input").val();
 	var carga = $("#equipe .acf-table .acf-row"+tr+" #equipecargaeq .acf-input input").val();
+	var atuacao = $("#equipe .acf-table .acf-row"+tr+" #equipeatuacao .acf-input select").val();
 	$("#calendario .acf-table .acf-row"+tr+" #cal-instrutor .acf-input input").val(nome);
 	$("#calendario .acf-table .acf-row"+tr+" #cal-carga .acf-input input").val(carga);
+	$("#pagamento .acf-table .acf-row"+tr+" #pag-nome .acf-input input").val(nome);
+	$("#pagamento .acf-table .acf-row"+tr+" #pag-atuacao .acf-input input").val(atuacao);
 }
 
 function restringeChar(campo){ // não permite barra/ na data
 	$(campo).val($(campo).val().replace(/\//gi, ''));
+}
+function restringeNumber(campo){ // não permite sem ser number
+	$(campo).val($(campo).val().replace(/[a-zA-Z]/gi, ''));
 }
 
 window.onload = function () { // inicio do onload
@@ -44,12 +72,13 @@ window.onload = function () { // inicio do onload
 		var largura = $(document).width();
 		return largura / altura;
 	}
-	var razao = Razao($(document).height()*2);
+	var razao = Razao(2000);
 
 	//BARRA
 	var inicial = 0;
 	$(window).scroll(function () {
 		var atualscroll = $(this).scrollTop();
+		//console.log(atualscroll);
 		if (atualscroll > inicial) {
 			$('#barra').css({ 'width': atualscroll * razao });
 		} else {
@@ -159,7 +188,7 @@ window.onload = function () { // inicio do onload
 	carga5.attr("oninput", "calcularcarga()");
 
 
-	/*************** equipe da capacitação e calendário - arrays **************/
+	/*************** TABELAS equipe da capacitação, calendário e pagamento - arrays **************/
 
 	var btnequipe = $("#equipe .acf-table");
 
@@ -193,18 +222,26 @@ window.onload = function () { // inicio do onload
 	$("#calendario .acf-table .acf-row1 #cal-instrutor .acf-input input").attr("name", "acf[field_602203f95c468][field_604380254732d][]").attr('readonly',true);
 	$("#calendario .acf-table .acf-row1 #cal-carga .acf-input input").attr("name", "acf[field_602203f95c468][field_6043803a4732e][]").attr('readonly',true);
 
+	// pagamento
+	$("#pagamento .acf-table .acf-row").attr('class', 'acf-row acf-row1');
+	$("#pagamento .acf-table .acf-row1 #pag-nome .acf-input input").attr('name', 'acf[field_60220ada3d97d][field_6044c8616f150][]').attr('readonly',true);
+	$("#pagamento .acf-table .acf-row1 #pag-dias .acf-input input").attr('name', 'acf[field_60220ada3d97d][field_6044c88e6f151][]').attr("onkeyup","restringeNumber(this);");
+	$("#pagamento .acf-table .acf-row1 #pag-atuacao .acf-input input").attr('name', 'acf[field_60220ada3d97d][field_6044c89e6f152][]').attr('readonly',true);
+	$("#pagamento .acf-table .acf-row1 #pag-carga .acf-input input").attr('name', 'acf[field_60220ada3d97d][field_6044c8b66f153][]').attr("onkeyup","restringeNumber(this);");
+	$("#pagamento .acf-table .acf-row1 #pag-valor .acf-input input").attr('name', 'acf[field_60220ada3d97d][field_6044c8cb6f154][]').attr('readonly',true);
 
+	
 	var arrayeq = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
 	var arraynome = $("#equipe .acf-table .acf-row1 #equipenome .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 	var arraycarga = $("#equipe .acf-table .acf-row1 #equipecargaeq .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 
-	function atualizaValor(campo, indice, type) {
+	function atualizaValorEq(campo, indice, type) {
 		var tr = indice + 1;
 		var td = $("#equipe .acf-table .acf-row" + tr + " #" + campo + " .acf-input " + type);
 		if (type == "input") {
 			var valor = td.val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 			td.val(valor[indice]);
-			if(campo == "equipenome" || campo == "equipecargaeq") td.attr("oninput", "addCalend(" + indice + ")");
+			if(campo == "equipenome" || campo == "equipecargaeq") td.attr("oninput", "addValores(" + indice + ")");
 		} else if (type == "select") {
 			array = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
 			td.val(array[indice]).attr("onchange", "addatuacao(this.value," + indice + ")");
@@ -224,24 +261,40 @@ window.onload = function () { // inicio do onload
 		}
 	}
 
+	function atualizaValorPag(campo, indice, grupo) {
+		var tr = indice + 1;
+		var td = $("#pagamento .acf-table .acf-row" + tr + " #" + campo + " .acf-input input");
+		if (grupo == "pagamento") {
+			var valor = td.val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
+			td.val(valor[indice]);
+			if(campo == "pag-carga")td.attr("oninput", "calculaPagamento(this.value," + indice + ")");			
+		} else if (grupo == "equipenome") {
+			td.val(arraynome[indice]);
+		} else if (grupo == "equipeatuacao") {
+			td.val(arrayeq[indice]);
+		}
+	}
+
 	var campoeq = 1;
 	while (arrayeq.length > campoeq) {
 		var ind = campoeq;
 		var linhaeq = $("#equipe .acf-table .acf-row" + campoeq);
 		var linhaca = $("#calendario .acf-table .acf-row" + campoeq)
+		var linhapa = $("#pagamento .acf-table .acf-row" + campoeq)
 		campoeq++;
 		linhaeq.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
 		linhaca.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#calendario .acf-table");
+		linhapa.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#pagamento .acf-table");
 	}
 
 	var ind = 0;
 	while (arrayeq.length > ind) {
-		atualizaValor("equipenome", ind, "input");
-		atualizaValor("equipesuperior", ind, "input");
-		atualizaValor("equipeunidade", ind, "input");
-		atualizaValor("equipeemail", ind, "input");
-		atualizaValor("equipeatuacao", ind, "select");
-		atualizaValor("equipecargaeq", ind, "input");
+		atualizaValorEq("equipenome", ind, "input");
+		atualizaValorEq("equipesuperior", ind, "input");
+		atualizaValorEq("equipeunidade", ind, "input");
+		atualizaValorEq("equipeemail", ind, "input");
+		atualizaValorEq("equipeatuacao", ind, "select");
+		atualizaValorEq("equipecargaeq", ind, "input");
 
 		atualizaValorCal("cal-turma", ind, "calendario");
 		atualizaValorCal("cal-quantidade", ind, "calendario");
@@ -251,6 +304,13 @@ window.onload = function () { // inicio do onload
 		atualizaValorCal("cal-horario", ind, "calendario");
 		atualizaValorCal("cal-instrutor", ind, "equipenome");
 		atualizaValorCal("cal-carga", ind, "equipecarga");
+
+		atualizaValorPag("pag-nome", ind, "equipenome");
+		atualizaValorPag("pag-dias", ind, "pagamento");
+		atualizaValorPag("pag-atuacao", ind, "equipeatuacao");
+		atualizaValorPag("pag-carga", ind, "pagamento");
+		atualizaValorPag("pag-valor", ind, "pagamento");
+
 		ind++;
 	}
 
@@ -261,12 +321,12 @@ window.onload = function () { // inicio do onload
 		campoeq++;
 
 		linhaeq.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#equipe .acf-table");
-		$("#equipe .acf-table .acf-row" + campoeq + " #equipenome .acf-input input").val("").attr("oninput", "addCalend(this.value," + indice + ")");
+		$("#equipe .acf-table .acf-row" + campoeq + " #equipenome .acf-input input").val("").attr("oninput", "addValores(this.value," + indice + ")");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipesuperior .acf-input input").val("");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipeunidade .acf-input input").val("");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipeemail .acf-input input").val("");
 		$("#equipe .acf-table .acf-row" + campoeq + " #equipeatuacao .acf-input select").val("").attr("oninput", "addatuacao(this.value," + indice + ")");
-		$("#equipe .acf-table .acf-row" + campoeq + " #equipecargaeq .acf-input input").val("").attr("oninput", "addCalend(this.value," + indice + ")");
+		$("#equipe .acf-table .acf-row" + campoeq + " #equipecargaeq .acf-input input").val("").attr("oninput", "addValores(this.value," + indice + ")");
 		
 		linhaca.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#calendario .acf-table");
 		$("#calendario .acf-table .acf-row" + campoeq + " #cal-turma .acf-input input").val("");
@@ -278,6 +338,13 @@ window.onload = function () { // inicio do onload
 		$("#calendario .acf-table .acf-row" + campoeq + " #cal-instrutor .acf-input input").val("");
 		$("#calendario .acf-table .acf-row" + campoeq + " #cal-carga .acf-input input").val("");
 
+		linhapa.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#pagamento .acf-table");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-nome .acf-input input").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-dias .acf-input number").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-atuacao .acf-input input").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-carga .acf-input number").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-valor .acf-input input").val("");
+
 		arrayeq[campoeq - 1] = ".";
 		$("#equipe_atuacao_hidden .acf-input input").val(arrayeq);
 		
@@ -287,6 +354,7 @@ window.onload = function () { // inicio do onload
 		if (campoeq > 1) {
 			$("#equipe .acf-table .acf-row" + campoeq).remove();
 			$("#calendario .acf-table .acf-row" + campoeq).remove();
+			$("#pagamento .acf-table .acf-row" + campoeq).remove();
 			campoeq--;
 			arrayeq.pop();
 			$("#equipe_atuacao_hidden .acf-input input").val(arrayeq);
@@ -319,8 +387,8 @@ window.onload = function () { // inicio do onload
 		pagamento.value = $prepagamento;
 	}
 
-	//advanced-sortables 
-	var submit = document.querySelector("#advanced-sortables");
+	//button submit
+	var submit = document.querySelector("#major-publishing-actions");
 	submit.setAttribute("class", "conteudo conteudo4");
 
 
@@ -363,15 +431,15 @@ window.onload = function () { // inicio do onload
 			$(".conteudo").hide();
 			$(".conteudo" + indice).show();
 			if (indice == 1) {
-				razao = Razao($(document).height()*2);
+				razao = Razao(2000);
 				titulo.removeClass("conteudo conteudo1");
 			} else {
 				titulo.addClass("conteudo conteudo1");
 			}
-			if (indice == 2) razao = Razao($(document).height()/1.35);
-			if (indice == 3) razao = Razao($(document).height()/3.5);
+			if (indice == 2) razao = Razao(2800);
+			if (indice == 3) razao = Razao(300);
 			if (indice == 4) {
-				razao = Razao($(document).height()/9);
+				razao = Razao(50);
 				submitdiv.css({ "display": "block" });
 			} else {
 				submitdiv.css({ "display": "none" });

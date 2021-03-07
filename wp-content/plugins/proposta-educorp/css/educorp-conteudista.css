@@ -83,37 +83,6 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
     display: none !important;
 }
 
-#advanced-sortables {
-    display: block;
-    position: relative;
-    bottom: 0px !important;
-}
-
-#submitdiv, #publishing-action, #major-publishing-actions, #advanced-sortables {
-    background-color: rgba(0, 0, 0, 0);
-    border: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0) !important;
-}
-
-#side-sortables{
-    display: block;
-    position: absolute;
-    width: 200px;
-    min-height: 100px !important;
-    top: 100% !important;    
-    left: -180px !important;    
-}
-
-#publishing-action .button {
-    border: rgba(0, 0, 0, 0);
-    background-color: #f00 !important;
-    border-bottom: 100px !important;
-}
-
-#publishing-action .button:hover {
-    background-color: #ef6445 !important;
-}
-
 #carga label{
     font-weight: 400 !important;
 }
