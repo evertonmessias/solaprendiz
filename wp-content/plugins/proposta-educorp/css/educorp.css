@@ -301,3 +301,19 @@ input[type="checkbox"], input[type="radio"] {
 #publishing-action .button:hover {
     background-color: #ef6445 !important;
 }
+#totalpagamento{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    height: 60px;
+    float: right;
+    right: 10px !important;
+}
+#totalpagamento .acf-input{
+    width: 60%;
+    float: right;
+}
+#totalpagamento .acf-label{
+    margin-top: -10px;
+    width: 30%;
+    float: left;
+}

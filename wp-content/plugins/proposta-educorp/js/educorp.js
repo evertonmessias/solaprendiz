@@ -17,6 +17,15 @@ function calculaPagamento(valor,indice){
 	else valorpag = 0;
 	var valortotal = valor * valorpag;
 	$("#pagamento .acf-table .acf-row"+tr+" #pag-valor .acf-input input").val(valortotal);
+	var linhas = $("#pagamento .acf-table .acf-row").length
+	var somatorio = 0;
+	var valorx;
+	for(var i=1;i<=linhas;i++){
+		valorx = $("#pagamento .acf-table .acf-row"+i+" #pag-valor .acf-input input").val() * 1;
+		somatorio = somatorio + valorx;
+	}
+	$("#totalpagamento .acf-input input").val(somatorio);	
+
 }}
 
 
@@ -234,7 +243,8 @@ window.onload = function () { // inicio do onload
 	var arrayeq = $("#equipe_atuacao_hidden .acf-input input").val().split(',');
 	var arraynome = $("#equipe .acf-table .acf-row1 #equipenome .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
 	var arraycarga = $("#equipe .acf-table .acf-row1 #equipecargaeq .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
-
+	var arrayvaltotal = $("#pagamento .acf-table .acf-row1 #pag-valor .acf-input input").val().replace(/[\[\]\"]/g, "").split(',').filter(Boolean);
+	
 	function atualizaValorEq(campo, indice, type) {
 		var tr = indice + 1;
 		var td = $("#equipe .acf-table .acf-row" + tr + " #" + campo + " .acf-input " + type);
@@ -340,9 +350,9 @@ window.onload = function () { // inicio do onload
 
 		linhapa.clone().attr('class', 'acf-row acf-row' + campoeq).appendTo("#pagamento .acf-table");
 		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-nome .acf-input input").val("");
-		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-dias .acf-input number").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-dias .acf-input input").val("");
 		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-atuacao .acf-input input").val("");
-		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-carga .acf-input number").val("");
+		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-carga .acf-input input").val("").attr("oninput", "calculaPagamento(this.value," + indice + ")");
 		$("#pagamento .acf-table .acf-row" + campoeq + " #pag-valor .acf-input input").val("");
 
 		arrayeq[campoeq - 1] = ".";
@@ -380,12 +390,15 @@ window.onload = function () { // inicio do onload
 	h2.innerHTML = "IV. INFORMAÇÕES GERENCIAIS";
 	pagamento.before(h2);
 
-	/*pagamento*/
-	$prepagamento = "<table style='border-spacing: 0px;width: 100%;'><tbody><tr><td style='width=120px;padding:10px;border: 1px solid #000;'>Nome</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Dias</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Atuação</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Carga Horária</td><td style='width=120px;padding:10px;border: 1px solid #000;'>Valor</td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr><tr><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td><td style='width=120px;padding:10px;border: 1px solid #000;'></td></tr></tbody></table>";
-	var pagamento = $("#pagamento textarea");
-	if (pagamento.value == "") {
-		pagamento.value = $prepagamento;
+	//pagamento
+	var totalpagamento = $("#totalpagamento .acf-input input");
+	totalpagamento.attr("readonly",true);
+	var somatorio = 0;
+	for(var i=0;i<arrayvaltotal.length;i++){
+		somatorio = somatorio + (arrayvaltotal[i]*1);
 	}
+	totalpagamento.val(somatorio);
+
 
 	//button submit
 	var submit = document.querySelector("#major-publishing-actions");

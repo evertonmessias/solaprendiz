@@ -256,6 +256,23 @@ function conteudista()
 }
 add_action('edit_form_advanced', 'conteudista');
 
+// Relatórios *************************************************
+
+function proposta_page_relatorios(){?>
+<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-pages.css'>
+	<div class="pagina relatorios">
+	<h1>Relatórios</h1>
+	</div>
+
+<?php 
+}
+
+function proposta_relatorios()
+{
+	add_submenu_page('edit.php?post_type=proposta', 'Relatórios', 'Relatórios', 'manage_options', 'proposta-relatorios', 'proposta_page_relatorios');
+}
+add_action('admin_menu', 'proposta_relatorios');
+
 
 //Configuração *************************************************
 function proposta_settings1()
@@ -310,39 +327,7 @@ add_action('admin_menu', 'proposta_options_page');
 function proposta_page_html()
 {
 	?>
-	<style>
-		.pagina,
-		.settings,
-		.sobre {
-			display: block;
-			position: relative;
-			min-height: 600px;
-			background-color: #fff;			
-		}
-
-		.pagina {
-			margin: 0 auto;
-			width: 97%;
-			top:30px;
-		}
-
-		.settings {
-			padding: 30px;
-			float: left;
-			width: 50%;
-		}
-
-		.sobre {
-			padding: 30px;
-			float: right;
-			width: 50%;
-		}
-
-		.settings form input {
-			display: block;
-			position: relative;
-		}
-	</style>
+	<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-pages.css'>
 	<div class="pagina">
 		<div class="settings">
 			<h1 style="color:#000;">Configurações</h1>

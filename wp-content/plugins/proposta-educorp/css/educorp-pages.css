@@ -1,0 +1,33 @@
+.pagina, .settings, .sobre {
+    display: block;
+    position: relative;
+    min-height: 600px;
+    background-color: #fff;
+}
+
+.pagina {
+    margin: 0 auto;
+    width: 97%;
+    top: 30px;
+}
+
+.relatorios{
+    padding: 30px;
+}
+
+.settings {
+    padding: 30px;
+    float: left;
+    width: 50%;
+}
+
+.sobre {
+    padding: 30px;
+    float: right;
+    width: 50%;
+}
+
+.settings form input {
+    display: block;
+    position: relative;
+}
