@@ -12,7 +12,7 @@
 						<p class="animate__animated animate__fadeInUp texto-slide">Aqui você poderá enviar sua proposta de DESENVOLVIMENTO DE
 							SOLUÇÃO DE APRENDIZAGEM preenchendo o Roteiro para elaboração de solução de capacitação
 							conjuntamente entre CONTEUDISTA E EQUIPE, até a validação da versão final.</p>
-						<a href="proposta" class="btn-get-started animate__animated animate__fadeInUp scrollto">Proposta</a>
+						<a href="/propostas" class="btn-get-started animate__animated animate__fadeInUp scrollto">Proposta</a>
 					</div>
 				</div>
 			</div>

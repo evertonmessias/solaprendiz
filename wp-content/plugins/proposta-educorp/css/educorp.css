@@ -38,7 +38,7 @@
     }    
 }
 
-/*barra*/
+/*top bar scroll*/
 
 #back, #menu, #barra {
     display: block;
@@ -140,180 +140,135 @@
     background: #666
 }
 
-.conteudo {  
+.postbox.conteudo {  
     display: none;
 }
 
-/*conteudo*/
+/*config display proposta*/
 
-#wpbody{
-    top: 50px !important;
-}
-#screen-meta-links, .page-title-action{
+#commentstatusdiv, #commentsdiv, #titlediv .inside, #screen-meta-links, .page-title-action, #postbox-container-1{
     display: none !important;
 }
 
-#title {
-    font-size: 16px !important;
+#advanced-sortables{
+    margin-bottom: 50px !important;
+
 }
 
-.titulo-principal {
-    font-weight: bolder !important;
+.postbox{
+    display: block;
+    position: relative;
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
 }
-
-input[type="checkbox"], input[type="radio"] {
-    transform: scale(1.3) !important;
-}
-
-#conteudista .bootstrap-select {
+.postbox textarea, .postbox input[type='text'], .postbox .btn-group{
     width: 100% !important;
 }
-#conteudista select {
+.postbox select{
     position: absolute;
-    left: 0px !important;
 }
 
-#carga .acf-field::before, #carga .acf-field-number {
-    width: 100% !important;
-    height: 50px !important;
-}
-
-#carga .acf-label {
-    width: 70% !important;
-}
-
-#carga .acf-field .acf-input {
-    width: 20% !important;
-    margin-left: 75% !important;
-    top: -25px !important;
-}
-
-#calendario #mceu_59, #pagamento #mceu_103 {
-    display: none;
-}
-
-/*equipe */
-
-#equipe .acf-table {
-    margin-bottom: 15px !important;
-}
-
-#equipe .acf-input {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-}
-
-#equipe .btnp-equipe-capacitacao {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0px;
-    cursor: pointer;
-}
-
-#equipe .btnm-equipe-capacitacao {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    cursor: pointer;
-}
-
-#equipe .btnp-equipe-capacitacao i, #equipe .btnm-equipe-capacitacao i {
-    font-size: 20px;
-}
-
-#equipe_atuacao_hidden {
-    height: 1px;
-    opacity: 0;
-}
-
-
-/*calendario */
-
-#calendario .acf-table {
-    margin-bottom: 15px !important;
-}
-
-#calendario .acf-input {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-}
-
-#calendario .btnp-calendario-capacitacao {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0px;
-    cursor: pointer;
-}
-
-#calendario .btnm-calendario-capacitacao {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    cursor: pointer;
-}
-
-#calendario .btnp-calendario-capacitacao i, #calendario .btnm-calendario-capacitacao i {
-    font-size: 20px;
+#post-body.columns-2{
+    width: 100% !important;    
 }
 
 /* submit */
 
-#show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink {
+#show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink, #submitdiv {
     display: none !important;
 }
 
-#advanced-sortables {
-    display: block;
-    position: relative;
-    bottom: 0px !important;
-}
-
-#major-publishing-actions{
-    float: left;
-}
-
-
-#submitdiv, #publishing-action, #major-publishing-actions, #advanced-sortables {
-    background-color: rgba(0, 0, 0, 0);
-    border: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0) !important;
-}
-
-#side-sortables{
-    display: block;
-    position: absolute;
-    width: 200px;
-    min-height: 100px !important;
-    top: 100% !important;    
-    left: -180px !important;    
-}
-
 #publishing-action .button {
-    border: rgba(0, 0, 0, 0);
-    background-color: #f00 !important;
-    border-bottom: 100px !important;
+    border: 2px solid #f00;
+    background-color: rgba(0,0,0,0);
+    color: #f00;   
+    margin-right: 50px !important;
 }
 
 #publishing-action .button:hover {
-    background-color: #ef6445 !important;
+    background-color: #f00 !important;
+    color: #fff;
 }
-#totalpagamento{
-    border: 1px solid #ccc;
-    background-color: #fff;
-    height: 60px;
+
+/*content */
+#wpbody{
+    top:20px !important;
+}
+input[type='checkbox'],input[type='radio']{
+    transform: scale(1.3);
+}
+label{
+    font-weight: normal;
+}
+#equipe i{
+    font-size: 20px;
+    cursor: pointer;
+}
+#equipe table,#calendario table,#pagamento table{
+    display: block;
+    position: relative;
+    width: 100% !important;
+    border-spacing: 0px;
+}
+#equipe table tr th,#calendario table tr th,#pagamento table tr th{
+    padding: 5px;
+}
+#equipe table tr th,
+#equipe table tr td{
+    text-align: center;  
+    border: 1px solid #444;
+    width: 16%;
+}
+#calendario table tr th,
+#calendario table tr td{
+    text-align: center;  
+    border: 1px solid #444;
+    width: 12.5%;
+}
+#pagamento table tr th,
+#pagamento table tr td{
+    text-align: center;  
+    border: 1px solid #444;
+    width: 21.7%;
+}
+#equipe table tr td input,
+#equipe table tr td select,
+#calendario table tr td input,
+#pagamento table tr td input{
+    border-radius: 0% !important;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+#pagamento{
+    padding: 0;
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+#pagamento .total{    
+    display: block;
+    position: absolute;
+    width: 210px;    
+    right: 10px;
+    bottom: 0;
+    font-weight: bold;    
+}
+#pagamento .total span{
+    position: relative;
+    font-size: 16px;
+    top: 3px !important;
+}
+#pagamento .total #total{
+    display: block;
+    width: 158px !important;
     float: right;
-    right: 10px !important;
+    border-radius: 0%;
+    border: 1.5px solid #555;
+    text-align: right;
 }
-#totalpagamento .acf-input{
-    width: 60%;
-    float: right;
-}
-#totalpagamento .acf-label{
-    margin-top: -10px;
-    width: 30%;
-    float: left;
-}
+

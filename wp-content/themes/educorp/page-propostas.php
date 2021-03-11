@@ -14,11 +14,12 @@
    <!-- ======= Portfolio Details Section ======= -->
    <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-         <?php
+      <!--
+         <?php /*
          if (is_user_logged_in()) {
 
             $user = wp_get_current_user();
-            if (in_array('administrator', (array) $user->roles) || in_array('author', (array) $user->roles)) { ?>
+            if (in_array('administrator', (array) $user->roles) || in_array('responsavel', (array) $user->roles)) { ?>
                <script>
                   window.location.href = "/wp-admin/edit.php?post_type=proposta"
                </script>
@@ -67,8 +68,8 @@
             <script>
                window.location.href = "/wp-admin"
             </script>
-         <?php } ?>
-
+         <?php  } */ ?>
+      -->
       </div>
    </section><!-- End Portfolio Details Section -->
 

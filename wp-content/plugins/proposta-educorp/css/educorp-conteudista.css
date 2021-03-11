@@ -1,7 +1,7 @@
 /*conteudista DISPLAY CSS*/
 
 body {
-    background-color: #fff;
+    background-color: #fff;    
 }
 
 #back, #menu, #barra {  
@@ -81,11 +81,4 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
 
 #wpadminbar, #adminmenuback, #adminmenuwrap, #show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink {
     display: none !important;
-}
-
-#carga label{
-    font-weight: 400 !important;
-}
-.update-nag{
-    display: none;
 }
