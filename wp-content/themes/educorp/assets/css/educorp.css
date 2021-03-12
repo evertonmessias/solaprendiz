@@ -1,3 +1,22 @@
+/* scroll to top*/
+
+.scrollToTop {
+    display: none;
+    position: fixed;
+    top: 90%;
+    left: 92%;
+    font-size: 50px;
+    cursor: pointer;
+    opacity: 0.6;
+    z-index: 1000 !important;
+}
+
+.scrollToTop:hover {
+    opacity: 1;
+}
+
+/*body */
+
 p, a, li, span, strong, fieldset {
     font-size: 14px !important;
 }
@@ -53,25 +72,33 @@ p.retomada{
 }
 
 .portfolio-description{
-    margin-bottom: 60px !important;
+    margin-bottom: 10px !important;
 }
 
 .portfolio-description fieldset{
-    padding: 10px;
+    padding: 20px 5px 20px 20px;
     display: block;
     position: relative;
     width: 100%;
-    margin-top: 60px !important;
+    margin: 0 auto;
+    margin-top: 50px !important;
     border: 1px solid #777;
-    min-height: 70px;
+    min-height: 80px !important;
 }
-.portfolio-description fieldset legend{    
-    position: absolute;    
-    top: -24px !important;
-    left: -1px;
+.portfolio-description fieldset legend{
+    display: block;
+    max-width: 105% !important;
+    position: absolute;  
+    top:-40px;
+    left: 0px;
     padding-left: 10px;
-    border: 1px solid #777;
+    border: 2px solid #777;
     background-color: #ccc;    
+}
+.portfolio-description span{
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px;
 }
 #contact .sent{
     text-align: center;    

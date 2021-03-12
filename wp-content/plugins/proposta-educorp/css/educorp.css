@@ -67,6 +67,8 @@
     font-weight: 500;
 }
 
+/* scroll to top*/
+
 .scrollToTop {
     display: none;
     position: fixed;

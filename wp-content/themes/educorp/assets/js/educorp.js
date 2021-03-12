@@ -1,5 +1,21 @@
 $(function () {
-  // Everton 02/02/2021
+  // Everton 02/02/2021		
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('.scrollToTop').fadeIn();
+    } else {
+      $('.scrollToTop').fadeOut();
+    }
+  });
+
+  $('.scrollToTop').click(function () {
+    $('html, body').animate({ scrollTop: 0 }, 500);
+    return false;
+  });
+
+
+
   $("#contact #enviar").click(() => {
     var name = $("#contact #name").val();
     var email = $("#contact #email").val();

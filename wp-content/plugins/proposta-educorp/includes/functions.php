@@ -52,7 +52,7 @@ add_action('after_setup_theme', 'remove_admin_bar');
 
 // Redirect After Login
 function admin_default_page() {
-	return '/proposta';
+	return '/propostas';
   }  
 add_filter('login_redirect', 'admin_default_page');
 
@@ -100,14 +100,17 @@ function permissao($post)
 		if (in_array('administrator', (array) $user->roles) || in_array('responsavel', (array) $user->roles)) {
 			$ehresp = 1;
 		}
-		?>
-		<input type="hidden" id="ehresp" value="<?php echo $ehresp; ?>">
-		<?php
-
+		
 		$ativado = get_post_meta($post->ID, 'ativado', true);
 		$conteudista = explode(",", get_post_meta($post->ID, 'conteudista', true));
 		$permitido = false;
-		foreach ($conteudista as $cont) {			
+
+		$nomeconteudista = [];
+		$emailconteudista = [];
+
+		foreach ($conteudista as $cont) {	
+			$nomeconteudista[] = get_userdata($cont)->display_name;
+			$emailconteudista[] = get_userdata($cont)->user_email;		
 			if (get_current_user_id() == $cont) {
 				$permitido = true;
 			}
@@ -116,7 +119,11 @@ function permissao($post)
 			echo "";
 		} else {
 			echo "<script>window.location.href = '/naopermitido'</script>";
-		}
+		}	
+	?>		
+		<input type="hidden" id="nomeconteudista" value="<?php echo implode(",", $nomeconteudista); ?>">
+		<input type="hidden" id="emailconteudista" value="<?php echo implode(",", $emailconteudista); ?>">
+	<?php
 	}
 }
 add_action('edit_form_top', 'permissao');
@@ -200,54 +207,16 @@ function abas()
 }
 add_action('edit_form_advanced', 'abas');
 
-
-
-// Get conteudistas *************************************************
-/*
-function conteudista()
+// BUTTON SCROLLtoTOP
+function scrolltotop()
 {
-	if (get_post_type() == 'proposta') {		
-
-		// conteudista atual		
-		$id_conteud = [];
-		$atual_conteud = [];
-		$email_conteud = [];
-		foreach (get_field('conteudista') as $cont) {
-			$id_conteud[] = $cont;
-			$atual_conteud[] = get_userdata($cont)->display_name;
-			$email_conteud[] = get_userdata($cont)->user_email;
-		}
-
-		//todos os conteudistas
-		$conteudistas = get_users(array('role__in' => array('contributor')));
-		$value = [];
-		$option = [];
-		foreach ($conteudistas as $conteudista) {
-			$option[] = $conteudista->display_name;
-			$value[] = $conteudista->id;
-		}
-	?>
-		<!-- atual -->
-		<input type="hidden" id="conteudistas-atual" value="<?php echo implode(",", $atual_conteud); ?>">
-		<input type="hidden" id="emailconteudista" value="<?php echo implode(",", $email_conteud); ?>">
-		<input type="hidden" id="idconteudista" value="<?php echo implode(",", $id_conteud); ?>">
-		<!-- todos -->
-		<input type="hidden" id="conteudistas-option" value="<?php echo implode(",", $option); ?>">
-		<input type="hidden" id="conteudistas-value" value="<?php echo implode(",", $value); ?>">
-		<!-- valor da hora por atuacao -->
-		<input type="hidden" id="valor_instrutor" value="<?php echo get_option("proposta_input_name1"); ?>">
-		<input type="hidden" id="valor_tutor" value="<?php echo get_option("proposta_input_name2"); ?>">
-		<input type="hidden" id="valor_monitor" value="<?php echo get_option("proposta_input_name3"); ?>">
-		<input type="hidden" id="valor_cont_presencial" value="<?php echo get_option("proposta_input_name4"); ?>">
-		<input type="hidden" id="valor_cont_sincrono" value="<?php echo get_option("proposta_input_name5"); ?>">
-		<input type="hidden" id="valor_cont_assincrono" value="<?php echo get_option("proposta_input_name6"); ?>">
-		
+	if (get_post_type() == 'proposta') {?>	
 		<i class='bx bxs-up-arrow-square scrollToTop'></i>
 	<?php
 	}
 }
-add_action('edit_form_advanced', 'conteudista');
-*/
+add_action('edit_form_advanced', 'scrolltotop');
+
 
 // Relatórios *************************************************
 

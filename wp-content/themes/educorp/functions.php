@@ -53,13 +53,3 @@ function contador()
     escrever($visitas, _date("d-m-Y, H:i:s", 'America/Sao_Paulo') . " : " . $_SERVER['REMOTE_ADDR'], 'a+');
 }
 add_action('contador', 'contador');
-
-function hashtag()
-{
-    if (is_front_page()) {
-        return "#";
-    } else {
-        return "/#";
-    }
-}
-add_action('hashtag', 'hashtag');

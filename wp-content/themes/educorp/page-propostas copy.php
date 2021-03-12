@@ -13,8 +13,8 @@
 
    <!-- ======= Portfolio Details Section ======= -->
    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-         <?php
+      <div class="container">      
+         <?php 
          if (is_user_logged_in()) {
 
             $user = wp_get_current_user();
@@ -23,6 +23,7 @@
                   window.location.href = "/wp-admin/edit.php?post_type=proposta"
                </script>
                <?php } else {
+
 
                $permitido = false;
 
@@ -34,19 +35,23 @@
                $lastupdated_loop = new WP_Query($lastupdated_args);
 
                while ($lastupdated_loop->have_posts()) : $lastupdated_loop->the_post();
-               $conteudista = explode(",",get_post_meta(get_the_ID(),'conteudista',true));  
-                  foreach ($conteudista as $cont) {
+
+                  foreach (explode(",",get_post_meta('conteudista')) as $cont) {
                      if (get_current_user_id() == $cont) {
-                        $permitido = true; ?>                          
-                        <div class="portfolio-description">                        
-                           <fieldset>
-                              <legend>TÍTULO DA CAPACITAÇÃO
-                              <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y H:i'); ?></span>
-                              </legend>                            
-                              &emsp;<a href="<?php echo the_permalink(); ?>"><strong><?php echo the_title(); ?></strong></a>
-                           </fieldset>
+                     $permitido = true;  
+                     ?>
+                     <div class="portfolio-details-container">
+                        <div class="portfolio-info">
+                           <strong>Data</strong>: <?php echo get_the_date('d/m/Y H:i'); ?>
                         </div>
-            <?php
+                     </div>
+                     <div class="portfolio-description">
+                        <fieldset>
+                           <legend>TÍTULO DA CAPACITAÇÃO</legend>
+                           <a href="<?php echo the_permalink(); ?>"><strong><?php echo the_title(); ?></strong></a>
+                        </fieldset>
+                     </div>
+                <?php
                      }
                   }
 
@@ -54,6 +59,7 @@
                wp_reset_postdata();
 
                if (!$permitido) {
+                  echo get_current_user_id();
                   echo "Nenhuma proposta disponível !";
                }
             }

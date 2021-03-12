@@ -79,7 +79,7 @@ function campo_objetivo($post)
 		<p><b>3. Para excelência na GESTÃO:</b></p>
 		<label><input type="checkbox" name="objetivo10" <?php echo $checked[10]; ?> />&ensp;3.1. Aprimorar a atratividade das carreiras da Universidade visando a preservação dos quadros de alto nível condizentes com a missão e a visão de futuro da UNICAMP.</label><br>
 		<label><input type="checkbox" name="objetivo11" <?php echo $checked[11]; ?> />&ensp;3.2. Garantir a sustentabilidade orçamentária, financeira, operacional e de infraestrutura da Universidade.</label><br>
-		<label><input type="checkbox" name="objetivo11" <?php echo $checked[12]; ?> />&ensp;3.3. Aperfeiçoar e modernizar o modelos de gestão administrativa e acadêmica que garanta o bom desenvolvimento das atividades-fim da Universidade.</label><br>
+		<label><input type="checkbox" name="objetivo12" <?php echo $checked[12]; ?> />&ensp;3.3. Aperfeiçoar e modernizar o modelos de gestão administrativa e acadêmica que garanta o bom desenvolvimento das atividades-fim da Universidade.</label><br>
 		<label><input type="checkbox" name="objetivo13" <?php echo $checked[13]; ?> />&ensp;3.4. Estabelecer um modelo sustentável de gestão financeira e administrativa para a área da saúde.</label><br>
 	</div>
 <?php }
@@ -209,6 +209,7 @@ function campo_ementa($post)
 {
 	$value = get_post_meta($post->ID, 'ementa', true);
 ?><div id="ementa">
+		<h1><b>II. CARACTERIZAÇÃO DO CURSO</b></h1>
 		<h4 class="wp-heading-inline">1. EMENTA</h4>
 		<p class="post-sub-title">Resumo dos principais temas/tópicos/disciplinas que caracterizam o curso.</p>
 		<textarea name="ementa" rows="5"><?php echo $value; ?></textarea>
@@ -417,7 +418,7 @@ function campo_bibliografia($post)
 {
 	$value = get_post_meta($post->ID, 'bibliografia', true);
 ?><div id="bibliografia">
-		<h3 class="wp-heading-inline">9. BIBLIOGRAFIA</h3><p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.</p>
+		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA</h4><p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.</p>
 		<textarea name="bibliografia" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -444,6 +445,7 @@ function campo_calendario($post)
 
 ?>
 	<div id="calendario">
+	<h1><b>III. CARACTERIZAÇÃO DO OFERECIMENTO</b></h1>
 	<h4 class="wp-heading-inline">1. CALENDÁRIO DE OFERECIMENTO DAS TURMAS</h4><p class="post-sub-title">Datas, dias da semana e horários de oferecimento de cada turma.</p>
 		<table>
 			<tr>
@@ -514,6 +516,7 @@ function campo_pagamento($post)
 
 ?>
 	<div id="pagamento">
+	<h1><b>IV. INFORMAÇÕES GERENCIAIS</b></h1>
 	<h4 class="wp-heading-inline">1. CONSOLIDAÇÃO PARA PAGAMENTO</h4><p class="post-sub-title">Não preencha, se for treinamento em serviço. Utilize IN 04/2020 para o cálculo do valor por tipo de atuação e totalize.</p>
 	<input type="hidden" id="proposta_input_name1" value="<?php echo $proposta_input_name1; ?>">
 	<input type="hidden" id="proposta_input_name2" value="<?php echo $proposta_input_name2; ?>">
