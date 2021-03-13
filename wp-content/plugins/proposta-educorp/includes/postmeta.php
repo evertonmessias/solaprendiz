@@ -545,6 +545,22 @@ function campo_pagamento($post)
 <?php }
 
 
+// MENSAGEM FINAL AO CONTEUDISTA **********************************
+
+function campo_box_msgfinal()
+{
+	add_meta_box('msgfinal_id', 'msgfinal', 'campo_msgfinal', 'proposta');
+}
+add_action('add_meta_boxes', 'campo_box_msgfinal');
+function campo_msgfinal($post)
+{
+?><div id="msgfinal">
+<h1 class="wp-heading-inline"><b>&ensp;Concluído!</b></h1>
+<p class="post-sub-title">Ao clicar em <b>Publicar</b>, um e-mail será enviado ao Responsável.</p>
+</div>
+<?php }
+
+
 
 // *****************************************
 // SUBMIT **********************************

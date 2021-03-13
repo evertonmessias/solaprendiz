@@ -18,12 +18,12 @@ function criaLinha() {
 	var nl = $("#nl").val()
 	nl++;
 	$("#equipe table .linha1").clone().attr('class', 'linha' + nl).appendTo("#equipe table");
-	$("#equipe table .linha" + nl + " td .equipe1").val("").attr('oninput','atualizaValor(this.value,'+nl+',1)');
+	$("#equipe table .linha" + nl + " td .equipe1").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',1)');
 	$("#equipe table .linha" + nl + " td .equipe2").val("");
 	$("#equipe table .linha" + nl + " td .equipe3").val("");
 	$("#equipe table .linha" + nl + " td .equipe4").val("");
-	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput','atualizaValor(this.value,'+nl+',5)');
-	$("#equipe table .linha" + nl + " td .equipe6").val("").attr('oninput','atualizaValor(this.value,'+nl+',6)');
+	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',5)');
+	$("#equipe table .linha" + nl + " td .equipe6").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',6)');
 
 	$("#calendario table .linha1").clone().attr('class', 'linha' + nl).appendTo("#calendario table");
 	$("#calendario table .linha" + nl + " td .calendario1").val("");
@@ -39,7 +39,7 @@ function criaLinha() {
 	$("#pagamento table .linha" + nl + " td .pagamento1").val("");
 	$("#pagamento table .linha" + nl + " td .pagamento2").val("");
 	$("#pagamento table .linha" + nl + " td .pagamento3").val("");
-	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput","valorAtuacao(this.value,"+nl+")")
+	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput", "valorAtuacao(this.value," + nl + ")")
 	$("#pagamento table .linha" + nl + " td .pagamento5").val("");
 
 	$("#nl").val(nl);
@@ -77,19 +77,19 @@ function apagaLinha() {
 	}
 }
 
-function atualizaValor(valor,linha,coluna){
-	if(coluna == 1){
-		$("#calendario table .linha"+linha+" .calendario7").val(valor);
-		$("#pagamento table .linha"+linha+" .pagamento1").val(valor);
+function atualizaValor(valor, linha, coluna) {
+	if (coluna == 1) {
+		$("#calendario table .linha" + linha + " .calendario7").val(valor);
+		$("#pagamento table .linha" + linha + " .pagamento1").val(valor);
 	}
-	if(coluna == 5){
-		$("#calendario table .linha"+linha+" .calendario8").val(valor);
-		$("#pagamento table .linha"+linha+" .pagamento4").val(valor);
+	if (coluna == 5) {
+		$("#calendario table .linha" + linha + " .calendario8").val(valor);
+		$("#pagamento table .linha" + linha + " .pagamento4").val(valor);
 	}
-	if(coluna == 6)$("#pagamento table .linha"+linha+" .pagamento3").val(valor);
+	if (coluna == 6) $("#pagamento table .linha" + linha + " .pagamento3").val(valor);
 }
 
-function valorAtuacao(valor,linha){
+function valorAtuacao(valor, linha) {
 	var proposta_input_name1 = $("#proposta_input_name1").val();
 	var proposta_input_name2 = $("#proposta_input_name2").val();
 	var proposta_input_name3 = $("#proposta_input_name3").val();
@@ -97,25 +97,25 @@ function valorAtuacao(valor,linha){
 	var proposta_input_name5 = $("#proposta_input_name5").val();
 	var proposta_input_name6 = $("#proposta_input_name6").val();
 
-	var atuacao = $("#pagamento table .linha"+linha+" .pagamento3").val();
+	var atuacao = $("#pagamento table .linha" + linha + " .pagamento3").val();
 
 	var ValorAtuac;
 
-	if(atuacao == "Instrutor")ValorAtuac = proposta_input_name1;
-	if(atuacao == "Tutor")ValorAtuac = proposta_input_name2;
-	if(atuacao == "Monitor")ValorAtuac = proposta_input_name3;
-	if(atuacao == "Conteudista Presencial")ValorAtuac = proposta_input_name4;
-	if(atuacao == "Conteudista Remoto Síncrono")ValorAtuac = proposta_input_name5;
-	if(atuacao == "Conteudista Remoto Assíncrono")ValorAtuac = proposta_input_name6;
+	if (atuacao == "Instrutor") ValorAtuac = proposta_input_name1;
+	if (atuacao == "Tutor") ValorAtuac = proposta_input_name2;
+	if (atuacao == "Monitor") ValorAtuac = proposta_input_name3;
+	if (atuacao == "Conteudista Presencial") ValorAtuac = proposta_input_name4;
+	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = proposta_input_name5;
+	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = proposta_input_name6;
 
-	$("#pagamento table .linha"+linha+" .pagamento5").val(valor*ValorAtuac);
+	$("#pagamento table .linha" + linha + " .pagamento5").val(valor * ValorAtuac);
 
 	var nl = $("#nl").val();
 
 	var somatorio = 0;
 	var valorx = 0;
-	for(var i=1;i<=nl;i++){
-		valorx = $("#pagamento table .linha"+i+" .pagamento5").val() * 1;
+	for (var i = 1; i <= nl; i++) {
+		valorx = $("#pagamento table .linha" + i + " .pagamento5").val() * 1;
 		somatorio = somatorio + valorx;
 	}
 	$("#pagamento #total").val(somatorio);
@@ -159,61 +159,8 @@ window.onload = function () {  //onload **********************************
 		$("#quadro").css({ 'display': 'none' });
 	})
 
-	//BOTOES ABAS  *************************************************************** 
-
-	$("#ativado_id").attr("class", "postbox conteudo conteudo1");
-	$("#contexto_id").attr("class", "postbox conteudo conteudo1");
-	$("#objetivo_id").attr("class", "postbox conteudo conteudo1");
-	$("#capacitacao_id").attr("class", "postbox conteudo conteudo1");
-	$("#publico_id").attr("class", "postbox conteudo conteudo1");
-	$("#estimativa_id").attr("class", "postbox conteudo conteudo1");
-	$("#aplicacao_id").attr("class", "postbox conteudo conteudo1");
-	$("#conteudista_id").attr("class", "postbox conteudo conteudo1");
-
-	$("#ementa_id").attr("class", "postbox conteudo conteudo2");
-	$("#conteudo_id").attr("class", "postbox conteudo conteudo2");
-	$("#modalidade_id").attr("class", "postbox conteudo conteudo2");
-	$("#metodologia_id").attr("class", "postbox conteudo conteudo2");
-	$("#avaliacao_id").attr("class", "postbox conteudo conteudo2");
-	$("#criterios_id").attr("class", "postbox conteudo conteudo2");
-	$("#carga_id").attr("class", "postbox conteudo conteudo2");
-	$("#equipe_id").attr("class", "postbox conteudo conteudo2");
-	$("#bibliografia_id").attr("class", "postbox conteudo conteudo2");
-
-	$("#calendario_id").attr("class", "postbox conteudo conteudo3");
-	$("#local_id").attr("class", "postbox conteudo conteudo3");
-
-	$("#pagamento_id").attr("class", "postbox conteudo conteudo4");
-
-	$("#submit_id").attr("class", "postbox conteudo conteudo4");
-
-	$(".conteudo1").show();
-	$(".abas li:first div").addClass("selected");
-	$(".aba").click(function () {
-		var indice = $(this).attr("value");
-		$(".aba").removeClass("selected");
-		$(this).addClass("selected");
-		if (indice == 1) {
-			razao = Razao(1650);
-			$("#titlediv").show();
-		} else {
-			$("#titlediv").hide();
-		}
-		if (indice == 2) razao = Razao(1500);
-		if (indice == 3) razao = Razao(1000);
-		if (indice == 4) razao = Razao(1000);
-		$(".conteudo").hide();
-		$(".conteudo" + indice).show();
-		$('html, body').animate({ scrollTop: 0 }, 500);
-	});
-
-	$(".aba").hover(
-		function () { $(this).addClass("ativa") },
-		function () { $(this).removeClass("ativa") }
-	);
-
 	//ATUALIZA CAMPO CONTEUDISTA *******************************************************
-	
+
 	$("#conteudista .filter-option").html($("#cont").val());
 
 	// ATUALIZA CAMPOS DA EQUIPE *******************************************************
@@ -236,15 +183,14 @@ window.onload = function () {  //onload **********************************
 	while (nl > ind) {
 		var lin = ind + 1;
 		$("#equipe table .linha1").clone().attr('class', 'linha' + lin).appendTo("#equipe table");
-		$("#equipe table .linha" + lin + " .equipe1").val(equipe1[ind]).attr('oninput','atualizaValor(this.value,'+lin+',1)');
+		$("#equipe table .linha" + lin + " .equipe1").val(equipe1[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',1)');
 		$("#equipe table .linha" + lin + " .equipe2").val(equipe2[ind]);
 		$("#equipe table .linha" + lin + " .equipe3").val(equipe3[ind]);
 		$("#equipe table .linha" + lin + " .equipe4").val(equipe4[ind]);
-		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput','atualizaValor(this.value,'+lin+',5)');
-		$("#equipe table .linha" + lin + " .equipe6").val(equipe6[ind]).attr('oninput','atualizaValor(this.value,'+lin+',6)');
+		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',5)');
+		$("#equipe table .linha" + lin + " .equipe6").val(equipe6[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',6)');
 		ind++;
 	}
-
 
 	// ATUALIZA CAMPOS DO CALENDARIO *******************************************************
 	var calendario1 = $("#calendario table .linha1 .calendario1").val().split(",");
@@ -303,25 +249,150 @@ window.onload = function () {  //onload **********************************
 		$("#pagamento table .linha" + lin + " .pagamento1").val(pagamento1[ind]);
 		$("#pagamento table .linha" + lin + " .pagamento2").val(pagamento2[ind]);
 		$("#pagamento table .linha" + lin + " .pagamento3").val(pagamento3[ind]);
-		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput","valorAtuacao(this.value,"+lin+")")
+		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput", "valorAtuacao(this.value," + lin + ")")
 		$("#pagamento table .linha" + lin + " .pagamento5").val(pagamento5[ind]);
 		ind++;
 	}
 
+	// TESTA CAMPOS
+	function testacampos(pagina) {
+		if (pagina == 2) {
+			//teste campos
+			var ementa = $("#ementa textarea").val();
+			var conteudo = $("#conteudo textarea").val();
+			var metodologia = $("#metodologia textarea").val();
+			var avaliacao = $("#avaliacao textarea").val();
+			var criterios = $("#criterios textarea").val();
+			var equipe1 = $("#equipe .linha1 .equipe1").val();
+			var equipe2 = $("#equipe .linha1 .equipe2").val();
+			var equipe3 = $("#equipe .linha1 .equipe3").val();
+			var equipe4 = $("#equipe .linha1 .equipe4").val();
+			var equipe5 = $("#equipe .linha1 .equipe5").val();
+			var equipe6 = $("#equipe .linha1 .equipe6").val();
+			var bibliografia = $("#bibliografia textarea").val();
 
+			/*
+			console.log("Ementa " + ementa);
+			console.log("Conteudo " + conteudo);
+			console.log("Metodologia " + metodologia);
+			console.log("Avaliacao " + avaliacao);
+			console.log("Criter " + criterios);
+			console.log("Equipe " + equipe1+" "+equipe2+" "+equipe3+" "+equipe4+" "+equipe5+" "+equipe6);
+			console.log("Biblio " + bibliografia);
+			*/
+
+			if (ementa == "" || conteudo == "" || metodologia == "" || avaliacao == "" || criterios == "" || equipe1 == "" || equipe2 == "" || equipe3 == "" || equipe4 == "" || equipe5 == "" || equipe6 == "" || bibliografia == "") {
+				return 0;
+			} else {
+				return 1;
+			}
+		}else if(pagina == 3){
+			var calendario1 = $("#calendario .linha1 .calendario1").val();
+			var calendario2 = $("#calendario .linha1 .calendario2").val();
+			var calendario3 = $("#calendario .linha1 .calendario3").val();
+			var calendario4 = $("#calendario .linha1 .calendario4").val();
+			var calendario5 = $("#calendario .linha1 .calendario5").val();
+			var calendario6 = $("#calendario .linha1 .calendario6").val();
+			var calendario7 = $("#calendario .linha1 .calendario7").val();
+			var calendario8 = $("#calendario .linha1 .calendario8").val();
+			var local = $("#local textarea").val();
+
+			//console.log("Calendario " + calendario1+" "+calendario2+" "+calendario3+" "+calendario4+" "+calendario5+" "+calendario6+" "+calendario7+" "+calendario8);
+			//console.log("Local " + local);
+
+			if (local == "" || calendario1 == "" || calendario2 == "" || calendario3 == "" || calendario4 == "" || calendario5 == "" || calendario6 == "" || calendario7 == "" || calendario8 == "") {
+				return 0;
+			} else {
+				return 1;
+			}
+
+		}
+	}
+
+
+	//BOTOES ABAS  *************************************************************** 
+
+	$("#ativado_id").attr("class", "postbox conteudo conteudo1");
+	$("#contexto_id").attr("class", "postbox conteudo conteudo1");
+	$("#objetivo_id").attr("class", "postbox conteudo conteudo1");
+	$("#capacitacao_id").attr("class", "postbox conteudo conteudo1");
+	$("#publico_id").attr("class", "postbox conteudo conteudo1");
+	$("#estimativa_id").attr("class", "postbox conteudo conteudo1");
+	$("#aplicacao_id").attr("class", "postbox conteudo conteudo1");
+	$("#conteudista_id").attr("class", "postbox conteudo conteudo1");
+
+	$("#ementa_id").attr("class", "postbox conteudo conteudo2");
+	$("#conteudo_id").attr("class", "postbox conteudo conteudo2");
+	$("#modalidade_id").attr("class", "postbox conteudo conteudo2");
+	$("#metodologia_id").attr("class", "postbox conteudo conteudo2");
+	$("#avaliacao_id").attr("class", "postbox conteudo conteudo2");
+	$("#criterios_id").attr("class", "postbox conteudo conteudo2");
+	$("#carga_id").attr("class", "postbox conteudo conteudo2");
+	$("#equipe_id").attr("class", "postbox conteudo conteudo2");
+	$("#bibliografia_id").attr("class", "postbox conteudo conteudo2");
+
+	$("#calendario_id").attr("class", "postbox conteudo conteudo3");
+	$("#local_id").attr("class", "postbox conteudo conteudo3");
+
+	$("#pagamento_id").attr("class", "postbox conteudo conteudo4");
+	$("#msgfinal_id").attr("class", "postbox conteudo conteudo4");	
+	$("#submit_id").attr("class", "postbox conteudo conteudo4");
+
+	$(".conteudo1").show();
+	$(".abas li:first div").addClass("selected");
+
+	var ehresp = $("#ehresp").val();
+	if(ehresp == 0){
+		$("#pagamento").hide();
+		$("#msgfinal").show();
+	}else{
+		$("#pagamento").show();
+		$("#msgfinal").hide();
+	}
+
+	$(".aba").click(function () {
+		var indice = $(this).attr("value");
+
+		if ((indice == 3 || indice == 4) && ehresp == "0" && testacampos(2) == 0) {
+			$("#quadro").show();
+		}else if(indice == 4 && ehresp == "0" && testacampos(3) == 0){
+			$("#quadro").show();
+		}else {
+			$(".aba").removeClass("selected");
+			$(this).addClass("selected");
+			if (indice == 1) {
+				razao = Razao(1650);
+				$("#titlediv").show();
+			} else {
+				$("#titlediv").hide();
+			}
+			if (indice == 2) razao = Razao(1800);
+			if (indice == 3) razao = Razao(60);
+			if (indice == 4) razao = Razao(20);
+			$(".conteudo").hide();
+			$(".conteudo" + indice).show();
+			$('html, body').animate({ scrollTop: 0 }, 500);
+		}
+	});
+
+	$(".aba").hover(
+		function () { $(this).addClass("ativa") },
+		function () { $(this).removeClass("ativa") }
+	);
 
 	//preparar email para o(s) conteudista(s) ***************************************************************
 	var emailconteudista = $("#emailconteudista").val();
+	var adminemail = $("#adminemail").val();
 	if ($("#message")) {
 		var postenviado = $("#message p a");
 		if (postenviado.html() == "Ver post" && emailconteudista != "") {
 			var titulo = $("#title").val();
 			var p = document.createElement("p");
-			$.post("/wp-content/plugins/proposta-educorp/envia_email.php", { titulo: titulo, emailconteudista: emailconteudista }, function (data) {
+			$.post("/wp-content/plugins/proposta-educorp/includes/email.php", { ehresp: ehresp,adminemail:adminemail, titulo: titulo, emailconteudista: emailconteudista }, function (data) {
 				p.innerHTML = data;
 				postenviado.after(p);
 			});
 		}
-	}	
+	}
 
 }

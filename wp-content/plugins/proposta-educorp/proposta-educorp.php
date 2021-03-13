@@ -108,6 +108,9 @@ class PropostaEducorp
 // FUNÇÕES ************************************************
 include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/functions.php';
 
+// PAGES ************************************************
+include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/pages.php';
+
 // POSTMETA ************************************************
 include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/postmeta.php';
 

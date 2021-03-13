@@ -4,13 +4,13 @@
 .pagina, .settings, .sobre {
     display: block;
     position: relative;
-    min-height: 600px;
+    min-height: 550px;
     background-color: #fff;
 }
 
 .pagina {
     margin: 0 auto;
-    width: 100%;
+    width: 95%;
     top: 30px;    
 }
 
@@ -25,7 +25,7 @@
     padding-top: 50px;
     width: 50%;
     top:0px;
-    min-height:600px;
+    min-height:600px;    
 }
 
 .sobre {
@@ -35,9 +35,22 @@
     right: 0px;
     top:0px;
     min-height:620px;
+    border-left: 1px solid #666;
 }
 
 .settings form input {
     display: block;
     position: relative;
+}
+.relatorios table{
+    display: block;
+    position: relative;    
+    border-spacing: 0px;
+}
+.relatorios tr th,
+.relatorios tr td{ 
+    text-align: center; 
+    padding: 5px;   
+    border: 1px solid #444;
+    width: 22em !important;
 }

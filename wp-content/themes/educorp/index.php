@@ -30,7 +30,7 @@ if (is_user_logged_in()) {
                   <h2>I. CARACTERIZAÇÃO DA DEMANDA</h2>
                   <fieldset>
                      <legend>1. TÍTULO DA CAPACITAÇÃO
-                     <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y H:i'); ?></span>
+                     <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y'); ?></span>
                      </legend>
                      <strong><?php echo the_title(); ?></strong>
                   </fieldset>                 
@@ -224,10 +224,10 @@ if (is_user_logged_in()) {
                      <div class="equipe">                                      
                      <ul>
                      <li><strong>Nome Completo: </strong><?php echo $pagamento1[$i]; ?></li>
-                     <li><strong>Superior imediato: </strong><?php echo $pagamento2[$i]; ?></li>
-                     <li><strong>Unidade/Depto: </strong><?php echo $pagamento3[$i]; ?></li>
-                     <li><strong>E-mail: </strong><?php echo $pagamento4[$i]; ?></li>
-                     <li><strong>Carga horária: </strong><?php echo $pagamento5[$i]; ?></li>                    
+                     <li><strong>Dias: </strong><?php echo $pagamento2[$i]; ?></li>
+                     <li><strong>Atuação: </strong><?php echo $pagamento3[$i]; ?></li>
+                     <li><strong>Carga horária: </strong><?php echo $pagamento4[$i]; ?></li>
+                     <li><strong>Valor (R$): </strong><?php echo $pagamento5[$i]; ?></li>                    
                      </ul> 
                      </div>                    
                      <?php } ?>                    

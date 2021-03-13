@@ -82,3 +82,7 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
 #wpadminbar, #adminmenuback, #adminmenuwrap, #show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink {
     display: none !important;
 }
+#msgfinal{
+    border: 1px solid #555;
+    text-align: center;
+}

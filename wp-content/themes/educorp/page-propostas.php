@@ -41,7 +41,7 @@
                         <div class="portfolio-description">                        
                            <fieldset>
                               <legend>TÍTULO DA CAPACITAÇÃO
-                              <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y H:i'); ?></span>
+                              <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y'); ?></span>
                               </legend>                            
                               &emsp;<a href="<?php echo the_permalink(); ?>"><strong><?php echo the_title(); ?></strong></a>
                            </fieldset>
