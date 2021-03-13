@@ -341,12 +341,12 @@ function campo_carga($post)
 		<h4 class="wp-heading-inline">7. CARGA HORÁRIA DA CAPACITAÇÃO</h4>
 		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020.</p>
 
-		<label><input type="text" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Videoaula gravada</label><br>
-		<label><input type="text" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Videos diversos</label><br>
-		<label><input type="text" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Textos, artigos, capítulos de livros e similares</label><br>
-		<label><input type="text" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Aulas síncronas ou presenciais</label><br>
-		<label><input type="text" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
-		<label><input type="text" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">&ensp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO</label><br>
+		<label><input type="text" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Videoaula gravada</label><br>
+		<label><input type="text" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Videos diversos</label><br>
+		<label><input type="text" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Textos, artigos, capítulos de livros e similares</label><br>
+		<label><input type="text" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Aulas síncronas ou presenciais</label><br>
+		<label><input type="text" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
+		<label><input type="text" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">Hs&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO</label><br>
 
 	</div>
 <?php }
@@ -460,8 +460,8 @@ function campo_calendario($post)
 			</tr>
 			<tr class='linha1'>
 				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" maxlength="2" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" maxlength="2" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" maxlength="3" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" maxlength="3" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
 				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4"></td>
 				<td><input type="text" name="calendario5[]" value="<?php echo $value5; ?>" class="calendario5"></td>
 				<td><input type="text" name="calendario6[]" value="<?php echo $value6; ?>" class="calendario6"></td>
