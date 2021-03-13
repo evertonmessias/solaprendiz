@@ -208,6 +208,20 @@ input[type='checkbox'],input[type='radio']{
 label{
     font-weight: normal;
 }
+
+#ativado_id{    
+    position: relative;
+    width: 18em !important;
+    height: 30px;
+    top: -20px;
+    left: 0px;
+    text-align: left;
+}
+#ativado_id input{
+    position: absolute;
+    left: 90%;top:7px;    
+}
+
 #equipe i{
     font-size: 20px;
     cursor: pointer;
@@ -275,5 +289,17 @@ label{
     border-radius: 0%;
     border: 1.5px solid #555;
     text-align: right;
+}
+#showpagamento_id{    
+    position: absolute;
+    width: 20em;
+    height: 30px;
+    bottom: 80px;
+    left: 10px;
+    text-align: left;
+}
+#showpagamento_id input{
+    position: absolute;
+    left: 90%;top:7px;    
 }
 

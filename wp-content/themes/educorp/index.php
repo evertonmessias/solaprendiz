@@ -224,6 +224,7 @@ if (is_user_logged_in()) {
                      <?php echo get_post_meta(get_the_ID(),'local',true); ?>
                   </fieldset>
 
+                  <?php if(get_post_meta(get_the_ID(),'showpagamento',true) == "on"){ ?>
                   <br><br><br>
                   <h2>IV. INFORMAÇÕES GERENCIAIS </h2>
                   <fieldset>
@@ -257,7 +258,8 @@ if (is_user_logged_in()) {
                      <?php } ?>
                      </table> 
                      <p style="font-size:20px !important;text-align:right;"><b>Total: </b>R$ <?php echo get_post_meta(get_the_ID(),'total',true); ?>&emsp;</p>                  
-                  </fieldset>          
+                  </fieldset>   
+                  <?php } ?>       
                      
                   <h1>&nbsp;</h1>
                   <a class="get-started-btn" href="/wp-admin/post.php?post=<?php echo the_ID(); ?>&action=edit">Editar</a>

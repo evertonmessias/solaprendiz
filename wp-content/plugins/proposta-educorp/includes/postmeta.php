@@ -13,15 +13,15 @@ function campo_ativado($post)
 {
 	$value = get_post_meta($post->ID, 'ativado', true);
 	if ($value == 'on') {
-		$checked = "checked='checked'";
+		$checked = "checked";
 	} else {
 		$checked = "";
 	}
-?> <div id="ativado">
-		<h4 class="wp-heading-inline">1.1 ATIVAR EDIÇÃO</h4>
-		<p class="post-sub-title">Ativa ou desativa a edição dessa proposta para o(s) conteudista(s).</p>
-		<input type="checkbox" name="ativado" <?php echo $checked; ?> />
+?> <div id="ativado">		
+		<label class="post-sub-title"><b>Ativa a edição dessa proposta?</b>
+		<input type="checkbox" name="ativado" <?php echo $checked; ?> /></label>
 	</div>
+
 <?php }
 
 // CONTEXTO **********************************
@@ -546,6 +546,28 @@ function campo_pagamento($post)
 <?php }
 
 
+// SHOW PAGAMENTO **********************************
+
+function campo_box_showpagamento()
+{
+	add_meta_box('showpagamento_id', 'showpagamento', 'campo_showpagamento', 'proposta');
+}
+add_action('add_meta_boxes', 'campo_box_showpagamento');
+function campo_showpagamento($post)
+{
+	$value = get_post_meta($post->ID, 'showpagamento', true);
+	if ($value == 'on') {
+		$checked = "checked";
+	} else {
+		$checked = "";
+	}
+?> <div id="showpagamento">		
+		<label class="post-sub-title"><b>Ativar a visualização do Pagamento?</b>
+		<input type="checkbox" name="showpagamento" <?php echo $checked; ?> /></label>
+	</div>
+<?php }
+
+
 // MENSAGEM FINAL AO CONTEUDISTA **********************************
 
 function campo_box_msgfinal()
@@ -586,9 +608,10 @@ function campo_submit()
 
 function salvar_no_postmeta($post_id)
 {
-	if (isset($_POST['ativado'])) {
-		$ativado = sanitize_text_field($_POST['ativado']);
-		update_post_meta($post_id, 'ativado', $ativado);
+	if (isset($_POST['ativado'])) {		
+		update_post_meta($post_id, 'ativado', "on");
+	}else{
+		update_post_meta($post_id, 'ativado', "off");
 	}
 
 	if (isset($_POST['contexto'])) {
@@ -767,6 +790,11 @@ function salvar_no_postmeta($post_id)
 	if (isset($_POST['total'])) {
 		$total = sanitize_text_field($_POST['total']);
 		update_post_meta($post_id, 'total', $total);
+	}
+	if (isset($_POST['showpagamento'])) {		
+		update_post_meta($post_id, 'showpagamento', "on");
+	}else{
+		update_post_meta($post_id, 'showpagamento', "off");
 	}
 }
 add_action('save_post', 'salvar_no_postmeta');

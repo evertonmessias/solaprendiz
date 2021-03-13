@@ -60,17 +60,17 @@ add_filter('login_redirect', 'admin_default_page');
 function style_and_script()
 {
 	$user = wp_get_current_user();
+	$url = explode("/",$_SERVER['REQUEST_URI']);
 	if (in_array('conteudista', (array) $user->roles)) {
 		get_header();		
-		$url = explode("/",$_SERVER['REQUEST_URI']);
-		if($url[1] == "wp-admin" && ($url[2] == "edit.php?post_type=proposta")){
+		if($url[1] == "wp-admin" && $url[2] == "edit.php?post_type=proposta"){
 			echo "<script>window.location.href = '/naopermitido'</script>";
 		}
 	}
 	if (in_array('responsavel', (array) $user->roles)) {					
 		echo "<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-responsavel.css'>";
 	}
-	if (get_post_type() == 'proposta') {
+	if (get_post_type() == 'proposta' && $url[2] != "edit.php?post_type=proposta") {
 ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>

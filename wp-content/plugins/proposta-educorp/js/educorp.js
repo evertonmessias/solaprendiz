@@ -346,6 +346,7 @@ window.onload = function () {  //onload **********************************
 	$("#local_id").attr("class", "postbox conteudo conteudo3");
 
 	$("#pagamento_id").attr("class", "postbox conteudo conteudo4");
+	$("#showpagamento_id").attr("class", "postbox conteudo conteudo4");
 	$("#msgfinal_id").attr("class", "postbox conteudo conteudo4");	
 	$("#submit_id").attr("class", "postbox conteudo conteudo4");
 
@@ -354,9 +355,11 @@ window.onload = function () {  //onload **********************************
 
 	var ehresp = $("#ehresp").val();
 	if(ehresp == 0){
+		$("#showpagamento").hide();
 		$("#pagamento").hide();
 		$("#msgfinal").show();
 	}else{
+		$("#showpagamento").show();
 		$("#pagamento").show();
 		$("#msgfinal").hide();
 	}
