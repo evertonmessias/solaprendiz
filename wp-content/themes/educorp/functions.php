@@ -2,21 +2,6 @@
 
 define('SITEPATH', '/wp-content/themes/educorp/');
 
-function propostas()
-{
-    $lastupdated_args = array(
-        'post_type' => 'proposta'
-    );
-    $x = 0;
-    $lastupdated_loop = new WP_Query($lastupdated_args);
-    while ($lastupdated_loop->have_posts()) : $lastupdated_loop->the_post();
-        $x++;
-    endwhile;
-    wp_reset_postdata();
-    echo $x;
-}
-add_action('propostas', 'propostas');
-
 function contador()
 {
     function _date($format, $timezone)
