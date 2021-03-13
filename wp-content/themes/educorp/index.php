@@ -25,7 +25,7 @@ if (is_user_logged_in()) {
                }               
             }
             $user = wp_get_current_user();            
-            if ($permitido || in_array('administrator', (array) $user->roles) || in_array('author', (array) $user->roles)) { ?>
+            if ($permitido || in_array('administrator', (array) $user->roles) || in_array('responsavel', (array) $user->roles)) { ?>
                
                <div class="portfolio-description">
                   <h2>I. CARACTERIZAÇÃO DA DEMANDA</h2>
