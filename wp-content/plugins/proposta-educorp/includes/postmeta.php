@@ -341,12 +341,12 @@ function campo_carga($post)
 		<h4 class="wp-heading-inline">7. CARGA HORÁRIA DA CAPACITAÇÃO</h4>
 		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020.</p>
 
-		<label><input type="number" id="carga1" name="carga1" min="0" max="99" size="2" value="<?php echo $value1; ?>" onchange="calcularcarga(this.value);">&ensp;Videoaula gravada</label><br>
-		<label><input type="number" id="carga2" name="carga2" min="0" max="99" size="2" value="<?php echo $value2; ?>" onchange="calcularcarga(this.value);">&ensp;Videos diversos</label><br>
-		<label><input type="number" id="carga3" name="carga3" min="0" max="99" size="2" value="<?php echo $value3; ?>" onchange="calcularcarga(this.value);">&ensp;Textos, artigos, capítulos de livros e similares</label><br>
-		<label><input type="number" id="carga4" name="carga4" min="0" max="99" size="2" value="<?php echo $value4; ?>" onchange="calcularcarga(this.value);">&ensp;Aulas síncronas ou presenciais</label><br>
-		<label><input type="number" id="carga5" name="carga5" min="0" max="99" size="2" value="<?php echo $value5; ?>" onchange="calcularcarga(this.value);">&ensp;Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
-		<label><input type="number" id="cargatotal" name="cargatotal" min="0" max="99" size="2" value="<?php echo $valuetotal; ?>" readonly="true">&ensp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO</label><br>
+		<label><input type="text" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Videoaula gravada</label><br>
+		<label><input type="text" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Videos diversos</label><br>
+		<label><input type="text" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Textos, artigos, capítulos de livros e similares</label><br>
+		<label><input type="text" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Aulas síncronas ou presenciais</label><br>
+		<label><input type="text" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">&ensp;Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
+		<label><input type="text" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">&ensp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO</label><br>
 
 	</div>
 <?php }
@@ -389,7 +389,7 @@ function campo_equipe($post)
 				<td><input type="text" name="equipe2[]" value="<?php echo $value2; ?>" class="equipe2"></td>
 				<td><input type="text" name="equipe3[]" value="<?php echo $value3; ?>" class="equipe3"></td>
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
-				<td><input  oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
+				<td><input  oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" type="text" maxlength="2" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
 				<option hidden selected><?php echo $value6; ?></option>
 				<option>Instrutor</option>
@@ -459,9 +459,9 @@ function campo_calendario($post)
 				<th>Carga Horária</th>
 			</tr>
 			<tr class='linha1'>
-				<td><input type="text" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" maxlength="2" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" maxlength="2" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
 				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4"></td>
 				<td><input type="text" name="calendario5[]" value="<?php echo $value5; ?>" class="calendario5"></td>
 				<td><input type="text" name="calendario6[]" value="<?php echo $value6; ?>" class="calendario6"></td>
@@ -535,9 +535,9 @@ function campo_pagamento($post)
 			</tr>
 			<tr class='linha1'>
 				<td><input type="text" name="pagamento1[]" value="<?php echo $value1; ?>" class="pagamento1" readonly="true"></td>
-				<td><input type="text" oninput="filterChar(this.value,this)" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2"></td>
+				<td><input type="text" maxlength="2" oninput="filterChar(this.value,this)" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2"></td>
 				<td><input type="text" name="pagamento3[]" value="<?php echo $value3; ?>" class="pagamento3" readonly="true"></td>
-				<td><input type="text" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
+				<td><input type="text" maxlength="2" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
 				<td><input type="text" name="pagamento5[]" value="<?php echo $value5; ?>" class="pagamento5" readonly="true"></td>
 			</tr>
 		</table>

@@ -169,6 +169,9 @@
 .postbox textarea, .postbox input[type='text'], .postbox .btn-group{
     width: 100% !important;
 }
+.postbox #carga input{
+    width: 130px !important;
+}
 .postbox select{
     position: absolute;
 }
