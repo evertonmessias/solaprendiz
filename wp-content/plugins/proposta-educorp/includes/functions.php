@@ -67,6 +67,9 @@ function style_and_script()
 			echo "<script>window.location.href = '/naopermitido'</script>";
 		}
 	}
+	if (in_array('responsavel', (array) $user->roles)) {					
+		echo "<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-responsavel.css'>";
+	}
 	if (get_post_type() == 'proposta') {
 ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -78,7 +81,7 @@ function style_and_script()
 		<link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
 	<?php
 		wp_enqueue_style('stilos', '/wp-content/plugins/proposta-educorp/css/educorp.css');				
-		wp_enqueue_script('scripts', '/wp-content/plugins/proposta-educorp/js/educorp.js');
+		wp_enqueue_script('scripts', '/wp-content/plugins/proposta-educorp/js/educorp.js');		
 	}
 }
 add_action('admin_enqueue_scripts', 'style_and_script');
@@ -94,7 +97,7 @@ function permissao($post)
 		if (in_array('conteudista', (array) $user->roles)) {	
 			show_admin_bar(false);		
 			echo "<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-conteudista.css'>";
-		}
+		}	
 
 		$ehresp = 0;
 		if (in_array('administrator', (array) $user->roles) || in_array('responsavel', (array) $user->roles)) {
