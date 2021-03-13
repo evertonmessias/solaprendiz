@@ -8,7 +8,8 @@ if (is_user_logged_in()) {
          <div class="container">
             <ol>
                <li><a href="/">Home</a></li>
-               <li>Proposta</li>
+               <li><a href="/propostas">Propostas</a></li>
+               <li><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a></li>
             </ol>
          </div>
       </section><!-- End Breadcrumbs -->
