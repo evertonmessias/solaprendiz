@@ -1,41 +1,16 @@
 #footer-thankyou, #footer-upgrade{
     display: none;
 }
-.pagina, .settings, .sobre {
+.relatorios, .settings, .sobre {
     display: block;
     position: relative;
-    min-height: 550px;
-    background-color: #fff;
-}
-
-.pagina {
+    width: 94%;
     margin: 0 auto;
-    width: 95%;
-    top: 30px;    
-}
-
-.relatorios{
-    padding: 30px;
-    padding-top: 50px;
-}
-
-.settings {
-    position: absolute;
-    padding: 30px;    
-    padding-top: 50px;
-    width: 50%;
-    top:0px;
-    min-height:600px;    
-}
-
-.sobre {
-    position: absolute;
-    padding: 30px;    
-    width: 50%;
-    right: 0px;
-    top:0px;
-    min-height:620px;
-    border-left: 1px solid #666;
+    min-height: 550px;
+    background-color: #fff; 
+    padding: 20px; 
+    left: -15px; 
+    top:25px
 }
 
 .settings form input {

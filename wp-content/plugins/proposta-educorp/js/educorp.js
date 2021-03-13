@@ -22,13 +22,13 @@ function criaLinha() {
 	$("#equipe table .linha" + nl + " td .equipe2").val("");
 	$("#equipe table .linha" + nl + " td .equipe3").val("");
 	$("#equipe table .linha" + nl + " td .equipe4").val("");
-	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',5)');
+	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',5);filterChar(this.value,this)');
 	$("#equipe table .linha" + nl + " td .equipe6").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',6)');
 
 	$("#calendario table .linha1").clone().attr('class', 'linha' + nl).appendTo("#calendario table");
-	$("#calendario table .linha" + nl + " td .calendario1").val("");
-	$("#calendario table .linha" + nl + " td .calendario2").val("");
-	$("#calendario table .linha" + nl + " td .calendario3").val("");
+	$("#calendario table .linha" + nl + " td .calendario1").val("").attr("oninput","filterChar(this.value,this)");
+	$("#calendario table .linha" + nl + " td .calendario2").val("").attr("oninput","filterChar(this.value,this)");
+	$("#calendario table .linha" + nl + " td .calendario3").val("").attr("oninput","filterChar(this.value,this)");
 	$("#calendario table .linha" + nl + " td .calendario4").val("");
 	$("#calendario table .linha" + nl + " td .calendario5").val("");
 	$("#calendario table .linha" + nl + " td .calendario6").val("");
@@ -37,9 +37,9 @@ function criaLinha() {
 
 	$("#pagamento table .linha1").clone().attr('class', 'linha' + nl).appendTo("#pagamento table");
 	$("#pagamento table .linha" + nl + " td .pagamento1").val("");
-	$("#pagamento table .linha" + nl + " td .pagamento2").val("");
+	$("#pagamento table .linha" + nl + " td .pagamento2").val("").attr("oninput", "filterChar(this.value,this)")
 	$("#pagamento table .linha" + nl + " td .pagamento3").val("");
-	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput", "valorAtuacao(this.value," + nl + ")")
+	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput", "valorAtuacao(this.value," + nl + ");filterChar(this.value,this)")
 	$("#pagamento table .linha" + nl + " td .pagamento5").val("");
 
 	$("#nl").val(nl);
@@ -89,7 +89,7 @@ function atualizaValor(valor, linha, coluna) {
 	if (coluna == 6) $("#pagamento table .linha" + linha + " .pagamento3").val(valor);
 }
 
-function valorAtuacao(valor, linha) {
+function valorAtuacao(valor, linha) {	
 	var proposta_input_name1 = $("#proposta_input_name1").val();
 	var proposta_input_name2 = $("#proposta_input_name2").val();
 	var proposta_input_name3 = $("#proposta_input_name3").val();
@@ -119,6 +119,15 @@ function valorAtuacao(valor, linha) {
 		somatorio = somatorio + valorx;
 	}
 	$("#pagamento #total").val(somatorio);
+}
+
+function filterChar(valor,campo){	
+	if(isNaN(valor)){
+		campo.value = "";
+		campo.setAttribute("placeholder","Digite Numeros !")		
+	}else{
+		campo.removeAttribute("placeholder");
+	}
 }
 
 window.onload = function () {  //onload **********************************
@@ -187,7 +196,7 @@ window.onload = function () {  //onload **********************************
 		$("#equipe table .linha" + lin + " .equipe2").val(equipe2[ind]);
 		$("#equipe table .linha" + lin + " .equipe3").val(equipe3[ind]);
 		$("#equipe table .linha" + lin + " .equipe4").val(equipe4[ind]);
-		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',5)');
+		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',5);filterChar(this.value,this)');
 		$("#equipe table .linha" + lin + " .equipe6").val(equipe6[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',6)');
 		ind++;
 	}
@@ -216,9 +225,9 @@ window.onload = function () {  //onload **********************************
 	while (nl > ind) {
 		var lin = ind + 1;
 		$("#calendario table .linha1").clone().attr('class', 'linha' + lin).appendTo("#calendario table");
-		$("#calendario table .linha" + lin + " .calendario1").val(calendario1[ind]);
-		$("#calendario table .linha" + lin + " .calendario2").val(calendario2[ind]);
-		$("#calendario table .linha" + lin + " .calendario3").val(calendario3[ind]);
+		$("#calendario table .linha" + lin + " .calendario1").val(calendario1[ind]).attr("oninput","filterChar(this.value,this)");
+		$("#calendario table .linha" + lin + " .calendario2").val(calendario2[ind]).attr("oninput","filterChar(this.value,this)");
+		$("#calendario table .linha" + lin + " .calendario3").val(calendario3[ind]).attr("oninput","filterChar(this.value,this)");
 		$("#calendario table .linha" + lin + " .calendario4").val(calendario4[ind]);
 		$("#calendario table .linha" + lin + " .calendario5").val(calendario5[ind]);
 		$("#calendario table .linha" + lin + " .calendario6").val(calendario6[ind]);
@@ -247,9 +256,9 @@ window.onload = function () {  //onload **********************************
 		var lin = ind + 1;
 		$("#pagamento table .linha1").clone().attr('class', 'linha' + lin).appendTo("#pagamento table");
 		$("#pagamento table .linha" + lin + " .pagamento1").val(pagamento1[ind]);
-		$("#pagamento table .linha" + lin + " .pagamento2").val(pagamento2[ind]);
+		$("#pagamento table .linha" + lin + " .pagamento2").val(pagamento2[ind]).attr("oninput","filterChar(this.value,this)");
 		$("#pagamento table .linha" + lin + " .pagamento3").val(pagamento3[ind]);
-		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput", "valorAtuacao(this.value," + lin + ")")
+		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput", "valorAtuacao(this.value," + lin + ");filterChar(this.value,this)")
 		$("#pagamento table .linha" + lin + " .pagamento5").val(pagamento5[ind]);
 		ind++;
 	}

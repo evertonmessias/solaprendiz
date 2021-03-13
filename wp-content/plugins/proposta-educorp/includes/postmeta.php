@@ -389,7 +389,7 @@ function campo_equipe($post)
 				<td><input type="text" name="equipe2[]" value="<?php echo $value2; ?>" class="equipe2"></td>
 				<td><input type="text" name="equipe3[]" value="<?php echo $value3; ?>" class="equipe3"></td>
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
-				<td><input  oninput="atualizaValor(this.value,1,5)" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
+				<td><input  oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
 				<option hidden selected><?php echo $value6; ?></option>
 				<option>Instrutor</option>
@@ -459,9 +459,9 @@ function campo_calendario($post)
 				<th>Carga Horária</th>
 			</tr>
 			<tr class='linha1'>
-				<td><input type="text" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1"></td>
-				<td><input type="text" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2"></td>
-				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3"></td>
+				<td><input type="text" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
+				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
 				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4"></td>
 				<td><input type="text" name="calendario5[]" value="<?php echo $value5; ?>" class="calendario5"></td>
 				<td><input type="text" name="calendario6[]" value="<?php echo $value6; ?>" class="calendario6"></td>
@@ -500,6 +500,7 @@ function campo_box_pagamento()
 add_action('add_meta_boxes', 'campo_box_pagamento');
 function campo_pagamento($post)
 {
+	//valores do settings
 	$proposta_input_name1 = get_option("proposta_input_name1");
 	$proposta_input_name2 = get_option("proposta_input_name2");
 	$proposta_input_name3 = get_option("proposta_input_name3");
@@ -534,9 +535,9 @@ function campo_pagamento($post)
 			</tr>
 			<tr class='linha1'>
 				<td><input type="text" name="pagamento1[]" value="<?php echo $value1; ?>" class="pagamento1" readonly="true"></td>
-				<td><input type="text" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2"></td>
+				<td><input type="text" oninput="filterChar(this.value,this)" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2"></td>
 				<td><input type="text" name="pagamento3[]" value="<?php echo $value3; ?>" class="pagamento3" readonly="true"></td>
-				<td><input type="text" oninput="valorAtuacao(this.value,1)" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
+				<td><input type="text" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
 				<td><input type="text" name="pagamento5[]" value="<?php echo $value5; ?>" class="pagamento5" readonly="true"></td>
 			</tr>
 		</table>

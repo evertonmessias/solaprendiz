@@ -109,7 +109,9 @@ class PropostaEducorp
 include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/functions.php';
 
 // PAGES ************************************************
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/pages.php';
+include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-relatorios.php';
+include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-settings.php';
+include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-sobre.php';
 
 // POSTMETA ************************************************
 include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/postmeta.php';
