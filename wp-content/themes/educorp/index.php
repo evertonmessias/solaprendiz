@@ -143,22 +143,29 @@ if (is_user_logged_in()) {
                      $equipe5 = explode(",",get_post_meta(get_the_ID(),'equipe5',true));
                      $equipe6 = explode(",",get_post_meta(get_the_ID(),'equipe6',true));
                      
-                     $nl = get_post_meta(get_the_ID(),'nl',true);
-
-                     for($i=0;$i<$nl;$i++){
-                     ?> 
-                     <div class="equipe">                                      
-                     <ul>
-                     <li><strong>Nome Completo: </strong><?php echo $equipe1[$i]; ?></li>
-                     <li><strong>Superior imediato: </strong><?php echo $equipe2[$i]; ?></li>
-                     <li><strong>Unidade/Depto: </strong><?php echo $equipe3[$i]; ?></li>
-                     <li><strong>E-mail: </strong><?php echo $equipe4[$i]; ?></li>
-                     <li><strong>Carga horária: </strong><?php echo $equipe5[$i]; ?></li>
-                     <li><strong>Atuação: </strong><?php echo $equipe6[$i]; ?></li>
-                     </ul> 
-                     </div>                    
+                     $nl = get_post_meta(get_the_ID(),'nl',true); 
+                     ?>
+                     <table class="equipe">
+                     <tr>
+                     <th><strong>Nome Completo: </strong></th>
+                     <th><strong>Superior imediato: </strong></th>
+                     <th><strong>Unidade/Depto: </strong></th>
+                     <th><strong>E-mail: </strong></th>
+                     <th><strong>Carga horária: </strong></th>
+                     <th><strong>Atuação: </strong></th>
+                     </tr>
+                     <?php for($i=0;$i<$nl;$i++){
+                     ?>                                                            
+                     <tr>
+                     <td><?php echo $equipe1[$i]; ?></td>
+                     <td><?php echo $equipe2[$i]; ?></td>
+                     <td><?php echo $equipe3[$i]; ?></td>
+                     <td><?php echo $equipe4[$i]; ?></td>
+                     <td><?php echo $equipe5[$i]; ?></td>
+                     <td><?php echo $equipe6[$i]; ?></td>
+                     </tr>                                        
                      <?php } ?>
-
+                     </table> 
                   </fieldset>
                   
                   <fieldset>
@@ -182,24 +189,34 @@ if (is_user_logged_in()) {
                      $calendario8 = explode(",",get_post_meta(get_the_ID(),'calendario8',true));
                      
                      $nl = get_post_meta(get_the_ID(),'nl',true);
-
-                     for($i=0;$i<$nl;$i++){
-                     ?> 
-                     <div class="equipe">                                      
-                     <ul>
-                     <li><strong>Turma: </strong><?php echo $calendario1[$i]; ?></li>
-                     <li><strong>Quantidade: </strong><?php echo $calendario2[$i]; ?></li>
-                     <li><strong>Capacidade: </strong><?php echo $calendario3[$i]; ?></li>
-                     <li><strong>Data: </strong><?php echo $calendario4[$i]; ?></li>
-                     <li><strong>Dia da Semana: </strong><?php echo $calendario5[$i]; ?></li>
-                     <li><strong>Horário: </strong><?php echo $calendario6[$i]; ?></li>
-                     <li><strong>Instrutor: </strong><?php echo $calendario7[$i]; ?></li>
-                     <li><strong>Carga Horária: </strong><?php echo $calendario8[$i]; ?></li>
-                     </ul> 
-                     </div>                    
+                     ?>
+                     <table class="calendario">
+                     <tr>
+                     <th><strong>Turma: </strong></th>
+                     <th><strong>Quantidade: </strong></th>
+                     <th><strong>Capacidade: </strong></th>
+                     <th><strong>Data: </strong></th>
+                     <th><strong>Dia da Semana: </strong></th>
+                     <th><strong>Horário: </strong></th>
+                     <th><strong>Instrutor: </strong></th>
+                     <th><strong>Carga Horária: </strong></th>
+                     </tr>
+                     <?php for($i=0;$i<$nl;$i++){
+                     ?>                                                            
+                     <tr>
+                     <td><?php echo $calendario1[$i]; ?></td>
+                     <td><?php echo $calendario2[$i]; ?></td>
+                     <td><?php echo $calendario3[$i]; ?></td>
+                     <td><?php echo $calendario4[$i]; ?></td>
+                     <td><?php echo $calendario5[$i]; ?></td>
+                     <td><?php echo $calendario6[$i]; ?></td>
+                     <td><?php echo $calendario7[$i]; ?></td>
+                     <td><?php echo $calendario8[$i]; ?></td>
+                     </tr>                                        
                      <?php } ?>
-
+                     </table> 
                   </fieldset>
+
 
                   <fieldset>
                      <legend>2. LOCAL</legend>
@@ -218,21 +235,29 @@ if (is_user_logged_in()) {
                      $pagamento5 = explode(",",get_post_meta(get_the_ID(),'pagamento5',true));
                                          
                      $nl = get_post_meta(get_the_ID(),'nl',true);
-
-                     for($i=0;$i<$nl;$i++){
-                     ?> 
-                     <div class="equipe">                                      
-                     <ul>
-                     <li><strong>Nome Completo: </strong><?php echo $pagamento1[$i]; ?></li>
-                     <li><strong>Dias: </strong><?php echo $pagamento2[$i]; ?></li>
-                     <li><strong>Atuação: </strong><?php echo $pagamento3[$i]; ?></li>
-                     <li><strong>Carga horária: </strong><?php echo $pagamento4[$i]; ?></li>
-                     <li><strong>Valor (R$): </strong><?php echo $pagamento5[$i]; ?></li>                    
-                     </ul> 
-                     </div>                    
-                     <?php } ?>                    
-                     <p style="font-size:20px !important;"><b>Total: </b><?php echo get_post_meta(get_the_ID(),'total',true); ?></p>                  
-                  </fieldset>                  
+                     ?>
+                     <table class="pagamento">
+                     <tr>
+                     <th><strong>Nome Completo: </strong></th>
+                     <th><strong>Dias: </strong></th>
+                     <th><strong>Atuação: </strong></th>
+                     <th><strong>Carga horária: </strong></th>
+                     <th><strong>Valor (R$): </strong></th> 
+                     </tr>
+                     <?php for($i=0;$i<$nl;$i++){
+                     ?>                                                            
+                     <tr>
+                     <td><?php echo $pagamento1[$i]; ?></td>
+                     <td><?php echo $pagamento2[$i]; ?></td>
+                     <td><?php echo $pagamento3[$i]; ?></td>
+                     <td><?php echo $pagamento4[$i]; ?></td>
+                     <td><?php echo $pagamento5[$i]; ?></td>                     
+                     </tr>                                        
+                     <?php } ?>
+                     </table> 
+                     <p style="font-size:20px !important;text-align:right;"><b>Total: </b>R$ <?php echo get_post_meta(get_the_ID(),'total',true); ?>&emsp;</p>                  
+                  </fieldset>          
+                     
                   <h1>&nbsp;</h1>
                   <a class="get-started-btn" href="/wp-admin/post.php?post=<?php echo the_ID(); ?>&action=edit">Editar</a>
                   <h1>&nbsp;</h1>

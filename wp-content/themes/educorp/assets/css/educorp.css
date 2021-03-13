@@ -112,23 +112,32 @@ p.retomada{
     border: 1px solid #ccc;
 }
 
-#portfolio-details .equipe{
-    padding-top: 15px;
+#portfolio-details .equipe,#portfolio-details .calendario,#portfolio-details .pagamento{    
     display: block;
     position: relative;
-    width: 33%;
-    min-height: 200px;
-    border: 1px solid #ccc;    
+    width: 100%;
+    border-spacing: 0;    
 }
-@media(min-width:650px){
-    #portfolio-details .equipe{
-        float: left;
-    }
+#portfolio-details .equipe th,
+#portfolio-details .equipe td{    
+    border: 1px solid #444; 
+    padding: 5px; 
+    width: 12.4em;
+}
+#portfolio-details .calendario th,
+#portfolio-details .calendario td{    
+    border: 1px solid #444; 
+    padding: 5px; 
+    width: 9.5em;
+}
+#portfolio-details .pagamento th,
+#portfolio-details .pagamento td{    
+    border: 1px solid #444; 
+    padding: 5px; 
+    width: 15.2em;
 }
 
-#portfolio-details .equipe ul{
-    list-style-type: square !important;
-}
+
 #footer{
     background-color: #fff !important;
 }
