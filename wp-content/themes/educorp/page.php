@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();contador(); ?>
 <!-- ======= Hero Section ======= -->
 <section id="hero">
 	<div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
