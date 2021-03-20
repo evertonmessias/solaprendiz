@@ -1,18 +1,19 @@
 <?php
 //Configuração *************************************************
-function proposta_page_html(){?>
+function proposta_page_html()
+{ ?>
 	<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-pages.css'>
 	<div class="settings">
 		<h1 style="color:#000;">Configurações</h1>
 		<h3>Valor da hora por tipo de Atuação, em R$</h3>
 		<form method="post" action="options.php">
 			<?php settings_fields('proposta_option_grupo'); ?>
-			<label><span>Instrutor: </span><input type="number" id="proposta_input_name1" name="proposta_input_name1" value="<?php echo get_option('proposta_input_name1'); ?>" /></label><br>
-			<label><span>Tutor: </span><input type="number" id="proposta_input_name2" name="proposta_input_name2" value="<?php echo get_option('proposta_input_name2'); ?>" /></label><br>
-			<label><span>Monitor: </span><input type="number" id="proposta_input_name3" name="proposta_input_name3" value="<?php echo get_option('proposta_input_name3'); ?>" /></label><br>
-			<label><span>Conteudista Presencial: </span><input type="number" id="proposta_input_name4" name="proposta_input_name4" value="<?php echo get_option('proposta_input_name4'); ?>" /></label><br>
-			<label><span>Conteudista Remoto Síncrono: </span><input type="number" id="proposta_input_name5" name="proposta_input_name5" value="<?php echo get_option('proposta_input_name5'); ?>" /></label><br>
-			<label><span>Conteudista Remoto Assíncrono:</span><input type="number" id="proposta_input_name6" name="proposta_input_name6" value="<?php echo get_option('proposta_input_name6'); ?>" /></label><br>
+			<label><span>Instrutor: </span><input type="number" min="0" id="proposta_input_name1" name="proposta_input_name1" value="<?php echo get_option('proposta_input_name1'); ?>" /></label><br>
+			<label><span>Tutor: </span><input type="number" min="0" id="proposta_input_name2" name="proposta_input_name2" value="<?php echo get_option('proposta_input_name2'); ?>" /></label><br>
+			<label><span>Monitor: </span><input type="number" min="0" id="proposta_input_name3" name="proposta_input_name3" value="<?php echo get_option('proposta_input_name3'); ?>" /></label><br>
+			<label><span>Conteudista Presencial: </span><input type="number" min="0" id="proposta_input_name4" name="proposta_input_name4" value="<?php echo get_option('proposta_input_name4'); ?>" /></label><br>
+			<label><span>Conteudista Remoto Síncrono: </span><input type="number" min="0" id="proposta_input_name5" name="proposta_input_name5" value="<?php echo get_option('proposta_input_name5'); ?>" /></label><br>
+			<label><span>Conteudista Remoto Assíncrono:</span><input type="number" min="0" id="proposta_input_name6" name="proposta_input_name6" value="<?php echo get_option('proposta_input_name6'); ?>" /></label><br>
 			<?php submit_button(); ?>
 		</form>
 	</div>

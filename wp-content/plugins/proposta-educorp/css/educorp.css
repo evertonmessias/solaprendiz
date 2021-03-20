@@ -15,27 +15,31 @@
     text-align: center;
     padding-top: 20px;
 }
-#quadro i{
+
+#quadro i {
     position: absolute;
-    top:10px;
+    top: 10px;
     right: 10px;
     font-size: 20px;
 }
-#quadro h2{
+
+#quadro h2 {
     color: #f00;
     font-weight: 600;
 }
 
 @media (max-width: 600px) {
-    #quadro { 
-        margin: 0;padding: 0;       
+    #quadro {
+        margin: 0;
+        padding: 0;
         width: 100%;
-        height: 100%;       
+        height: 100%;
         z-index: 1500;
-        top:0px;left: 0px;
+        top: 0px;
+        left: 0px;
         background-color: #fff;
         box-shadow: 3px 3px 3px 3px #999;
-    }    
+    }
 }
 
 /*top bar scroll*/
@@ -127,8 +131,7 @@
     background: #aaa;
 }
 
-#BlocoTab .ativa span,
-#BlocoTab .selected span {
+#BlocoTab .ativa span, #BlocoTab .selected span {
     color: #fff
 }
 
@@ -142,22 +145,25 @@
     background: #666
 }
 
-.postbox.conteudo {  
+.postbox.conteudo {
     display: none;
 }
 
 /*config display proposta*/
 
-#commentstatusdiv, #commentsdiv, #titlediv .inside, #screen-meta-links, .page-title-action, #postbox-container-1{
+textarea, #titlediv input, input[type=radio], input[type=checkbox], .btn-group button {
+    border-radius: 0;
+}
+
+#commentstatusdiv, #commentsdiv, #titlediv .inside, #screen-meta-links, .page-title-action, #postbox-container-1 {
     display: none !important;
 }
 
-#advanced-sortables{
+#advanced-sortables {
     margin-bottom: 50px !important;
-
 }
 
-.postbox{
+.postbox {
     display: block;
     position: relative;
     margin-top: 30px !important;
@@ -166,18 +172,198 @@
     background: none !important;
     box-shadow: none !important;
 }
-.postbox textarea, .postbox input[type='text'], .postbox .btn-group{
+
+.postbox textarea, .postbox .btn-group {
     width: 100% !important;
 }
-.postbox #carga input{
-    width: 130px !important;
+
+.postbox #carga input {
+    border-radius: 0% !important;
+    width: 100px !important;
 }
-.postbox select{
+
+.postbox select {
     position: absolute;
 }
 
-#post-body.columns-2{
-    width: 100% !important;    
+#post-body.columns-2 {
+    width: 100% !important;
+}
+
+#wpbody {
+    top: 20px !important;
+}
+
+input[type='checkbox'], input[type='radio'] {
+    transform: scale(1.3);
+}
+
+label {
+    font-weight: normal;
+}
+
+#ativado_id {
+    position: relative;
+    width: 18em !important;
+    height: 30px;
+    top: -20px;
+    left: 0px;
+    text-align: left;
+}
+
+#ativado_id input {
+    position: absolute;
+    left: 90%;
+    top: 7px;
+}
+
+#equipe i, #calendario i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#equipe table, #calendario table, #pagamento table {
+    display: block;
+    position: relative;
+    width: 100% !important;
+    border-spacing: 0px;
+}
+
+#equipe table tr th, #calendario table tr th, #pagamento table tr th {
+    padding: 5px;
+}
+
+#equipe table tr th, #equipe table tr td {
+    text-align: center;
+    border: 1px solid #444;
+    width: 13%;
+}
+
+#equipe table tr th:nth-child(1), #equipe table tr td:nth-child(1) {
+    width: 6%;
+}
+
+#equipe table tr th:nth-child(4), #equipe table tr td:nth-child(4) {
+    width: 6%;
+}
+
+#equipe table tr th:nth-child(6), #equipe table tr td:nth-child(6) {
+    width: 6%;
+}
+
+#calendario table tr th, #calendario table tr td {
+    text-align: center;
+    border: 1px solid #444;
+    width: 10%;
+}
+
+#calendario table tr th:nth-child(1), #calendario table tr td:nth-child(1) {
+    width: 2%;
+}
+
+#calendario table tr th:nth-child(2), #calendario table tr td:nth-child(2) {
+    width: 2%;
+}
+
+#calendario table tr th:nth-child(3), #calendario table tr td:nth-child(3) {
+    width: 15%;
+}
+
+#calendario table tr th:nth-child(4), #calendario table tr td:nth-child(4) {
+    width: 15%;
+}
+
+#calendario table tr th:nth-child(8), #calendario table tr td:nth-child(8) {
+    width: 4%;
+}
+
+#calendario table tr th:nth-child(9), #calendario table tr td:nth-child(9) {
+    width: 15%;
+}
+
+#pagamento table tr th, #pagamento table tr td {
+    text-align: center;
+    border: 1px solid #444;
+    width: 21.7%;
+}
+
+#pagamento table tr th:nth-child(1), #pagamento table tr td:nth-child(1) {
+    width: 10%;
+}
+
+#pagamento table tr th:nth-child(4), #pagamento table tr td:nth-child(4) {
+    width: 10%;
+}
+
+#pagamento table tr th:nth-child(5), #pagamento table tr td:nth-child(5) {
+    width: 10%;
+}
+
+#equipe table tr td input, #equipe table tr td select, #calendario table tr td input, #calendario table tr td select, #pagamento table tr td input {
+    border-radius: 0% !important;
+    display: block;
+    position: relative;
+    width: 100% !important;
+}
+
+#pagamento #personal input {
+    border-radius: 0% !important;
+    width: 100px !important;
+}
+
+input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 60%;
+    transform: scale(1.5);
+}
+
+#pagamento {
+    padding: 0;
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+#pagamento .total {
+    display: block;
+    position: absolute;
+    width: 210px;
+    right: 10px;
+    bottom: 0;
+    font-weight: bold;
+}
+
+#pagamento .total span {
+    position: relative;
+    font-size: 16px;
+    top: 3px !important;
+}
+
+#pagamento .total #total {
+    display: block;
+    width: 158px !important;
+    float: right;
+    border-radius: 0%;
+    border: 1.5px solid #555;
+    text-align: right;
+}
+
+#showpagamento_id {
+    position: absolute;
+    width: 20em;
+    height: 30px;
+    bottom: 80px;
+    left: 10px;
+    text-align: left;
+}
+
+#showpagamento_id input {
+    position: absolute;
+    left: 90%;
+    top: 7px;
 }
 
 /* submit */
@@ -188,8 +374,8 @@
 
 #publishing-action .button {
     border: 2px solid #f00;
-    background-color: rgba(0,0,0,0);
-    color: #f00;   
+    background-color: rgba(0, 0, 0, 0);
+    color: #f00;
     margin-right: 50px !important;
 }
 
@@ -197,109 +383,3 @@
     background-color: #f00 !important;
     color: #fff;
 }
-
-/*content */
-#wpbody{
-    top:20px !important;
-}
-input[type='checkbox'],input[type='radio']{
-    transform: scale(1.3);
-}
-label{
-    font-weight: normal;
-}
-
-#ativado_id{    
-    position: relative;
-    width: 18em !important;
-    height: 30px;
-    top: -20px;
-    left: 0px;
-    text-align: left;
-}
-#ativado_id input{
-    position: absolute;
-    left: 90%;top:7px;    
-}
-
-#equipe i{
-    font-size: 20px;
-    cursor: pointer;
-}
-#equipe table,#calendario table,#pagamento table{
-    display: block;
-    position: relative;
-    width: 100% !important;
-    border-spacing: 0px;
-}
-#equipe table tr th,#calendario table tr th,#pagamento table tr th{
-    padding: 5px;
-}
-#equipe table tr th,
-#equipe table tr td{
-    text-align: center;  
-    border: 1px solid #444;
-    width: 16%;
-}
-#calendario table tr th,
-#calendario table tr td{
-    text-align: center;  
-    border: 1px solid #444;
-    width: 12.5%;
-}
-#pagamento table tr th,
-#pagamento table tr td{
-    text-align: center;  
-    border: 1px solid #444;
-    width: 21.7%;
-}
-#equipe table tr td input,
-#equipe table tr td select,
-#calendario table tr td input,
-#pagamento table tr td input{
-    border-radius: 0% !important;
-    display: block;
-    position: relative;
-    width: 100%;
-}
-
-#pagamento{
-    padding: 0;
-    width: 100%;
-    padding-bottom: 35px;
-}
-
-#pagamento .total{    
-    display: block;
-    position: absolute;
-    width: 210px;    
-    right: 10px;
-    bottom: 0;
-    font-weight: bold;    
-}
-#pagamento .total span{
-    position: relative;
-    font-size: 16px;
-    top: 3px !important;
-}
-#pagamento .total #total{
-    display: block;
-    width: 158px !important;
-    float: right;
-    border-radius: 0%;
-    border: 1.5px solid #555;
-    text-align: right;
-}
-#showpagamento_id{    
-    position: absolute;
-    width: 20em;
-    height: 30px;
-    bottom: 80px;
-    left: 10px;
-    text-align: left;
-}
-#showpagamento_id input{
-    position: absolute;
-    left: 90%;top:7px;    
-}
-

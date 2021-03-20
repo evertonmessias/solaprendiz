@@ -22,7 +22,7 @@
                <script>
                   window.location.href = "/wp-admin/edit.php?post_type=proposta"
                </script>
-               <?php } else {
+            <?php } else {
 
                $permitido = false;
 
@@ -31,27 +31,37 @@
                   'posts_per_page' => 10,
                   'order' => 'DESC'
                );
-               $lastupdated_loop = new WP_Query($lastupdated_args);
-
-               while ($lastupdated_loop->have_posts()) : $lastupdated_loop->the_post();
-               $conteudista = explode(",",get_post_meta(get_the_ID(),'conteudista',true));  
-                  foreach ($conteudista as $cont) {
-                     if (get_current_user_id() == $cont) {
-                        $permitido = true; ?>                          
-                        <div class="portfolio-description">                        
-                           <fieldset>
-                              <legend>TÍTULO DA CAPACITAÇÃO
-                              <span class="data"><strong>Data</strong>: <?php echo get_the_date('d/m/Y'); ?></span>
-                              </legend>                            
-                              &emsp;<a href="<?php echo the_permalink(); ?>"><strong><?php echo the_title(); ?></strong></a>
-                           </fieldset>
-                        </div>
-            <?php
+               $lastupdated_loop = new WP_Query($lastupdated_args); ?>
+               <table class="tablepropostas">
+                  <tr>
+                     <th>Título da Capacitação</th>
+                     <th>Data</th>
+                     <th>Condição</th>
+                  </tr>
+                  <?php
+                  while ($lastupdated_loop->have_posts()) : $lastupdated_loop->the_post();
+                     $conteudista = explode(",", get_post_meta(get_the_ID(), 'conteudista', true));
+                     foreach ($conteudista as $cont) {
+                        if (get_current_user_id() == $cont) {
+                           $permitido = true; ?>
+                           <tr>
+                              <td><a href="<?php echo the_permalink(); ?>"><strong><?php echo the_title(); ?></a></td>
+                              <td><?php echo get_the_date('d/m/Y'); ?></td>
+                              <td><?php $ativado = get_post_meta(get_the_ID(), 'ativado', true); 
+                              if ($ativado == "on") {
+                                 echo "<a href='/wp-admin/post.php?post=".get_the_ID(),"&action=edit'>Editável</a>";
+                              } else {
+                                 echo "Fechada";
+                              }                              
+                              ?></td>
+                           </tr>
+                  <?php
+                        }
                      }
-                  }
-
-               endwhile;
-               wp_reset_postdata();
+                  endwhile;
+                  wp_reset_postdata(); ?>
+               </table>
+            <?php
 
                if (!$permitido) {
                   echo "Nenhuma proposta disponível !";

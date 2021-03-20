@@ -47,9 +47,9 @@ class PropostaEducorp
 			'menu_icon'             => 'dashicons-book',
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
-			'publicly_queryable'    => true,			
-			'capability_type'     	=> array('post','proposta'),
-            'map_meta_cap'        => true,
+			'publicly_queryable'    => true,
+			'capability_type'     	=> array('post', 'proposta'),
+			'map_meta_cap'        => true,
 		];
 		register_post_type('proposta', $args);
 	}

@@ -2,6 +2,29 @@
 
 // FIELDS POST META **********************************
 
+// EIXO TEMÁTICO **********************************
+
+function campo_box_eixo()
+{
+	add_meta_box('eixo_id', 'eixo', 'campo_eixo', 'proposta');
+}
+add_action('add_meta_boxes', 'campo_box_eixo');
+function campo_eixo($post)
+{
+	$value = get_post_meta($post->ID, 'eixo', true);
+
+?><div id="eixo">
+		<h4 class="wp-heading-inline">1.1. Eixo Temático</h4>
+		<p class="post-sub-title">Marque um dos eixos abaixo.</p>
+		<label><input type="radio" name="eixo" <?php if ($value == "Academia") echo "checked"; ?> value="Academia">
+			&ensp;Academia</label><br>
+		<label><input type="radio" name="eixo" <?php if ($value == "Suporte") echo "checked"; ?> value="Suporte">
+			&ensp;Suporte</label><br>
+		<label><input type="radio" name="eixo" <?php if ($value == "Liderança") echo "checked"; ?> value="Liderança">
+			&ensp;Liderança</label><br>
+	</div>
+<?php }
+
 // ATIVADO **********************************
 
 function campo_box_ativado()
@@ -17,9 +40,9 @@ function campo_ativado($post)
 	} else {
 		$checked = "";
 	}
-?> <div id="ativado">		
-		<label class="post-sub-title"><b>Ativa a edição dessa proposta?</b>
-		<input type="checkbox" name="ativado" <?php echo $checked; ?> /></label>
+?> <div id="ativado">
+		<label class="post-sub-title"><b>1.2. Ativa a edição dessa proposta?</b>
+			<input type="checkbox" name="ativado" <?php echo $checked; ?> /></label>
 	</div>
 
 <?php }
@@ -182,7 +205,7 @@ function campo_conteudista($post)
 	}
 ?>
 	<input type="hidden" id="cont" value="<?php echo implode(',', $nomes); ?>">
-	<div id="conteudista">		
+	<div id="conteudista">
 		<h4 class="wp-heading-inline">8. CONTEUDISTA(s) DA PROPOSTA</h4>
 		<p class="post-sub-title">Selecione o(s) conteudista(s) para esta proposta. ( será enviado um e-mail ao(s) conteudista(s) )</p>
 
@@ -341,12 +364,12 @@ function campo_carga($post)
 		<h4 class="wp-heading-inline">7. CARGA HORÁRIA DA CAPACITAÇÃO</h4>
 		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020.</p>
 
-		<label><input type="text" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Videoaula gravada</label><br>
-		<label><input type="text" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Videos diversos</label><br>
-		<label><input type="text" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Textos, artigos, capítulos de livros e similares</label><br>
-		<label><input type="text" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Aulas síncronas ou presenciais</label><br>
-		<label><input type="text" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);filterChar(this.value,this)">Hs&emsp;Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
-		<label><input type="text" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">Hs&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO</label><br>
+		<label><input type="number" min="0" max="999" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);">H&emsp;(a) Videoaula gravada</label><br>
+		<label><input type="number" min="0" max="999" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);">H&emsp;(b) Videos diversos</label><br>
+		<label><input type="number" min="0" max="999" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);">H&emsp;(c) Textos, artigos, capítulos de livros e similares</label><br>
+		<label><input type="number" min="0" max="999" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);">H&emsp;(d) Aulas síncronas ou presenciais</label><br>
+		<label><input type="number" min="0" max="999" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);">H&emsp;(e) Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
+		<label><input type="number" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">Hs&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO (3a+3b+2c+d+e)</label><br>
 
 	</div>
 <?php }
@@ -361,6 +384,7 @@ function campo_box_equipe()
 add_action('add_meta_boxes', 'campo_box_equipe');
 function campo_equipe($post)
 {
+	$value0 = get_post_meta($post->ID, 'equipe0', true);
 	$value1 = get_post_meta($post->ID, 'equipe1', true);
 	$value2 = get_post_meta($post->ID, 'equipe2', true);
 	$value3 = get_post_meta($post->ID, 'equipe3', true);
@@ -377,6 +401,7 @@ function campo_equipe($post)
 		<input type="hidden" id="nl" name="nl" value="<?php echo $valuenl; ?>">
 		<table>
 			<tr>
+				<th>Matrícula</th>
 				<th>Nome Completo</th>
 				<th>Superior Imediato</th>
 				<th>Unidade/Depto</th>
@@ -385,20 +410,21 @@ function campo_equipe($post)
 				<th>Atuação</th>
 			</tr>
 			<tr class='linha1'>
+				<td><input oninput="atualizaValor(this.value,1,0);filterChar(this.value,this)" type="text" name="equipe0[]" value="<?php echo $value0; ?>" class="equipe0"></td>
 				<td><input oninput="atualizaValor(this.value,1,1)" type="text" name="equipe1[]" value="<?php echo $value1; ?>" class="equipe1"></td>
 				<td><input type="text" name="equipe2[]" value="<?php echo $value2; ?>" class="equipe2"></td>
 				<td><input type="text" name="equipe3[]" value="<?php echo $value3; ?>" class="equipe3"></td>
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
-				<td><input  oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" type="text" maxlength="2" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
+				<td><input oninput="atualizaValor(this.value,1,5);" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
-				<option hidden selected><?php echo $value6; ?></option>
-				<option>Instrutor</option>
-				<option>Tutor</option>
-				<option>Monitor</option>
-				<option>Conteudista Presencial</option>
-				<option>Conteudista Remoto Síncrono</option>
-				<option>Conteudista Remoto Assíncrono</option>		
-				</select></td>
+						<option hidden selected><?php echo $value6; ?></option>
+						<option>Instrutor</option>
+						<option>Tutor</option>
+						<option>Monitor</option>
+						<option>Conteudista Presencial</option>
+						<option>Conteudista Remoto Síncrono</option>
+						<option>Conteudista Remoto Assíncrono</option>
+					</select></td>
 			</tr>
 		</table>
 		<i class='bx bxs-plus-square' onclick="criaLinha();"></i>
@@ -418,7 +444,8 @@ function campo_bibliografia($post)
 {
 	$value = get_post_meta($post->ID, 'bibliografia', true);
 ?><div id="bibliografia">
-		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA</h4><p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.</p>
+		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA</h4>
+		<p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.</p>
 		<textarea name="bibliografia" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -442,33 +469,50 @@ function campo_calendario($post)
 	$value6 = get_post_meta($post->ID, 'calendario6', true);
 	$value7 = get_post_meta($post->ID, 'calendario7', true);
 	$value8 = get_post_meta($post->ID, 'calendario8', true);
+	$value9 = get_post_meta($post->ID, 'calendario9', true);
+	$valuenlc = get_post_meta($post->ID, 'nlc', true);
+	if ($valuenlc == "") $valuenlc = 1;
 
 ?>
 	<div id="calendario">
-	<h1><b>III. CARACTERIZAÇÃO DO OFERECIMENTO</b></h1>
-	<h4 class="wp-heading-inline">1. CALENDÁRIO DE OFERECIMENTO DAS TURMAS</h4><p class="post-sub-title">Datas, dias da semana e horários de oferecimento de cada turma.</p>
+		<h1><b>III. CARACTERIZAÇÃO DO OFERECIMENTO</b></h1>
+		<h4 class="wp-heading-inline">1. CALENDÁRIO DE OFERECIMENTO DAS TURMAS</h4>
+		<p class="post-sub-title">Datas, dias da semana e horários de oferecimento de cada turma.</p>
+		<input type="hidden" id="nlc" name="nlc" value="<?php echo $valuenlc; ?>">
 		<table>
 			<tr>
 				<th>Turma</th>
-				<th>Quantidade</th>
-				<th>Capacidade</th>
-				<th>Data</th>
+				<th>Vagas</th>
+				<th>Data Inicio</th>
+				<th>Data Fim</th>
 				<th>Dia da Semana</th>
 				<th>Horário</th>
 				<th>Instrutor</th>
 				<th>Carga Horária</th>
+				<th>Atuação</th>
 			</tr>
 			<tr class='linha1'>
-				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" maxlength="3" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" maxlength="3" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" oninput="filterChar(this.value,this)"></td>
-				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4"></td>
+				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
+				<td><input type="text" maxlength="3" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
+				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" onmouseover="addInputDate(this);" onmouseout="remInputDate(this);"></td>
+				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4" onmouseover="addInputDate(this);" onmouseout="remInputDate(this);"></td>
 				<td><input type="text" name="calendario5[]" value="<?php echo $value5; ?>" class="calendario5"></td>
 				<td><input type="text" name="calendario6[]" value="<?php echo $value6; ?>" class="calendario6"></td>
-				<td><input type="text" readonly="true" name="calendario7[]" value="<?php echo $value7; ?>" class="calendario7"></td>
-				<td><input type="text" readonly="true" name="calendario8[]" value="<?php echo $value8; ?>" class="calendario8"></td>
+				<td><input type="text" name="calendario7[]" value="<?php echo $value7; ?>" class="calendario7"></td>
+				<td><input type="text" name="calendario8[]" value="<?php echo $value8; ?>" class="calendario8" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
+				<td><select name="calendario9[]" class="calendario9">
+						<option hidden selected><?php echo $value9; ?></option>
+						<option>Instrutor</option>
+						<option>Tutor</option>
+						<option>Monitor</option>
+						<option>Conteudista Presencial</option>
+						<option>Conteudista Remoto Síncrono</option>
+						<option>Conteudista Remoto Assíncrono</option>
+					</select></td>
 			</tr>
-		</table>		
+		</table>
+		<i class='bx bxs-plus-square' onclick="criaLinhaC();"></i>
+		<i class='bx bxs-minus-square' onclick="apagaLinhaC();"></i>
 	</div>
 <?php }
 
@@ -484,8 +528,9 @@ function campo_local($post)
 {
 	$value = get_post_meta($post->ID, 'local', true);
 ?><div id="local">
-<h4 class="wp-heading-inline">2. LOCAL</h4><p class="post-sub-title">Indique a sala da EDUCORP, se presencial. Se remoto, indique o link para acesso ao conteúdo assíncrono e o link do google meet para acesso à sala virtual no encontro síncrono.</p>
-<textarea name="local" rows="5"><?php echo $value; ?></textarea>
+		<h4 class="wp-heading-inline">2. LOCAL</h4>
+		<p class="post-sub-title">Indique a sala da EDUCORP, se presencial. Se remoto, indique o link para acesso ao conteúdo assíncrono e o link do google meet para acesso à sala virtual no encontro síncrono.</p>
+		<textarea name="local" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -508,40 +553,70 @@ function campo_pagamento($post)
 	$proposta_input_name5 = get_option("proposta_input_name5");
 	$proposta_input_name6 = get_option("proposta_input_name6");
 
+	$value = get_post_meta($post->ID, 'personpagamento', true);
+	if ($value == 'on') {
+		$checked = "checked";
+	} else {
+		$checked = "";
+	}
+
 	$value1 = get_post_meta($post->ID, 'pagamento1', true);
 	$value2 = get_post_meta($post->ID, 'pagamento2', true);
 	$value3 = get_post_meta($post->ID, 'pagamento3', true);
 	$value4 = get_post_meta($post->ID, 'pagamento4', true);
-	$value5 = get_post_meta($post->ID, 'pagamento5', true);	
+	$value5 = get_post_meta($post->ID, 'pagamento5', true);
 	$total = get_post_meta($post->ID, 'total', true);
+
+	$pvalue1 = get_post_meta($post->ID, 'personpagamento1', true);
+	$pvalue2 = get_post_meta($post->ID, 'personpagamento2', true);
+	$pvalue3 = get_post_meta($post->ID, 'personpagamento3', true);
+	$pvalue4 = get_post_meta($post->ID, 'personpagamento4', true);
+	$pvalue5 = get_post_meta($post->ID, 'personpagamento5', true);
+	$pvalue6 = get_post_meta($post->ID, 'personpagamento6', true);
 
 ?>
 	<div id="pagamento">
-	<h1><b>IV. INFORMAÇÕES GERENCIAIS</b></h1>
-	<h4 class="wp-heading-inline">1. CONSOLIDAÇÃO PARA PAGAMENTO</h4><p class="post-sub-title">Não preencha, se for treinamento em serviço. Utilize IN 04/2020 para o cálculo do valor por tipo de atuação e totalize.</p>
-	<input type="hidden" id="proposta_input_name1" value="<?php echo $proposta_input_name1; ?>">
-	<input type="hidden" id="proposta_input_name2" value="<?php echo $proposta_input_name2; ?>">
-	<input type="hidden" id="proposta_input_name3" value="<?php echo $proposta_input_name3; ?>">
-	<input type="hidden" id="proposta_input_name4" value="<?php echo $proposta_input_name4; ?>">
-	<input type="hidden" id="proposta_input_name5" value="<?php echo $proposta_input_name5; ?>">
-	<input type="hidden" id="proposta_input_name6" value="<?php echo $proposta_input_name6; ?>">	
-	<table>
+		<h1><b>IV. INFORMAÇÕES GERENCIAIS</b></h1>
+		<h4 class="wp-heading-inline">1. CONSOLIDAÇÃO PARA PAGAMENTO</h4>
+		<p class="post-sub-title">Não preencha, se for treinamento em serviço. Utilize IN 04/2020 para o cálculo do valor por tipo de atuação e totalize.</p>
+		<input type="hidden" id="proposta_input_name1" value="<?php echo $proposta_input_name1; ?>">
+		<input type="hidden" id="proposta_input_name2" value="<?php echo $proposta_input_name2; ?>">
+		<input type="hidden" id="proposta_input_name3" value="<?php echo $proposta_input_name3; ?>">
+		<input type="hidden" id="proposta_input_name4" value="<?php echo $proposta_input_name4; ?>">
+		<input type="hidden" id="proposta_input_name5" value="<?php echo $proposta_input_name5; ?>">
+		<input type="hidden" id="proposta_input_name6" value="<?php echo $proposta_input_name6; ?>">
+
+		<label class="post-sob-title"><b>Personalizar Valores de Pagamento ?</b>
+			<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> /></label>
+		<br>
+		<div id="personal">
+			<br>
+			<label><input type="number" min="0" id="personpagamento1" name="personpagamento1" value="<?php echo $pvalue1; ?>" /><span> Instrutor</span></label><br>
+			<label><input type="number" min="0" id="personpagamento2" name="personpagamento2" value="<?php echo $pvalue2; ?>" /><span> Tutor</span></label><br>
+			<label><input type="number" min="0" id="personpagamento3" name="personpagamento3" value="<?php echo $pvalue3; ?>" /><span> Monitor</span></label><br>
+			<label><input type="number" min="0" id="personpagamento4" name="personpagamento4" value="<?php echo $pvalue4; ?>" /><span> Conteudista Presencial</span></label><br>
+			<label><input type="number" min="0" id="personpagamento5" name="personpagamento5" value="<?php echo $pvalue5; ?>" /><span> Conteudista Remoto Síncrono</span></label><br>
+			<label><input type="number" min="0" id="personpagamento6" name="personpagamento6" value="<?php echo $pvalue6; ?>" /><span> Conteudista Remoto Assíncrono</span></label><br>
+			<br>
+		</div>
+
+		<table>
 			<tr>
+				<th>Matricula</th>
 				<th>Nome</th>
-				<th>Dias</th>
 				<th>Atuação</th>
 				<th>Carga Horária</th>
-				<th>Valor (R$)</th>				
+				<th>Valor (R$)</th>
 			</tr>
 			<tr class='linha1'>
 				<td><input type="text" name="pagamento1[]" value="<?php echo $value1; ?>" class="pagamento1" readonly="true"></td>
-				<td><input type="text" maxlength="2" oninput="filterChar(this.value,this)" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2"></td>
+				<td><input type="text" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2" readonly="true"></td>
 				<td><input type="text" name="pagamento3[]" value="<?php echo $value3; ?>" class="pagamento3" readonly="true"></td>
-				<td><input type="text" maxlength="2" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
+				<td><input type="text" maxlength="2" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
 				<td><input type="text" name="pagamento5[]" value="<?php echo $value5; ?>" class="pagamento5" readonly="true"></td>
 			</tr>
 		</table>
-		<p class="total"><span>Total: </span><input readonly="true" name="total" type="text" id="total" value="<?php echo $total; ?>"></p>		
+		<p class="total"><span>Total: </span><input readonly="true" name="total" type="text" id="total" value="<?php echo $total; ?>"></p>
 	</div>
 <?php }
 
@@ -561,9 +636,9 @@ function campo_showpagamento($post)
 	} else {
 		$checked = "";
 	}
-?> <div id="showpagamento">		
+?> <div id="showpagamento">
 		<label class="post-sub-title"><b>Ativar a visualização do Pagamento?</b>
-		<input type="checkbox" name="showpagamento" <?php echo $checked; ?> /></label>
+			<input type="checkbox" name="showpagamento" <?php echo $checked; ?> /></label>
 	</div>
 <?php }
 
@@ -578,9 +653,9 @@ add_action('add_meta_boxes', 'campo_box_msgfinal');
 function campo_msgfinal($post)
 {
 ?><div id="msgfinal">
-<h1 class="wp-heading-inline"><b>&ensp;Concluído!</b></h1>
-<p class="post-sub-title">Ao clicar em <b>Publicar</b>, um e-mail será enviado ao Responsável.</p>
-</div>
+		<h1 class="wp-heading-inline"><b>&ensp;Concluído!</b></h1>
+		<p class="post-sub-title">Ao clicar em <b>Publicar</b>, um e-mail será enviado ao Responsável.</p>
+	</div>
 <?php }
 
 
@@ -608,9 +683,14 @@ function campo_submit()
 
 function salvar_no_postmeta($post_id)
 {
-	if (isset($_POST['ativado'])) {		
+	if (isset($_POST['eixo'])) {
+		$eixo = sanitize_text_field($_POST['eixo']);
+		update_post_meta($post_id, 'eixo', $eixo);
+	}
+
+	if (isset($_POST['ativado'])) {
 		update_post_meta($post_id, 'ativado', "on");
-	}else{
+	} else {
 		update_post_meta($post_id, 'ativado', "off");
 	}
 
@@ -699,6 +779,11 @@ function salvar_no_postmeta($post_id)
 		update_post_meta($post_id, 'cargatotal', $cargatotal);
 	}
 
+	if (isset($_POST['equipe0'])) {
+		$equipe0 = implode(',', $_POST['equipe0']);
+		update_post_meta($post_id, 'equipe0', $equipe0);
+	}
+
 	if (isset($_POST['equipe1'])) {
 		$equipe1 = implode(',', $_POST['equipe1']);
 		update_post_meta($post_id, 'equipe1', $equipe1);
@@ -763,10 +848,50 @@ function salvar_no_postmeta($post_id)
 		$calendario8 = implode(',', $_POST['calendario8']);
 		update_post_meta($post_id, 'calendario8', $calendario8);
 	}
+	if (isset($_POST['calendario9'])) {
+		$calendario9 = implode(',', $_POST['calendario9']);
+		update_post_meta($post_id, 'calendario9', $calendario9);
+	}
+	if (isset($_POST['nlc'])) {
+		$nlc = sanitize_text_field($_POST['nlc']);
+		update_post_meta($post_id, 'nlc', $nlc);
+	}
 	if (isset($_POST['local'])) {
 		$local = sanitize_text_field($_POST['local']);
 		update_post_meta($post_id, 'local', $local);
 	}
+	if (isset($_POST['personpagamento'])) {
+		update_post_meta($post_id, 'personpagamento', "on");
+	} else {
+		update_post_meta($post_id, 'personpagamento', "off");
+	}
+
+	if (isset($_POST['personpagamento1'])) {
+		$personpagamento1 = sanitize_text_field($_POST['personpagamento1']);
+		update_post_meta($post_id, 'personpagamento1', $personpagamento1);
+	}
+	if (isset($_POST['personpagamento2'])) {
+		$personpagamento2 = sanitize_text_field($_POST['personpagamento2']);
+		update_post_meta($post_id, 'personpagamento2', $personpagamento2);
+	}
+	if (isset($_POST['personpagamento3'])) {
+		$personpagamento3 = sanitize_text_field($_POST['personpagamento3']);
+		update_post_meta($post_id, 'personpagamento3', $personpagamento3);
+	}
+	if (isset($_POST['personpagamento4'])) {
+		$personpagamento4 = sanitize_text_field($_POST['personpagamento4']);
+		update_post_meta($post_id, 'personpagamento4', $personpagamento4);
+	}
+	if (isset($_POST['personpagamento5'])) {
+		$personpagamento5 = sanitize_text_field($_POST['personpagamento5']);
+		update_post_meta($post_id, 'personpagamento5', $personpagamento5);
+	}
+	if (isset($_POST['personpagamento6'])) {
+		$personpagamento6 = sanitize_text_field($_POST['personpagamento6']);
+		update_post_meta($post_id, 'personpagamento6', $personpagamento6);
+	}
+
+
 	if (isset($_POST['pagamento1'])) {
 		$pagamento1 = implode(',', $_POST['pagamento1']);
 		update_post_meta($post_id, 'pagamento1', $pagamento1);
@@ -791,9 +916,9 @@ function salvar_no_postmeta($post_id)
 		$total = sanitize_text_field($_POST['total']);
 		update_post_meta($post_id, 'total', $total);
 	}
-	if (isset($_POST['showpagamento'])) {		
+	if (isset($_POST['showpagamento'])) {
 		update_post_meta($post_id, 'showpagamento', "on");
-	}else{
+	} else {
 		update_post_meta($post_id, 'showpagamento', "off");
 	}
 }

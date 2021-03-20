@@ -137,6 +137,24 @@ p.retomada{
     width: 15.2em;
 }
 
+.tablepropostas{
+    display: block;
+    position: relative;
+    margin: 0 auto !important;
+    width: 80%;
+    border-spacing: 0;
+}
+.tablepropostas th{
+    background-color: #888;
+    color: #fff;
+}
+.tablepropostas th,
+.tablepropostas td{
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #555 !important;
+}
+
 
 #footer{
     background-color: #fff !important;

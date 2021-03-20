@@ -1,20 +1,20 @@
 /*conteudista DISPLAY CSS*/
 
 body {
-    background-color: #fff;    
+    background-color: #fff;
 }
 
-#back, #menu, #barra {  
-    top: 0px !important;    
+#back, #menu, #barra {
+    top: 0px !important;
 }
 
-#BlocoTab {  
+#BlocoTab {
     bottom: -30px !important;
     left: 30%;
 }
 
-#header{
-    top:20px !important;
+#header {
+    top: 20px !important;
     border-bottom: 1px solid #888;
 }
 
@@ -27,8 +27,16 @@ body {
     font-size: 22px !important;
 }
 
-#ativado, #conteudista{
-   opacity: 0;height: 1px !important;
+#ativado_id {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.1);
+    left: 90%;
+}
+
+#ativado, #conteudista {
+    opacity: 0;
+    height: 1px !important;
 }
 
 .mceu_28-body {
@@ -52,24 +60,23 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
     background-color: #fff !important;
 }
 
-#wpwrap{
+#wpwrap {
     display: block !important;
     position: relative !important;
-    margin: 0 auto !important;    
-    width: 80% !important; 
+    margin: 0 auto !important;
+    width: 80% !important;
     top: 30px !important;
     left: -100px !important;
 }
 
-#post-body{
-    width: 100% !important;  
+#post-body {
+    width: 100% !important;
 }
 
-#poststuff{
+#poststuff {
     display: block !important;
     position: relative !important;
     margin: 0 auto !important;
- 
 }
 
 @media(max-width:650px) {
@@ -82,7 +89,8 @@ html.wp-toolbar, #wpwrap, #wp-content-editor-tools {
 #wpadminbar, #adminmenuback, #adminmenuwrap, #show-settings-link, #contextual-help-link, #minor-publishing, .handle-actions.hide-if-no-js, #wpfooter, .postbox-header, #delete-action, .spinner, a.page-title-action, #edit-slug-box strong, #edit-slug-box #sample-permalink {
     display: none !important;
 }
-#msgfinal{
+
+#msgfinal {
     border: 1px solid #555;
     text-align: center;
 }
