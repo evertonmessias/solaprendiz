@@ -126,14 +126,9 @@ function apagaLinhaC() {
 }
 
 function atualizaValor(valor, linha, coluna) {
-	if (coluna == 1) {
-		$("#calendario table .linha" + linha + " .calendario7").val(valor);
-		$("#pagamento table .linha" + linha + " .pagamento1").val(valor);
-	}
-	if (coluna == 5) {
-		$("#calendario table .linha" + linha + " .calendario8").val(valor);
-		$("#pagamento table .linha" + linha + " .pagamento4").val(valor);
-	}
+	if (coluna == 0) $("#pagamento table .linha" + linha + " .pagamento1").val(valor);
+	if (coluna == 1) $("#pagamento table .linha" + linha + " .pagamento2").val(valor);
+	if (coluna == 5) $("#pagamento table .linha" + linha + " .pagamento4").val(valor);
 	if (coluna == 6) $("#pagamento table .linha" + linha + " .pagamento3").val(valor);
 }
 
