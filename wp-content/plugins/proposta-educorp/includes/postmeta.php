@@ -362,14 +362,14 @@ function campo_carga($post)
 ?>
 	<div id="carga">
 		<h4 class="wp-heading-inline">7. CARGA HORÁRIA DA CAPACITAÇÃO</h4>
-		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020.</p>
+		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020. Se não houver digite zero.</p>
 
 		<label><input type="number" min="0" max="999" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);">H&emsp;(a) Videoaula gravada</label><br>
 		<label><input type="number" min="0" max="999" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);">H&emsp;(b) Videos diversos</label><br>
 		<label><input type="number" min="0" max="999" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);">H&emsp;(c) Textos, artigos, capítulos de livros e similares</label><br>
 		<label><input type="number" min="0" max="999" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);">H&emsp;(d) Aulas síncronas ou presenciais</label><br>
 		<label><input type="number" min="0" max="999" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);">H&emsp;(e) Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
-		<label><input type="number" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">Hs&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO (3a+3b+2c+d+e)</label><br>
+		<label><input type="number" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">H&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO (3a+3b+2c+d+e)</label><br>
 
 	</div>
 <?php }
@@ -415,7 +415,7 @@ function campo_equipe($post)
 				<td><input type="text" name="equipe2[]" value="<?php echo $value2; ?>" class="equipe2"></td>
 				<td><input type="text" name="equipe3[]" value="<?php echo $value3; ?>" class="equipe3"></td>
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
-				<td><input oninput="atualizaValor(this.value,1,5);" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
+				<td><input oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
 						<option hidden selected><?php echo $value6; ?></option>
 						<option>Instrutor</option>
@@ -492,14 +492,14 @@ function campo_calendario($post)
 				<th>Atuação</th>
 			</tr>
 			<tr class='linha1'>
-				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
-				<td><input type="text" maxlength="3" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
-				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" onmouseover="addInputDate(this);" onmouseout="remInputDate(this);"></td>
-				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4" onmouseover="addInputDate(this);" onmouseout="remInputDate(this);"></td>
+				<td><input type="text" maxlength="2" name="calendario1[]" value="<?php echo $value1; ?>" class="calendario1" oninput="filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);"></td>
+				<td><input type="text" maxlength="3" name="calendario2[]" value="<?php echo $value2; ?>" class="calendario2" oninput="filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);"></td>
+				<td><input type="text" name="calendario3[]" value="<?php echo $value3; ?>" class="calendario3" onfocusin="addInputDate(this);" onfocusout="remInputDate(this);"></td>
+				<td><input type="text" name="calendario4[]" value="<?php echo $value4; ?>" class="calendario4" onfocusin="addInputDate(this);" onfocusout="remInputDate(this);"></td>
 				<td><input type="text" name="calendario5[]" value="<?php echo $value5; ?>" class="calendario5"></td>
 				<td><input type="text" name="calendario6[]" value="<?php echo $value6; ?>" class="calendario6"></td>
 				<td><input type="text" name="calendario7[]" value="<?php echo $value7; ?>" class="calendario7"></td>
-				<td><input type="text" name="calendario8[]" value="<?php echo $value8; ?>" class="calendario8" oninput="filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);"></td>
+				<td><input type="text" name="calendario8[]" value="<?php echo $value8; ?>" class="calendario8" oninput="filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);"></td>
 				<td><select name="calendario9[]" class="calendario9">
 						<option hidden selected><?php echo $value9; ?></option>
 						<option>Instrutor</option>
@@ -612,7 +612,7 @@ function campo_pagamento($post)
 				<td><input type="text" name="pagamento1[]" value="<?php echo $value1; ?>" class="pagamento1" readonly="true"></td>
 				<td><input type="text" name="pagamento2[]" value="<?php echo $value2; ?>" class="pagamento2" readonly="true"></td>
 				<td><input type="text" name="pagamento3[]" value="<?php echo $value3; ?>" class="pagamento3" readonly="true"></td>
-				<td><input type="text" maxlength="2" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" onmouseover="addInputNumber(this);" onmouseout="remInputNumber(this);" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
+				<td><input type="text" maxlength="2" oninput="valorAtuacao(this.value,1);filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);" name="pagamento4[]" value="<?php echo $value4; ?>" class="pagamento4"></td>
 				<td><input type="text" name="pagamento5[]" value="<?php echo $value5; ?>" class="pagamento5" readonly="true"></td>
 			</tr>
 		</table>

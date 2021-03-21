@@ -155,6 +155,7 @@ if (is_user_logged_in()) {
                   <fieldset>
                      <legend>8. EQUIPE DA CAPACITAÇÃO</legend>
                      <?php
+                     $equipe0 = explode(",", get_post_meta(get_the_ID(), 'equipe0', true));
                      $equipe1 = explode(",", get_post_meta(get_the_ID(), 'equipe1', true));
                      $equipe2 = explode(",", get_post_meta(get_the_ID(), 'equipe2', true));
                      $equipe3 = explode(",", get_post_meta(get_the_ID(), 'equipe3', true));
@@ -166,6 +167,7 @@ if (is_user_logged_in()) {
                      ?>
                      <table class="equipe">
                         <tr>
+                           <th><strong>Matrícula: </strong></th>
                            <th><strong>Nome Completo: </strong></th>
                            <th><strong>Superior imediato: </strong></th>
                            <th><strong>Unidade/Depto: </strong></th>
@@ -176,6 +178,7 @@ if (is_user_logged_in()) {
                         <?php for ($i = 0; $i < $nl; $i++) {
                         ?>
                            <tr>
+                              <td><?php echo $equipe0[$i]; ?></td>
                               <td><?php echo $equipe1[$i]; ?></td>
                               <td><?php echo $equipe2[$i]; ?></td>
                               <td><?php echo $equipe3[$i]; ?></td>
@@ -206,21 +209,23 @@ if (is_user_logged_in()) {
                      $calendario6 = explode(",", get_post_meta(get_the_ID(), 'calendario6', true));
                      $calendario7 = explode(",", get_post_meta(get_the_ID(), 'calendario7', true));
                      $calendario8 = explode(",", get_post_meta(get_the_ID(), 'calendario8', true));
+                     $calendario9 = explode(",", get_post_meta(get_the_ID(), 'calendario9', true));
 
-                     $nl = get_post_meta(get_the_ID(), 'nl', true);
+                     $nlc = get_post_meta(get_the_ID(), 'nlc', true);
                      ?>
                      <table class="calendario">
                         <tr>
                            <th><strong>Turma: </strong></th>
-                           <th><strong>Quantidade: </strong></th>
-                           <th><strong>Capacidade: </strong></th>
-                           <th><strong>Data: </strong></th>
+                           <th><strong>Vagas: </strong></th>
+                           <th><strong>Data Inicio: </strong></th>
+                           <th><strong>Data Fim: </strong></th>
                            <th><strong>Dia da Semana: </strong></th>
                            <th><strong>Horário: </strong></th>
                            <th><strong>Instrutor: </strong></th>
                            <th><strong>Carga Horária: </strong></th>
+                           <th><strong>Atuação: </strong></th>
                         </tr>
-                        <?php for ($i = 0; $i < $nl; $i++) {
+                        <?php for ($i = 0; $i < $nlc; $i++) {
                         ?>
                            <tr>
                               <td><?php echo $calendario1[$i]; ?></td>
@@ -231,6 +236,7 @@ if (is_user_logged_in()) {
                               <td><?php echo $calendario6[$i]; ?></td>
                               <td><?php echo $calendario7[$i]; ?></td>
                               <td><?php echo $calendario8[$i]; ?></td>
+                              <td><?php echo $calendario9[$i]; ?></td>
                            </tr>
                         <?php } ?>
                      </table>
@@ -258,8 +264,8 @@ if (is_user_logged_in()) {
                         ?>
                         <table class="pagamento">
                            <tr>
+                              <th><strong>Matrícula: </strong></th>
                               <th><strong>Nome Completo: </strong></th>
-                              <th><strong>Dias: </strong></th>
                               <th><strong>Atuação: </strong></th>
                               <th><strong>Carga horária: </strong></th>
                               <th><strong>Valor (R$): </strong></th>

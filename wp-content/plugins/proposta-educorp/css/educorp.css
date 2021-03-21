@@ -151,7 +151,7 @@
 
 /*config display proposta*/
 
-textarea, #titlediv input, input[type=radio], input[type=checkbox], .btn-group button {
+textarea, #titlediv input, input[type=checkbox], .btn-group button {
     border-radius: 0;
 }
 
@@ -318,7 +318,7 @@ input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-clear
 input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     left: 60%;
-    transform: scale(1.5);
+    transform: scale(1.4);
 }
 
 #pagamento {

@@ -1,5 +1,7 @@
 /*EVERTON JS*/
 
+//Funções externas ao onload
+
 //calcula o valor total da carga horária   ***************************************************************
 function calcularcarga() {
 	var carga1 = document.querySelector("#carga #carga1");
@@ -15,7 +17,7 @@ function calcularcarga() {
 	}
 }
 
-//add & remove InputDate
+//add & remove InputNumber
 function addInputNumber(campo) {
 	campo.setAttribute('type', 'number');
 	campo.setAttribute('min', '0');
@@ -33,11 +35,13 @@ function addInputDate(campo) {
 	campo.setAttribute('type', 'date');
 }
 function remInputDate(campo) {
-	campo.setAttribute('type', 'text');
-	campo.value = campo.value.split('-').reverse().join('/');
+	//setTimeout(() => {
+		campo.setAttribute('type', 'text');
+		campo.value = campo.value.split('-').reverse().join('/');
+	//}, 1000);
 }
 
-// cria e apaga linhas na EQUIPE   **********************************************************************
+// Botão cria e apaga linhas na EQUIPE   **********************************************************************
 function criaLinha() {
 	var nl = $("#nl").val()
 	nl++;
@@ -47,14 +51,14 @@ function criaLinha() {
 	$("#equipe table .linha" + nl + " td .equipe2").val("");
 	$("#equipe table .linha" + nl + " td .equipe3").val("");
 	$("#equipe table .linha" + nl + " td .equipe4").val("");
-	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',5);filterChar(this.value,this)').attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+	$("#equipe table .linha" + nl + " td .equipe5").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',5);filterChar(this.value,this)').attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 	$("#equipe table .linha" + nl + " td .equipe6").val("").attr('oninput', 'atualizaValor(this.value,' + nl + ',6)');
 
 	$("#pagamento table .linha1").clone().attr('class', 'linha' + nl).appendTo("#pagamento table");
 	$("#pagamento table .linha" + nl + " td .pagamento1").val("");
 	$("#pagamento table .linha" + nl + " td .pagamento2").val("");
 	$("#pagamento table .linha" + nl + " td .pagamento3").val("");
-	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput", "valorAtuacao(this.value," + nl + ");filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+	$("#pagamento table .linha" + nl + " td .pagamento4").val("").attr("oninput", "valorAtuacao(this.value," + nl + ");filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 	$("#pagamento table .linha" + nl + " td .pagamento5").val("");
 
 	$("#nl").val(nl);
@@ -83,20 +87,20 @@ function apagaLinha() {
 	}
 }
 
-// cria e apaga linhas na CALENDARIO   **********************************************************************
+// Botão cria e apaga linhas no CALENDARIO   **********************************************************************
 function criaLinhaC() {
 	var nlc = $("#nlc").val()
 	nlc++;
 
 	$("#calendario table .linha1").clone().attr('class', 'linha' + nlc).appendTo("#calendario table");
-	$("#calendario table .linha" + nlc + " td .calendario1").val("").attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
-	$("#calendario table .linha" + nlc + " td .calendario2").val("").attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
-	$("#calendario table .linha" + nlc + " td .calendario3").val("").attr("onmouseover", "addInputDate(this)").attr("onmouseout", "remInputDate(this)");
-	$("#calendario table .linha" + nlc + " td .calendario4").val("").attr("onmouseover", "addInputDate(this)").attr("onmouseout", "remInputDate(this)");
+	$("#calendario table .linha" + nlc + " td .calendario1").val("").attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
+	$("#calendario table .linha" + nlc + " td .calendario2").val("").attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
+	$("#calendario table .linha" + nlc + " td .calendario3").val("").attr("onfocusin", "addInputDate(this)").attr("onfocusout", "remInputDate(this)");
+	$("#calendario table .linha" + nlc + " td .calendario4").val("").attr("onfocusin", "addInputDate(this)").attr("onfocusout", "remInputDate(this)");
 	$("#calendario table .linha" + nlc + " td .calendario5").val("");
 	$("#calendario table .linha" + nlc + " td .calendario6").val("");
 	$("#calendario table .linha" + nlc + " td .calendario7").val("");
-	$("#calendario table .linha" + nlc + " td .calendario8").val("").attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+	$("#calendario table .linha" + nlc + " td .calendario8").val("").attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 	$("#calendario table .linha" + nlc + " td .calendario9").val("");
 
 	$("#nlc").val(nlc);
@@ -191,7 +195,16 @@ function personalPag(campo) {
 	}
 }
 
-window.onload = function () {  //onload **********************************
+
+
+
+//ONLOAD ***********************************************************************
+
+
+
+
+
+window.onload = function () {
 
 	function Razao(altura) {
 		var largura = $(document).width();
@@ -260,7 +273,7 @@ window.onload = function () {  //onload **********************************
 		$("#equipe table .linha" + lin + " .equipe2").val(equipe2[ind]);
 		$("#equipe table .linha" + lin + " .equipe3").val(equipe3[ind]);
 		$("#equipe table .linha" + lin + " .equipe4").val(equipe4[ind]);
-		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',5);').attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+		$("#equipe table .linha" + lin + " .equipe5").val(equipe5[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',5);filterChar(this.value,this)').attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 		$("#equipe table .linha" + lin + " .equipe6").val(equipe6[ind]).attr('oninput', 'atualizaValor(this.value,' + lin + ',6)');
 		ind++;
 	}
@@ -291,14 +304,14 @@ window.onload = function () {  //onload **********************************
 	while (nlc > ind) {
 		var lin = ind + 1;
 		$("#calendario table .linha1").clone().attr('class', 'linha' + lin).appendTo("#calendario table");
-		$("#calendario table .linha" + lin + " .calendario1").val(calendario1[ind]).attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
-		$("#calendario table .linha" + lin + " .calendario2").val(calendario2[ind]).attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
-		$("#calendario table .linha" + lin + " .calendario3").val(calendario3[ind].split('-').reverse().join('/')).attr("onmouseover", "addInputDate(this)").attr("onmouseout", "remInputDate(this)");
-		$("#calendario table .linha" + lin + " .calendario4").val(calendario4[ind].split('-').reverse().join('/')).attr("onmouseover", "addInputDate(this)").attr("onmouseout", "remInputDate(this)");
+		$("#calendario table .linha" + lin + " .calendario1").val(calendario1[ind]).attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
+		$("#calendario table .linha" + lin + " .calendario2").val(calendario2[ind]).attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
+		$("#calendario table .linha" + lin + " .calendario3").val(calendario3[ind].split('-').reverse().join('/')).attr("onfocusin", "addInputDate(this)").attr("onfocusout", "remInputDate(this)");
+		$("#calendario table .linha" + lin + " .calendario4").val(calendario4[ind].split('-').reverse().join('/')).attr("onfocusin", "addInputDate(this)").attr("onfocusout", "remInputDate(this)");
 		$("#calendario table .linha" + lin + " .calendario5").val(calendario5[ind]);
 		$("#calendario table .linha" + lin + " .calendario6").val(calendario6[ind]);
 		$("#calendario table .linha" + lin + " .calendario7").val(calendario7[ind]);
-		$("#calendario table .linha" + lin + " .calendario8").val(calendario8[ind]).attr("oninput", "filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+		$("#calendario table .linha" + lin + " .calendario8").val(calendario8[ind]).attr("oninput", "filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 		$("#calendario table .linha" + lin + " .calendario9").val(calendario9[ind]);
 
 		ind++;
@@ -334,7 +347,7 @@ window.onload = function () {  //onload **********************************
 		$("#pagamento table .linha" + lin + " .pagamento1").val(pagamento1[ind]);
 		$("#pagamento table .linha" + lin + " .pagamento2").val(pagamento2[ind]);
 		$("#pagamento table .linha" + lin + " .pagamento3").val(pagamento3[ind]);
-		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput", "valorAtuacao(this.value," + lin + ");filterChar(this.value,this)").attr("onmouseover", "addInputNumber(this)").attr("onmouseout", "remInputNumber(this)");
+		$("#pagamento table .linha" + lin + " .pagamento4").val(pagamento4[ind]).attr("oninput", "valorAtuacao(this.value," + lin + ");filterChar(this.value,this)").attr("onfocusin", "addInputNumber(this)").attr("onfocusout", "remInputNumber(this)");
 		$("#pagamento table .linha" + lin + " .pagamento5").val(pagamento5[ind]);
 		ind++;
 	}
@@ -354,6 +367,7 @@ window.onload = function () {  //onload **********************************
 			var equipe4 = $("#equipe .linha1 .equipe4").val();
 			var equipe5 = $("#equipe .linha1 .equipe5").val();
 			var equipe6 = $("#equipe .linha1 .equipe6").val();
+			var equipe7 = $("#equipe .linha1 .equipe7").val();
 			var bibliografia = $("#bibliografia textarea").val();
 
 			/*
@@ -366,7 +380,7 @@ window.onload = function () {  //onload **********************************
 			console.log("Biblio " + bibliografia);
 			*/
 
-			if (ementa == "" || conteudo == "" || metodologia == "" || avaliacao == "" || criterios == "" || equipe1 == "" || equipe2 == "" || equipe3 == "" || equipe4 == "" || equipe5 == "" || equipe6 == "" || bibliografia == "") {
+			if (ementa == "" || conteudo == "" || metodologia == "" || avaliacao == "" || criterios == "" || equipe1 == "" || equipe2 == "" || equipe3 == "" || equipe4 == "" || equipe5 == "" || equipe6 == "" || equipe7 == "" || bibliografia == "") {
 				return 0;
 			} else {
 				return 1;
@@ -380,12 +394,13 @@ window.onload = function () {  //onload **********************************
 			var calendario6 = $("#calendario .linha1 .calendario6").val();
 			var calendario7 = $("#calendario .linha1 .calendario7").val();
 			var calendario8 = $("#calendario .linha1 .calendario8").val();
+			var calendario9 = $("#calendario .linha1 .calendario9").val();
 			var local = $("#local textarea").val();
 
 			//console.log("Calendario " + calendario1+" "+calendario2+" "+calendario3+" "+calendario4+" "+calendario5+" "+calendario6+" "+calendario7+" "+calendario8);
 			//console.log("Local " + local);
 
-			if (local == "" || calendario1 == "" || calendario2 == "" || calendario3 == "" || calendario4 == "" || calendario5 == "" || calendario6 == "" || calendario7 == "" || calendario8 == "") {
+			if (local == "" || calendario1 == "" || calendario2 == "" || calendario3 == "" || calendario4 == "" || calendario5 == "" || calendario6 == "" || calendario7 == "" || calendario8 == "" || calendario9 == "") {
 				return 0;
 			} else {
 				return 1;
