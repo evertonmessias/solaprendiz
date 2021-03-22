@@ -60,8 +60,9 @@ function campo_contexto($post)
 ?>
 	<div id="contexto">
 		<h4 class="wp-heading-inline">2. ANÁLISE CONTEXTUAL</h4>
-		<p class="post-sub-title">Contextualize detalhadamente o cenário na Unicamp que justifica o oferecimento da capacitação, inclusive indicando legislação regulamentadora do assunto, quando couber.</p>
-		<textarea name="contexto" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Contextualize detalhadamente o cenário na Unicamp que justifica o oferecimento da capacitação, inclusive indicando legislação regulamentadora do assunto, quando couber.<br>
+		(máx. 1500 caracteres)</p>
+		<textarea maxlength="1500" name="contexto" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -121,9 +122,9 @@ function campo_capacitacao($post)
 ?>
 	<div id="capacitacao">
 		<h4 class="wp-heading-inline">4. OBJETIVOS DA CAPACITAÇÃO</h4>
-		<p class="post-sub-title">Explicite quais as necessidades específicas do negócio serão atendidas com essa capacitação.</p>
-
-		<textarea name="capacitacao" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Explicite quais as necessidades específicas do negócio serão atendidas com essa capacitação.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="capacitacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -140,9 +141,9 @@ function campo_publico($post)
 	$value = get_post_meta($post->ID, 'publico', true);
 ?><div id="publico">
 		<h4 class="wp-heading-inline">5. PÚBLICO-ALVO</h4>
-		<p class="post-sub-title">Detalhe o público alvo que deverá participar da capacitação, indicando local/área/processos de trabalho, nível de decisão (ingressante no processo, experiente, gerente) e outras informações que caracterizem bem esse público, indicando a quantidade estimada de todo público a ser treinado. Esta informação é importante para divulgação e priorização das inscrições nas turmas.</p>
-
-		<textarea name="publico" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Detalhe o público alvo que deverá participar da capacitação, indicando local/área/processos de trabalho, nível de decisão (ingressante no processo, experiente, gerente) e outras informações que caracterizem bem esse público, indicando a quantidade estimada de todo público a ser treinado. Esta informação é importante para divulgação e priorização das inscrições nas turmas.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="publico" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -159,8 +160,9 @@ function campo_estimativa($post)
 	$value = get_post_meta($post->ID, 'estimativa', true);
 ?><div id="estimativa">
 		<h4 class="wp-heading-inline">6. ESTIMATIVA DE QUANTIDADE DE PÚBLICO-ALVO</h4>
-		<p class="post-sub-title">Dimensione a quantidade total de pessoas na UNICAMP que necessita dessa capacitação.</p>
-		<textarea name="estimativa" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Dimensione a quantidade total de pessoas na UNICAMP que necessita dessa capacitação.<br>
+		(máx. 50 caracteres)</p>
+		<textarea maxlength="50" name="estimativa" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -176,9 +178,9 @@ function campo_aplicacao($post)
 	$value = get_post_meta($post->ID, 'aplicacao', true);
 ?><div id="aplicacao">
 		<h4 class="wp-heading-inline">7. APLICAÇÃO</h4>
-		<p class="post-sub-title">Indique o que os participantes farão diferentemente e melhor nos seus locais de trabalho após vivenciarem essa capacitação.</p>
-
-		<textarea name="aplicacao" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Indique o que os participantes farão diferentemente e melhor nos seus locais de trabalho após vivenciarem essa capacitação.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="aplicacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -234,8 +236,9 @@ function campo_ementa($post)
 ?><div id="ementa">
 		<h1><b>II. CARACTERIZAÇÃO DO CURSO</b></h1>
 		<h4 class="wp-heading-inline">1. EMENTA</h4>
-		<p class="post-sub-title">Resumo dos principais temas/tópicos/disciplinas que caracterizam o curso.</p>
-		<textarea name="ementa" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Resumo dos principais temas/tópicos/disciplinas que caracterizam o curso.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="ementa" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -252,8 +255,9 @@ function campo_conteudo($post)
 	$value = get_post_meta($post->ID, 'conteudo', true);
 ?><div id="conteudo">
 		<h4 class="wp-heading-inline">2. CONTEÚDO PROGRAMÁTICO</h4>
-		<p class="post-sub-title">Desdobramento da ementa, explicitando o conteúdo a ser abordado, dividindo-o em aulas.</p>
-		<textarea name="conteudo" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Desdobramento da ementa, explicitando o conteúdo a ser abordado, dividindo-o em aulas.<br>
+		(máx. 2000 caracteres)</p>
+		<textarea maxlength="2000" name="conteudo" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -300,8 +304,9 @@ function campo_metodologia($post)
 	$value = get_post_meta($post->ID, 'metodologia', true);
 ?><div id="metodologia">
 		<h4 class="wp-heading-inline">4. METODOLOGIA/ESTRATÉGIAS DE APRENDIZAGEM</h4>
-		<p class="post-sub-title">Explicite quais as técnicas, métodos e ferramentas que utilizará nas aulas, para estimular e promover o aprendizado do conteúdo nos alunos.</p>
-		<textarea name="metodologia" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Explicite quais as técnicas, métodos e ferramentas que utilizará nas aulas, para estimular e promover o aprendizado do conteúdo nos alunos.<br>
+		(máx. 1000 caracteres)</p>
+		<textarea maxlength="1000" name="metodologia" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -318,8 +323,9 @@ function campo_avaliacao($post)
 	$value = get_post_meta($post->ID, 'avaliacao', true);
 ?><div id="avaliacao">
 		<h4 class="wp-heading-inline">5. AVALIAÇÃO DE APRENDIZAGEM</h4>
-		<p class="post-sub-title">Indique como realizará a avaliação de aprendizagem e a partir de qual instrumento aplicado saberá que o aluno aprendeu o conteúdo do curso.</p>
-		<textarea name="avaliacao" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Indique como realizará a avaliação de aprendizagem e a partir de qual instrumento aplicado saberá que o aluno aprendeu o conteúdo do curso.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="avaliacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -336,8 +342,9 @@ function campo_criterios($post)
 	$value = get_post_meta($post->ID, 'criterios', true);
 ?><div id="criterios">
 		<h4 class="wp-heading-inline">6. CRITÉRIOS PARA APROVAÇÃO</h4>
-		<p class="post-sub-title">Informe aqui qual a nota, conceito ou requisito que o aluno precisará atingir para ser considerado aprovado. Não indique frequência, que é requisito obrigatório da Escola e não se refere ao aprendizado do aluno.</p>
-		<textarea name="criterios" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Informe aqui qual a nota, conceito ou requisito que o aluno precisará atingir para ser considerado aprovado. Não indique frequência, que é requisito obrigatório da Escola e não se refere ao aprendizado do aluno.<br>
+		(máx. 600 caracteres)</p>
+		<textarea maxlength="600" name="criterios" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -445,8 +452,9 @@ function campo_bibliografia($post)
 	$value = get_post_meta($post->ID, 'bibliografia', true);
 ?><div id="bibliografia">
 		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA</h4>
-		<p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.</p>
-		<textarea name="bibliografia" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.<br>
+		(máx. 2000 caracteres)</p>
+		<textarea maxlength="2000" name="bibliografia" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 
@@ -529,8 +537,9 @@ function campo_local($post)
 	$value = get_post_meta($post->ID, 'local', true);
 ?><div id="local">
 		<h4 class="wp-heading-inline">2. LOCAL</h4>
-		<p class="post-sub-title">Indique a sala da EDUCORP, se presencial. Se remoto, indique o link para acesso ao conteúdo assíncrono e o link do google meet para acesso à sala virtual no encontro síncrono.</p>
-		<textarea name="local" rows="5"><?php echo $value; ?></textarea>
+		<p class="post-sub-title">Indique a sala da EDUCORP, se presencial. Se remoto, indique o link para acesso ao conteúdo assíncrono e o link do google meet para acesso à sala virtual no encontro síncrono.<br>
+		(máx. 100 caracteres)</p>
+		<textarea maxlength="100" name="local" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
 

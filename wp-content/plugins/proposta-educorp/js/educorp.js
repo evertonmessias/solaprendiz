@@ -11,7 +11,7 @@ function calcularcarga() {
 	var carga5 = document.querySelector("#carga #carga5");
 	var cargatotal = document.querySelector("#carga #cargatotal");
 	if (carga1.value != "" && carga2.value != "" && carga3.value != "" && carga4.value != "" && carga5.value != "") {
-		cargatotal.value = (parseFloat(carga1.value) * 3) + (parseFloat(carga2.value) * 3) + (parseFloat(carga3.value) * 2) + parseFloat(carga4.value) + parseFloat(carga5.value);
+		cargatotal.value = (parseFloat(carga1.value) * 2) + (parseFloat(carga2.value) * 2) + (parseFloat(carga3.value) * 3) + parseFloat(carga4.value) + parseFloat(carga5.value);
 	} else {
 		cargatotal.value = 0;
 	}
