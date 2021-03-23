@@ -9,7 +9,7 @@ function proposta_page_relatorios(){ ?>
                 <th>Proposta</th>
                 <th>Data</th>
                 <th>Equipe</th>
-                <th>Total (R$)</th>
+                <th>Total</th>
             </tr>
             <?php
             $lastupdated_args = array(
@@ -20,21 +20,21 @@ function proposta_page_relatorios(){ ?>
             $lastupdated_loop = new WP_Query($lastupdated_args);
             $totalgeral = 0;
             while ($lastupdated_loop->have_posts()) : $lastupdated_loop->the_post();
-                $pagamento1 = get_post_meta(get_the_ID(), 'pagamento1', true);
-                $total = get_post_meta(get_the_ID(), 'total', true);
+                $pagamento2 = get_post_meta(get_the_ID(), 'pagamento2', true);
+                $total = get_post_meta(get_the_ID(), 'total', true);               
             ?>
                 <tr>
                     <td><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a></td>
                     <td><?php echo get_the_date('d/m/Y'); ?></td>
-                    <td><?php echo $pagamento1; ?></td>
-                    <td><?php echo $total;
-                        $totalgeral = $totalgeral + $total ?></td>
+                    <td><?php echo $pagamento2; ?></td>
+                    <td><?php echo "R$ ".$total.",00";
+                    $totalgeral = $totalgeral + $total ?></td>
                 </tr>
             <?php endwhile;
             wp_reset_postdata(); ?>
             <tr>
                 <td style="text-align: right;" colspan="3"><b>TOTAL GERAL:&emsp;</b></td>
-                <td><?php echo $totalgeral ?></td>
+                <td><?php echo "R$ ".$totalgeral.",00" ?></td>
             </tr>
         </table>
     </div>

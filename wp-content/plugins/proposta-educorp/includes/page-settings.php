@@ -8,12 +8,15 @@ function proposta_page_html()
 		<h3>Valor da hora por tipo de Atuação, em R$</h3>
 		<form method="post" action="options.php">
 			<?php settings_fields('proposta_option_grupo'); ?>
-			<label><span>Instrutor: </span><input type="number" min="0" id="proposta_input_name1" name="proposta_input_name1" value="<?php echo get_option('proposta_input_name1'); ?>" /></label><br>
-			<label><span>Tutor: </span><input type="number" min="0" id="proposta_input_name2" name="proposta_input_name2" value="<?php echo get_option('proposta_input_name2'); ?>" /></label><br>
-			<label><span>Monitor: </span><input type="number" min="0" id="proposta_input_name3" name="proposta_input_name3" value="<?php echo get_option('proposta_input_name3'); ?>" /></label><br>
-			<label><span>Conteudista Presencial: </span><input type="number" min="0" id="proposta_input_name4" name="proposta_input_name4" value="<?php echo get_option('proposta_input_name4'); ?>" /></label><br>
-			<label><span>Conteudista Remoto Síncrono: </span><input type="number" min="0" id="proposta_input_name5" name="proposta_input_name5" value="<?php echo get_option('proposta_input_name5'); ?>" /></label><br>
-			<label><span>Conteudista Remoto Assíncrono:</span><input type="number" min="0" id="proposta_input_name6" name="proposta_input_name6" value="<?php echo get_option('proposta_input_name6'); ?>" /></label><br>
+			<label><input type="number" min="0" id="proposta_input_name1" name="proposta_input_name1" value="<?php echo get_option('proposta_input_name1'); ?>" /><span> Instrutor</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name2" name="proposta_input_name2" value="<?php echo get_option('proposta_input_name2'); ?>" /><span> Orientador</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name3" name="proposta_input_name3" value="<?php echo get_option('proposta_input_name3'); ?>" /><span> Tutor</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name4" name="proposta_input_name4" value="<?php echo get_option('proposta_input_name4'); ?>" /><span> Multiplicador</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name5" name="proposta_input_name5" value="<?php echo get_option('proposta_input_name5'); ?>" /><span> Facilitador</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name6" name="proposta_input_name6" value="<?php echo get_option('proposta_input_name6'); ?>" /><span> Monitor</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name7" name="proposta_input_name7" value="<?php echo get_option('proposta_input_name7'); ?>" /><span> Conteudista Presencial</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name8" name="proposta_input_name8" value="<?php echo get_option('proposta_input_name8'); ?>" /><span> Conteudista Remoto Síncrono</span></label><br><br>
+			<label><input type="number" min="0" id="proposta_input_name9" name="proposta_input_name9" value="<?php echo get_option('proposta_input_name9'); ?>" /><span> Conteudista Remoto Assíncrono</span></label><br><br>
 			<?php submit_button(); ?>
 		</form>
 	</div>
@@ -68,3 +71,24 @@ function proposta_settings6()
 	register_setting('proposta_option_grupo', 'proposta_input_name6');
 }
 add_action('admin_init', 'proposta_settings6');
+
+function proposta_settings7()
+{
+	add_option('proposta_input_name7');
+	register_setting('proposta_option_grupo', 'proposta_input_name7');
+}
+add_action('admin_init', 'proposta_settings7');
+
+function proposta_settings8()
+{
+	add_option('proposta_input_name8');
+	register_setting('proposta_option_grupo', 'proposta_input_name8');
+}
+add_action('admin_init', 'proposta_settings8');
+
+function proposta_settings9()
+{
+	add_option('proposta_input_name9');
+	register_setting('proposta_option_grupo', 'proposta_input_name9');
+}
+add_action('admin_init', 'proposta_settings9');

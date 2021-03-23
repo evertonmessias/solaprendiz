@@ -140,6 +140,9 @@ function valorAtuacao(valor, linha) {
 		var proposta_input_name4 = $("#personpagamento4").val();
 		var proposta_input_name5 = $("#personpagamento5").val();
 		var proposta_input_name6 = $("#personpagamento6").val();
+		var proposta_input_name7 = $("#personpagamento7").val();
+		var proposta_input_name8 = $("#personpagamento8").val();
+		var proposta_input_name9 = $("#personpagamento9").val();
 	} else {
 		var proposta_input_name1 = $("#proposta_input_name1").val();
 		var proposta_input_name2 = $("#proposta_input_name2").val();
@@ -147,6 +150,9 @@ function valorAtuacao(valor, linha) {
 		var proposta_input_name4 = $("#proposta_input_name4").val();
 		var proposta_input_name5 = $("#proposta_input_name5").val();
 		var proposta_input_name6 = $("#proposta_input_name6").val();
+		var proposta_input_name7 = $("#proposta_input_name7").val();
+		var proposta_input_name8 = $("#proposta_input_name8").val();
+		var proposta_input_name9 = $("#proposta_input_name9").val();
 	}
 
 	var atuacao = $("#pagamento table .linha" + linha + " .pagamento3").val();
@@ -154,11 +160,14 @@ function valorAtuacao(valor, linha) {
 	var ValorAtuac;
 
 	if (atuacao == "Instrutor") ValorAtuac = proposta_input_name1;
-	if (atuacao == "Tutor") ValorAtuac = proposta_input_name2;
-	if (atuacao == "Monitor") ValorAtuac = proposta_input_name3;
-	if (atuacao == "Conteudista Presencial") ValorAtuac = proposta_input_name4;
-	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = proposta_input_name5;
-	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = proposta_input_name6;
+	if (atuacao == "Orientador") ValorAtuac = proposta_input_name2;
+	if (atuacao == "Tutor") ValorAtuac = proposta_input_name3;
+	if (atuacao == "Multiplicador") ValorAtuac = proposta_input_name4;
+	if (atuacao == "Facilitador") ValorAtuac = proposta_input_name5;
+	if (atuacao == "Monitor") ValorAtuac = proposta_input_name6;	
+	if (atuacao == "Conteudista Presencial") ValorAtuac = proposta_input_name7;
+	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = proposta_input_name8;
+	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = proposta_input_name9;
 
 	$("#pagamento table .linha" + linha + " .pagamento5").val(valor * ValorAtuac);
 
@@ -170,6 +179,7 @@ function valorAtuacao(valor, linha) {
 		valorx = $("#pagamento table .linha" + i + " .pagamento5").val() * 1;
 		somatorio = somatorio + valorx;
 	}
+	//somatorio = somatorio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 	$("#pagamento #total").val(somatorio);
 }
 

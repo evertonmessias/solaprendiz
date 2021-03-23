@@ -13,9 +13,8 @@
     top:25px
 }
 
-.settings form input {
-    display: block;
-    position: relative;
+.settings form input[type=number] {
+    width: 70px;
 }
 .relatorios table{
     display: block;

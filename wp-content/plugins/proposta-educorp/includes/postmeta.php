@@ -424,9 +424,12 @@ function campo_equipe($post)
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
 				<td><input oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
-						<option hidden selected><?php echo $value6; ?></option>
+						<option hidden selected><?php echo $value6; ?></option>						
 						<option>Instrutor</option>
+						<option>Orientador</option>
 						<option>Tutor</option>
+						<option>Multiplicador</option>
+						<option>Facilitador</option>
 						<option>Monitor</option>
 						<option>Conteudista Presencial</option>
 						<option>Conteudista Remoto Síncrono</option>
@@ -561,6 +564,9 @@ function campo_pagamento($post)
 	$proposta_input_name4 = get_option("proposta_input_name4");
 	$proposta_input_name5 = get_option("proposta_input_name5");
 	$proposta_input_name6 = get_option("proposta_input_name6");
+	$proposta_input_name7 = get_option("proposta_input_name7");
+	$proposta_input_name8 = get_option("proposta_input_name8");
+	$proposta_input_name9 = get_option("proposta_input_name9");
 
 	$value = get_post_meta($post->ID, 'personpagamento', true);
 	if ($value == 'on') {
@@ -582,6 +588,9 @@ function campo_pagamento($post)
 	$pvalue4 = get_post_meta($post->ID, 'personpagamento4', true);
 	$pvalue5 = get_post_meta($post->ID, 'personpagamento5', true);
 	$pvalue6 = get_post_meta($post->ID, 'personpagamento6', true);
+	$pvalue7 = get_post_meta($post->ID, 'personpagamento7', true);
+	$pvalue8 = get_post_meta($post->ID, 'personpagamento8', true);
+	$pvalue9 = get_post_meta($post->ID, 'personpagamento9', true);
 
 ?>
 	<div id="pagamento">
@@ -594,6 +603,9 @@ function campo_pagamento($post)
 		<input type="hidden" id="proposta_input_name4" value="<?php echo $proposta_input_name4; ?>">
 		<input type="hidden" id="proposta_input_name5" value="<?php echo $proposta_input_name5; ?>">
 		<input type="hidden" id="proposta_input_name6" value="<?php echo $proposta_input_name6; ?>">
+		<input type="hidden" id="proposta_input_name7" value="<?php echo $proposta_input_name7; ?>">
+		<input type="hidden" id="proposta_input_name8" value="<?php echo $proposta_input_name8; ?>">
+		<input type="hidden" id="proposta_input_name9" value="<?php echo $proposta_input_name9; ?>">
 
 		<label class="post-sob-title"><b>Personalizar Valores de Pagamento ?</b>
 			<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> /></label>
@@ -601,11 +613,15 @@ function campo_pagamento($post)
 		<div id="personal">
 			<br>
 			<label><input type="number" min="0" id="personpagamento1" name="personpagamento1" value="<?php echo $pvalue1; ?>" /><span> Instrutor</span></label><br>
-			<label><input type="number" min="0" id="personpagamento2" name="personpagamento2" value="<?php echo $pvalue2; ?>" /><span> Tutor</span></label><br>
-			<label><input type="number" min="0" id="personpagamento3" name="personpagamento3" value="<?php echo $pvalue3; ?>" /><span> Monitor</span></label><br>
-			<label><input type="number" min="0" id="personpagamento4" name="personpagamento4" value="<?php echo $pvalue4; ?>" /><span> Conteudista Presencial</span></label><br>
-			<label><input type="number" min="0" id="personpagamento5" name="personpagamento5" value="<?php echo $pvalue5; ?>" /><span> Conteudista Remoto Síncrono</span></label><br>
-			<label><input type="number" min="0" id="personpagamento6" name="personpagamento6" value="<?php echo $pvalue6; ?>" /><span> Conteudista Remoto Assíncrono</span></label><br>
+			<label><input type="number" min="0" id="personpagamento2" name="personpagamento2" value="<?php echo $pvalue2; ?>" /><span> Orientador</span></label><br>
+			<label><input type="number" min="0" id="personpagamento3" name="personpagamento3" value="<?php echo $pvalue3; ?>" /><span> Tutor</span></label><br>
+			<label><input type="number" min="0" id="personpagamento4" name="personpagamento4" value="<?php echo $pvalue4; ?>" /><span> Multiplicador</span></label><br>
+			<label><input type="number" min="0" id="personpagamento5" name="personpagamento5" value="<?php echo $pvalue5; ?>" /><span> Facilitador</span></label><br>
+			<label><input type="number" min="0" id="personpagamento6" name="personpagamento6" value="<?php echo $pvalue6; ?>" /><span> Monitor</span></label><br>
+			<label><input type="number" min="0" id="personpagamento7" name="personpagamento7" value="<?php echo $pvalue7; ?>" /><span> Conteudista Presencial</span></label><br>
+			<label><input type="number" min="0" id="personpagamento8" name="personpagamento8" value="<?php echo $pvalue8; ?>" /><span> Conteudista Remoto Síncrono</span></label><br>
+			<label><input type="number" min="0" id="personpagamento9" name="personpagamento9" value="<?php echo $pvalue9; ?>" /><span> Conteudista Remoto Assíncrono</span></label><br>
+
 			<br>
 		</div>
 
@@ -898,6 +914,18 @@ function salvar_no_postmeta($post_id)
 	if (isset($_POST['personpagamento6'])) {
 		$personpagamento6 = sanitize_text_field($_POST['personpagamento6']);
 		update_post_meta($post_id, 'personpagamento6', $personpagamento6);
+	}
+	if (isset($_POST['personpagamento7'])) {
+		$personpagamento7 = sanitize_text_field($_POST['personpagamento7']);
+		update_post_meta($post_id, 'personpagamento7', $personpagamento7);
+	}
+	if (isset($_POST['personpagamento8'])) {
+		$personpagamento8 = sanitize_text_field($_POST['personpagamento8']);
+		update_post_meta($post_id, 'personpagamento8', $personpagamento8);
+	}
+	if (isset($_POST['personpagamento9'])) {
+		$personpagamento9 = sanitize_text_field($_POST['personpagamento9']);
+		update_post_meta($post_id, 'personpagamento9', $personpagamento9);
 	}
 
 
