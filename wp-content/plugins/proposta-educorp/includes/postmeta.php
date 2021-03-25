@@ -608,7 +608,8 @@ function campo_pagamento($post)
 		<input type="hidden" id="proposta_input_name9" value="<?php echo $proposta_input_name9; ?>">
 
 		<label class="post-sob-title"><b>Personalizar Valores de Pagamento ?</b>
-			<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> /></label>
+		&ensp;<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> />
+		</label>
 		<br>
 		<div id="personal">
 			<br>
