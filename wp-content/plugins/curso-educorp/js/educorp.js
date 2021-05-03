@@ -134,40 +134,40 @@ function atualizaValor(valor, linha, coluna) {
 
 function valorAtuacao(valor, linha) {
 	if ($("#personpagamento").is(":checked")) {
-		var proposta_input_name1 = $("#personpagamento1").val();
-		var proposta_input_name2 = $("#personpagamento2").val();
-		var proposta_input_name3 = $("#personpagamento3").val();
-		var proposta_input_name4 = $("#personpagamento4").val();
-		var proposta_input_name5 = $("#personpagamento5").val();
-		var proposta_input_name6 = $("#personpagamento6").val();
-		var proposta_input_name7 = $("#personpagamento7").val();
-		var proposta_input_name8 = $("#personpagamento8").val();
-		var proposta_input_name9 = $("#personpagamento9").val();
+		var curso_input_name1 = $("#personpagamento1").val();
+		var curso_input_name2 = $("#personpagamento2").val();
+		var curso_input_name3 = $("#personpagamento3").val();
+		var curso_input_name4 = $("#personpagamento4").val();
+		var curso_input_name5 = $("#personpagamento5").val();
+		var curso_input_name6 = $("#personpagamento6").val();
+		var curso_input_name7 = $("#personpagamento7").val();
+		var curso_input_name8 = $("#personpagamento8").val();
+		var curso_input_name9 = $("#personpagamento9").val();
 	} else {
-		var proposta_input_name1 = $("#proposta_input_name1").val();
-		var proposta_input_name2 = $("#proposta_input_name2").val();
-		var proposta_input_name3 = $("#proposta_input_name3").val();
-		var proposta_input_name4 = $("#proposta_input_name4").val();
-		var proposta_input_name5 = $("#proposta_input_name5").val();
-		var proposta_input_name6 = $("#proposta_input_name6").val();
-		var proposta_input_name7 = $("#proposta_input_name7").val();
-		var proposta_input_name8 = $("#proposta_input_name8").val();
-		var proposta_input_name9 = $("#proposta_input_name9").val();
+		var curso_input_name1 = $("#curso_input_name1").val();
+		var curso_input_name2 = $("#curso_input_name2").val();
+		var curso_input_name3 = $("#curso_input_name3").val();
+		var curso_input_name4 = $("#curso_input_name4").val();
+		var curso_input_name5 = $("#curso_input_name5").val();
+		var curso_input_name6 = $("#curso_input_name6").val();
+		var curso_input_name7 = $("#curso_input_name7").val();
+		var curso_input_name8 = $("#curso_input_name8").val();
+		var curso_input_name9 = $("#curso_input_name9").val();
 	}
 
 	var atuacao = $("#pagamento table .linha" + linha + " .pagamento3").val();
 
 	var ValorAtuac;
 
-	if (atuacao == "Instrutor") ValorAtuac = proposta_input_name1;
-	if (atuacao == "Orientador") ValorAtuac = proposta_input_name2;
-	if (atuacao == "Tutor") ValorAtuac = proposta_input_name3;
-	if (atuacao == "Multiplicador") ValorAtuac = proposta_input_name4;
-	if (atuacao == "Facilitador") ValorAtuac = proposta_input_name5;
-	if (atuacao == "Monitor") ValorAtuac = proposta_input_name6;	
-	if (atuacao == "Conteudista Presencial") ValorAtuac = proposta_input_name7;
-	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = proposta_input_name8;
-	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = proposta_input_name9;
+	if (atuacao == "Instrutor") ValorAtuac = curso_input_name1;
+	if (atuacao == "Orientador") ValorAtuac = curso_input_name2;
+	if (atuacao == "Tutor") ValorAtuac = curso_input_name3;
+	if (atuacao == "Multiplicador") ValorAtuac = curso_input_name4;
+	if (atuacao == "Facilitador") ValorAtuac = curso_input_name5;
+	if (atuacao == "Monitor") ValorAtuac = curso_input_name6;	
+	if (atuacao == "Conteudista Presencial") ValorAtuac = curso_input_name7;
+	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = curso_input_name8;
+	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = curso_input_name9;
 
 	$("#pagamento table .linha" + linha + " .pagamento5").val(valor * ValorAtuac);
 
@@ -497,7 +497,7 @@ window.onload = function () {
 		if (postenviado.html() == "Ver post" && emailconteudista != "") {
 			var titulo = $("#title").val();
 			var p = document.createElement("p");
-			$.post("/wp-content/plugins/proposta-educorp/includes/email.php", { ehresp: ehresp, adminemail: adminemail, titulo: titulo, emailconteudista: emailconteudista }, function (data) {
+			$.post("/wp-content/plugins/curso-educorp/includes/email.php", { ehresp: ehresp, adminemail: adminemail, titulo: titulo, emailconteudista: emailconteudista }, function (data) {
 				p.innerHTML = data;
 				postenviado.after(p);
 			});

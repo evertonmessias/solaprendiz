@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Plugin Name: Proposta Educorp
+ * Plugin Name: Curso Educorp
  * Plugin URI: https://ic.unicamp.br/~everton
- * Description: Plugin para criação de Propostas para Educorp
+ * Description: Plugin para criação de Cursos para Educorp
  * Author: Everton Messias
  * Version: 1.0
- * Text Domain: proposta
- * Este é um plugin para criação de Propostas para Educorp
+ * Text Domain: Curso
+ * Este é um plugin para criação de Cursos para Educorp
  */
 
 // Exit if accessed directly.
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class PropostaEducorp
+class cursoEducorp
 {
 	public function __construct()
 	{
@@ -25,14 +25,14 @@ class PropostaEducorp
 	public function create_custom_post_type_modulo()
 	{
 		$labels = [
-			'name'					=> _x('Proposta', 'proposta', 'text_domain'),
-			'singular_name'			=> _x('Proposta', 'proposta', 'text_domain'),
-			'menu_name'				=> __('Proposta', 'text_domain'),
-			'name_admin_bar'		=> __('Proposta', 'text_domain')
+			'name'					=> _x('Curso', 'Curso', 'text_domain'),
+			'singular_name'			=> _x('Curso', 'Curso', 'text_domain'),
+			'menu_name'				=> __('Cursos', 'text_domain'),
+			'name_admin_bar'		=> __('Curso', 'text_domain')
 		];
 		$args = [
-			'label'                	=> __('Proposta', 'text_domain'),
-			'description'           => __('Descrição Proposta', 'text_domain'),
+			'label'                	=> __('Curso', 'text_domain'),
+			'description'           => __('Descrição Curso', 'text_domain'),
 			'labels'				=> $labels,
 			'supports'              => ['title'/*, 'editor', 'author', 'thumbnail', 'excerpt'*/],
 			'taxonomies'            => [/*'category', 'post_tag'*/],
@@ -48,10 +48,10 @@ class PropostaEducorp
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
-			'capability_type'     	=> array('post', 'proposta'),
+			'capability_type'     	=> array('post', 'curso'),
 			'map_meta_cap'        => true,
 		];
-		register_post_type('proposta', $args);
+		register_post_type('curso', $args);
 	}
 
 	function create_custom_conteudista_role()
@@ -94,7 +94,7 @@ class PropostaEducorp
 		$this->create_custom_responsavel_role();
 		flush_rewrite_rules();
 		//global $wpdb;
-		//$wpdb->get_results("INSERT INTO wp_posts(post_author,post_content,post_title,post_status,comment_status,ping_status,post_type,comment_count) VALUES(1,'proposta teste','Proposta Teste','publish','open','open','proposta',0);");
+		//$wpdb->get_results("INSERT INTO wp_posts(post_author,post_content,post_title,post_status,comment_status,ping_status,post_type,comment_count) VALUES(1,'curso teste','curso Teste','publish','open','open','curso',0);");
 	}
 
 	public function deactivate()
@@ -106,22 +106,22 @@ class PropostaEducorp
 }
 
 // FUNÇÕES ************************************************
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/functions.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/functions.php';
 
 //USER ***************************************************
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/user.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/user.php';
 
 // PAGES ************************************************
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-relatorios.php';
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-settings.php';
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/page-sobre.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/page-relatorios.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/page-settings.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/page-sobre.php';
 
 // POSTMETA ************************************************
-include ABSPATH . '/wp-content/plugins/proposta-educorp/includes/postmeta.php';
+include ABSPATH . '/wp-content/plugins/curso-educorp/includes/postmeta.php';
 
 // OBJETO *************************************************
-if (class_exists('PropostaEducorp')) {
-	$prop = new PropostaEducorp();
+if (class_exists('cursoEducorp')) {
+	$prop = new cursoEducorp();
 	register_activation_hook(__FILE__, array($prop, 'activate'));
 	register_deactivation_hook(__FILE__, array($prop, 'deactivate'));
 }

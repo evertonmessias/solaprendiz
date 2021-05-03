@@ -9,9 +9,9 @@ function conteudista_role_caps()
 	foreach ($roles as $the_role) {
 		$role = get_role($the_role);
 		$role->remove_cap('read');
-		$role->add_cap('edit_proposta');
-		$role->add_cap('edit_others_proposta');
-		$role->add_cap('edit_published_proposta');
+		$role->add_cap('edit_curso');
+		$role->add_cap('edit_others_curso');
+		$role->add_cap('edit_published_curso');
 	}
 }
 add_action('admin_init', 'conteudista_role_caps', 998);
@@ -22,15 +22,15 @@ function responsavel_role_caps()
 	foreach ($roles as $the_role) {
 		$role = get_role($the_role);
 		$role->add_cap('read');
-		$role->add_cap('read_proposta');
-		$role->add_cap('read_private_proposta');
-		$role->add_cap('edit_proposta');
-		$role->add_cap('edit_others_proposta');
-		$role->add_cap('edit_published_proposta');
-		$role->add_cap('publish_proposta');
-		$role->add_cap('delete_others_proposta');
-		$role->add_cap('delete_private_proposta');
-		$role->add_cap('delete_published_proposta');
+		$role->add_cap('read_curso');
+		$role->add_cap('read_private_curso');
+		$role->add_cap('edit_curso');
+		$role->add_cap('edit_others_curso');
+		$role->add_cap('edit_published_curso');
+		$role->add_cap('publish_curso');
+		$role->add_cap('delete_others_curso');
+		$role->add_cap('delete_private_curso');
+		$role->add_cap('delete_published_curso');
 		$role->add_cap('list_users');
 		$role->add_cap('create_users');
 		$role->add_cap('remove_users');
@@ -52,7 +52,7 @@ add_action('after_setup_theme', 'remove_admin_bar');
 
 // Redirect After Login
 function admin_default_page() {
-	return '/propostas';
+	return '/cursos';
   }  
 add_filter('login_redirect', 'admin_default_page');
 
@@ -63,14 +63,14 @@ function style_and_script()
 	$url = explode("/",$_SERVER['REQUEST_URI']);
 	if (in_array('conteudista', (array) $user->roles)) {
 		get_header();		
-		if($url[1] == "wp-admin" && $url[2] == "edit.php?post_type=proposta"){
+		if($url[1] == "wp-admin" && $url[2] == "edit.php?post_type=curso"){
 			echo "<script>window.location.href = '/naopermitido'</script>";
 		}
 	}
 	if (in_array('responsavel', (array) $user->roles)) {					
-		echo "<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-responsavel.css'>";
+		echo "<link rel='stylesheet' href='/wp-content/plugins/curso-educorp/css/educorp-responsavel.css'>";
 	}
-	if (get_post_type() == 'proposta' && $url[2] != "edit.php?post_type=proposta") {
+	if (get_post_type() == 'curso' && $url[2] != "edit.php?post_type=curso") {
 ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
@@ -80,8 +80,8 @@ function style_and_script()
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
 	<?php
-		wp_enqueue_style('stilos', '/wp-content/plugins/proposta-educorp/css/educorp.css');				
-		wp_enqueue_script('scripts', '/wp-content/plugins/proposta-educorp/js/educorp.js');		
+		wp_enqueue_style('stilos', '/wp-content/plugins/curso-educorp/css/educorp.css');				
+		wp_enqueue_script('scripts', '/wp-content/plugins/curso-educorp/js/educorp.js');		
 	}
 }
 add_action('admin_enqueue_scripts', 'style_and_script');
@@ -92,11 +92,11 @@ add_action('admin_enqueue_scripts', 'style_and_script');
 
 function permissao($post)
 {
-	if (get_post_type() == 'proposta') {
+	if (get_post_type() == 'curso') {
 		$user = wp_get_current_user();
 		if (in_array('conteudista', (array) $user->roles)) {	
 			show_admin_bar(false);		
-			echo "<link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-conteudista.css'>";
+			echo "<link rel='stylesheet' href='/wp-content/plugins/curso-educorp/css/educorp-conteudista.css'>";
 		}	
 
 		$ehresp = 0;
@@ -139,7 +139,7 @@ add_action('edit_form_top', 'permissao');
 //AVISO *************************************************
 function aviso()
 {
-	if (get_post_type() == 'proposta') { ?>
+	if (get_post_type() == 'curso') { ?>
 		<div id="quadro">
 			<i class="bx bxs-x-square"></i>
 			<h2>Atenção</h2>
@@ -153,7 +153,7 @@ add_action('edit_form_top', 'aviso');
 //TITLE *************************************************
 function title()
 {
-	if (get_post_type() == 'proposta') { ?>
+	if (get_post_type() == 'curso') { ?>
 		<div id="title-1" class="conteudo conteudo1">
 			<br>
 			<p>Roteiro para elaboração de solução de capacitação preenchido conjuntamente entre CONTEUDISTA E EQUIPE, até a validação da versão final.</p><br>
@@ -170,7 +170,7 @@ add_action('edit_form_top', 'title');
 // BARRAS TOP *************************************************
 function barras()
 {
-	if (get_post_type() == 'proposta') { ?>
+	if (get_post_type() == 'curso') { ?>
 		<div id="back"></div>
 		<div id="barra"></div>
 		<div id="menu">DESENVOLVIMENTO DE SOLUÇÃO DE APRENDIZAGEM</div>
@@ -183,7 +183,7 @@ add_action('edit_form_top', 'barras');
 // BOTOES ABAS *************************************************
 function abas()
 {
-	if (get_post_type() == 'proposta') { ?>
+	if (get_post_type() == 'curso') { ?>
 
 		<div id="BlocoTab">
 			<ul class="abas">
@@ -217,7 +217,7 @@ add_action('edit_form_advanced', 'abas');
 // BUTTON SCROLLtoTOP
 function scrolltotop()
 {
-	if (get_post_type() == 'proposta') {?>	
+	if (get_post_type() == 'curso') {?>	
 		<i class='bx bxs-up-arrow-square scrollToTop'></i>
 	<?php
 	}

@@ -1,19 +1,19 @@
 <?php
 // Relatórios *************************************************
-function proposta_page_relatorios(){ ?>
-    <link rel='stylesheet' href='/wp-content/plugins/proposta-educorp/css/educorp-pages.css'>
+function curso_page_relatorios(){ ?>
+    <link rel='stylesheet' href='/wp-content/plugins/curso-educorp/css/educorp-pages.css'>
     <div class="relatorios">
-        <h1>Relatório de Propostas</h1>
+        <h1>Relatório de cursos</h1>
         <table>
             <tr>
-                <th>Proposta</th>
+                <th>Curso</th>
                 <th>Data</th>
                 <th>Equipe</th>
                 <th>Total</th>
             </tr>
             <?php
             $lastupdated_args = array(
-                'post_type' => 'proposta',
+                'post_type' => 'curso',
                 'posts_per_page' => 10,
                 'order' => 'DESC'
             );
@@ -41,8 +41,8 @@ function proposta_page_relatorios(){ ?>
 <?php
 }
 
-function proposta_relatorios()
+function curso_relatorios()
 {
-    add_submenu_page('edit.php?post_type=proposta', 'Relatórios', 'Relatórios', 'manage_options', 'proposta-relatorios', 'proposta_page_relatorios');
+    add_submenu_page('edit.php?post_type=curso', 'Relatórios', 'Relatórios', 'manage_options', 'curso-relatorios', 'curso_page_relatorios');
 }
-add_action('admin_menu', 'proposta_relatorios');
+add_action('admin_menu', 'curso_relatorios');

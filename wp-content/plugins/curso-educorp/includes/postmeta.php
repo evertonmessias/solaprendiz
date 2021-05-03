@@ -6,7 +6,7 @@
 
 function campo_box_eixo()
 {
-	add_meta_box('eixo_id', 'eixo', 'campo_eixo', 'proposta');
+	add_meta_box('eixo_id', 'eixo', 'campo_eixo', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_eixo');
 function campo_eixo($post)
@@ -29,7 +29,7 @@ function campo_eixo($post)
 
 function campo_box_ativado()
 {
-	add_meta_box('ativado_id', 'Ativado', 'campo_ativado', 'proposta');
+	add_meta_box('ativado_id', 'Ativado', 'campo_ativado', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_ativado');
 function campo_ativado($post)
@@ -41,7 +41,7 @@ function campo_ativado($post)
 		$checked = "";
 	}
 ?> <div id="ativado">
-		<label class="post-sub-title"><b>1.2. Ativa a edição dessa proposta?</b>
+		<label class="post-sub-title"><b>1.2. Ativa a edição dessa curso?</b>
 			<input type="checkbox" name="ativado" <?php echo $checked; ?> /></label>
 	</div>
 
@@ -51,7 +51,7 @@ function campo_ativado($post)
 
 function campo_box_contexto()
 {
-	add_meta_box('contexto_id', 'Contexto', 'campo_contexto', 'proposta');
+	add_meta_box('contexto_id', 'Contexto', 'campo_contexto', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_contexto');
 function campo_contexto($post)
@@ -70,7 +70,7 @@ function campo_contexto($post)
 
 function campo_box_objetivo()
 {
-	add_meta_box('objetivo_id', 'objetivo', 'campo_objetivo', 'proposta');
+	add_meta_box('objetivo_id', 'objetivo', 'campo_objetivo', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_objetivo');
 function campo_objetivo($post)
@@ -88,7 +88,7 @@ function campo_objetivo($post)
 	}
 ?><div id="objetivo">
 		<h4 class="wp-heading-inline">3. OBJETIVO ESTRATÉGICO PLANES 2021-2025</h4>
-		<p class="post-sub-title">Marque com um X os objetivos estratégicos com os quais a capacitação proposta contribuirá</p>
+		<p class="post-sub-title">Marque com um X os objetivos estratégicos com os quais a capacitação curso contribuirá</p>
 		<p><b>1. Resultados para a SOCIEDADE:</b></p>
 		<label><input type="checkbox" name="objetivo1" <?php echo $checked[1]; ?> />&ensp;1.1. Ampliar o acesso e a diversidade da comunidade universitária e as políticas de inclusão, permanência e apoio acadêmico.</label><br>
 		<label><input type="checkbox" name="objetivo2" <?php echo $checked[2]; ?> />&ensp;1.2. Promover a inovação, extensão, cultura e transferência de conhecimento, intensificando a cooperação dialógica com o poder público e a sociedade, em consonância com os Objetivos de Desenvolvimento Sustentável.</label><br>
@@ -113,7 +113,7 @@ function campo_objetivo($post)
 
 function campo_box_capacitacao()
 {
-	add_meta_box('capacitacao_id', 'capacitacao', 'campo_capacitacao', 'proposta');
+	add_meta_box('capacitacao_id', 'capacitacao', 'campo_capacitacao', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_capacitacao');
 function campo_capacitacao($post)
@@ -133,7 +133,7 @@ function campo_capacitacao($post)
 
 function campo_box_publico()
 {
-	add_meta_box('publico_id', 'publico', 'campo_publico', 'proposta');
+	add_meta_box('publico_id', 'publico', 'campo_publico', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_publico');
 function campo_publico($post)
@@ -152,7 +152,7 @@ function campo_publico($post)
 
 function campo_box_estimativa()
 {
-	add_meta_box('estimativa_id', 'estimativa', 'campo_estimativa', 'proposta');
+	add_meta_box('estimativa_id', 'estimativa', 'campo_estimativa', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_estimativa');
 function campo_estimativa($post)
@@ -170,7 +170,7 @@ function campo_estimativa($post)
 
 function campo_box_aplicacao()
 {
-	add_meta_box('aplicacao_id', 'aplicacao', 'campo_aplicacao', 'proposta');
+	add_meta_box('aplicacao_id', 'aplicacao', 'campo_aplicacao', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_aplicacao');
 function campo_aplicacao($post)
@@ -189,7 +189,7 @@ function campo_aplicacao($post)
 
 function campo_box_conteudista()
 {
-	add_meta_box('conteudista_id', 'conteudista', 'campo_conteudista', 'proposta');
+	add_meta_box('conteudista_id', 'conteudista', 'campo_conteudista', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_conteudista');
 function campo_conteudista($post)
@@ -208,8 +208,8 @@ function campo_conteudista($post)
 ?>
 	<input type="hidden" id="cont" value="<?php echo implode(',', $nomes); ?>">
 	<div id="conteudista">
-		<h4 class="wp-heading-inline">8. CONTEUDISTA(s) DA PROPOSTA</h4>
-		<p class="post-sub-title">Selecione o(s) conteudista(s) para esta proposta. ( será enviado um e-mail ao(s) conteudista(s) )</p>
+		<h4 class="wp-heading-inline">8. CONTEUDISTA(s) DA curso</h4>
+		<p class="post-sub-title">Selecione o(s) conteudista(s) para esta curso. ( será enviado um e-mail ao(s) conteudista(s) )</p>
 
 		<select name="conteudista[]" class="selectpicker" multiple="multiple" data-live-search="true">
 			<option value="">Ninguém</option>
@@ -227,7 +227,7 @@ function campo_conteudista($post)
 
 function campo_box_ementa()
 {
-	add_meta_box('ementa_id', 'ementa', 'campo_ementa', 'proposta');
+	add_meta_box('ementa_id', 'ementa', 'campo_ementa', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_ementa');
 function campo_ementa($post)
@@ -247,7 +247,7 @@ function campo_ementa($post)
 
 function campo_box_conteudo()
 {
-	add_meta_box('conteudo_id', 'conteudo', 'campo_conteudo', 'proposta');
+	add_meta_box('conteudo_id', 'conteudo', 'campo_conteudo', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_conteudo');
 function campo_conteudo($post)
@@ -266,7 +266,7 @@ function campo_conteudo($post)
 
 function campo_box_modalidade()
 {
-	add_meta_box('modalidade_id', 'modalidade', 'campo_modalidade', 'proposta');
+	add_meta_box('modalidade_id', 'modalidade', 'campo_modalidade', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_modalidade');
 function campo_modalidade($post)
@@ -296,7 +296,7 @@ function campo_modalidade($post)
 
 function campo_box_metodologia()
 {
-	add_meta_box('metodologia_id', 'metodologia', 'campo_metodologia', 'proposta');
+	add_meta_box('metodologia_id', 'metodologia', 'campo_metodologia', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_metodologia');
 function campo_metodologia($post)
@@ -315,7 +315,7 @@ function campo_metodologia($post)
 
 function campo_box_avaliacao()
 {
-	add_meta_box('avaliacao_id', 'avaliacao', 'campo_avaliacao', 'proposta');
+	add_meta_box('avaliacao_id', 'avaliacao', 'campo_avaliacao', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_avaliacao');
 function campo_avaliacao($post)
@@ -334,7 +334,7 @@ function campo_avaliacao($post)
 
 function campo_box_criterios()
 {
-	add_meta_box('criterios_id', 'criterios', 'campo_criterios', 'proposta');
+	add_meta_box('criterios_id', 'criterios', 'campo_criterios', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_criterios');
 function campo_criterios($post)
@@ -354,7 +354,7 @@ function campo_criterios($post)
 
 function campo_box_carga()
 {
-	add_meta_box('carga_id', 'carga', 'campo_carga', 'proposta');
+	add_meta_box('carga_id', 'carga', 'campo_carga', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_carga');
 function campo_carga($post)
@@ -386,7 +386,7 @@ function campo_carga($post)
 
 function campo_box_equipe()
 {
-	add_meta_box('equipe_id', 'equipe', 'campo_equipe', 'proposta');
+	add_meta_box('equipe_id', 'equipe', 'campo_equipe', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_equipe');
 function campo_equipe($post)
@@ -447,7 +447,7 @@ function campo_equipe($post)
 
 function campo_box_bibliografia()
 {
-	add_meta_box('bibliografia_id', 'bibliografia', 'campo_bibliografia', 'proposta');
+	add_meta_box('bibliografia_id', 'bibliografia', 'campo_bibliografia', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_bibliografia');
 function campo_bibliografia($post)
@@ -467,7 +467,7 @@ function campo_bibliografia($post)
 
 function campo_box_calendario()
 {
-	add_meta_box('calendario_id', 'calendario', 'campo_calendario', 'proposta');
+	add_meta_box('calendario_id', 'calendario', 'campo_calendario', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_calendario');
 function campo_calendario($post)
@@ -532,7 +532,7 @@ function campo_calendario($post)
 
 function campo_box_local()
 {
-	add_meta_box('local_id', 'local', 'campo_local', 'proposta');
+	add_meta_box('local_id', 'local', 'campo_local', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_local');
 function campo_local($post)
@@ -552,21 +552,21 @@ function campo_local($post)
 
 function campo_box_pagamento()
 {
-	add_meta_box('pagamento_id', 'pagamento', 'campo_pagamento', 'proposta');
+	add_meta_box('pagamento_id', 'pagamento', 'campo_pagamento', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_pagamento');
 function campo_pagamento($post)
 {
 	//valores do settings
-	$proposta_input_name1 = get_option("proposta_input_name1");
-	$proposta_input_name2 = get_option("proposta_input_name2");
-	$proposta_input_name3 = get_option("proposta_input_name3");
-	$proposta_input_name4 = get_option("proposta_input_name4");
-	$proposta_input_name5 = get_option("proposta_input_name5");
-	$proposta_input_name6 = get_option("proposta_input_name6");
-	$proposta_input_name7 = get_option("proposta_input_name7");
-	$proposta_input_name8 = get_option("proposta_input_name8");
-	$proposta_input_name9 = get_option("proposta_input_name9");
+	$curso_input_name1 = get_option("curso_input_name1");
+	$curso_input_name2 = get_option("curso_input_name2");
+	$curso_input_name3 = get_option("curso_input_name3");
+	$curso_input_name4 = get_option("curso_input_name4");
+	$curso_input_name5 = get_option("curso_input_name5");
+	$curso_input_name6 = get_option("curso_input_name6");
+	$curso_input_name7 = get_option("curso_input_name7");
+	$curso_input_name8 = get_option("curso_input_name8");
+	$curso_input_name9 = get_option("curso_input_name9");
 
 	$value = get_post_meta($post->ID, 'personpagamento', true);
 	if ($value == 'on') {
@@ -597,15 +597,15 @@ function campo_pagamento($post)
 		<h1><b>IV. INFORMAÇÕES GERENCIAIS</b></h1>
 		<h4 class="wp-heading-inline">1. CONSOLIDAÇÃO PARA PAGAMENTO</h4>
 		<p class="post-sub-title">Não preencha, se for treinamento em serviço. Utilize IN 04/2020 para o cálculo do valor por tipo de atuação e totalize.</p>
-		<input type="hidden" id="proposta_input_name1" value="<?php echo $proposta_input_name1; ?>">
-		<input type="hidden" id="proposta_input_name2" value="<?php echo $proposta_input_name2; ?>">
-		<input type="hidden" id="proposta_input_name3" value="<?php echo $proposta_input_name3; ?>">
-		<input type="hidden" id="proposta_input_name4" value="<?php echo $proposta_input_name4; ?>">
-		<input type="hidden" id="proposta_input_name5" value="<?php echo $proposta_input_name5; ?>">
-		<input type="hidden" id="proposta_input_name6" value="<?php echo $proposta_input_name6; ?>">
-		<input type="hidden" id="proposta_input_name7" value="<?php echo $proposta_input_name7; ?>">
-		<input type="hidden" id="proposta_input_name8" value="<?php echo $proposta_input_name8; ?>">
-		<input type="hidden" id="proposta_input_name9" value="<?php echo $proposta_input_name9; ?>">
+		<input type="hidden" id="curso_input_name1" value="<?php echo $curso_input_name1; ?>">
+		<input type="hidden" id="curso_input_name2" value="<?php echo $curso_input_name2; ?>">
+		<input type="hidden" id="curso_input_name3" value="<?php echo $curso_input_name3; ?>">
+		<input type="hidden" id="curso_input_name4" value="<?php echo $curso_input_name4; ?>">
+		<input type="hidden" id="curso_input_name5" value="<?php echo $curso_input_name5; ?>">
+		<input type="hidden" id="curso_input_name6" value="<?php echo $curso_input_name6; ?>">
+		<input type="hidden" id="curso_input_name7" value="<?php echo $curso_input_name7; ?>">
+		<input type="hidden" id="curso_input_name8" value="<?php echo $curso_input_name8; ?>">
+		<input type="hidden" id="curso_input_name9" value="<?php echo $curso_input_name9; ?>">
 
 		<label class="post-sob-title"><b>Personalizar Valores de Pagamento ?</b>
 		&ensp;<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> />
@@ -651,7 +651,7 @@ function campo_pagamento($post)
 
 function campo_box_showpagamento()
 {
-	add_meta_box('showpagamento_id', 'showpagamento', 'campo_showpagamento', 'proposta');
+	add_meta_box('showpagamento_id', 'showpagamento', 'campo_showpagamento', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_showpagamento');
 function campo_showpagamento($post)
@@ -673,7 +673,7 @@ function campo_showpagamento($post)
 
 function campo_box_msgfinal()
 {
-	add_meta_box('msgfinal_id', 'msgfinal', 'campo_msgfinal', 'proposta');
+	add_meta_box('msgfinal_id', 'msgfinal', 'campo_msgfinal', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_msgfinal');
 function campo_msgfinal($post)
@@ -692,7 +692,7 @@ function campo_msgfinal($post)
 
 function campo_box_submit()
 {
-	add_meta_box('submit_id', 'submit', 'campo_submit', 'proposta');
+	add_meta_box('submit_id', 'submit', 'campo_submit', 'curso');
 }
 add_action('add_meta_boxes', 'campo_box_submit');
 function campo_submit()
