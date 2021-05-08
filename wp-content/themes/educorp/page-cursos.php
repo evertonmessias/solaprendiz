@@ -6,7 +6,7 @@
       <div class="container">
          <ol>
             <li><a href="/">Home</a></li>
-            <li><a href="/propostas">Propostas</a></li>
+            <li><a href="/cursos">Cursos</a></li>
          </ol>
       </div>
    </section><!-- End Breadcrumbs -->
@@ -20,14 +20,14 @@
             $user = wp_get_current_user();
             if (in_array('administrator', (array) $user->roles) || in_array('responsavel', (array) $user->roles)) { ?>
                <script>
-                  window.location.href = "/wp-admin/edit.php?post_type=proposta"
+                  window.location.href = "/wp-admin/edit.php?post_type=curso"
                </script>
             <?php } else {
 
                $permitido = false;
 
                $lastupdated_args = array(
-                  'post_type' => 'proposta',
+                  'post_type' => 'curso',
                   'posts_per_page' => 10,
                   'order' => 'DESC'
                );
@@ -64,7 +64,7 @@
             <?php
 
                if (!$permitido) {
-                  echo "Nenhuma proposta disponível !";
+                  echo "Nenhuma curso disponível !";
                }
             }
          } else { ?>

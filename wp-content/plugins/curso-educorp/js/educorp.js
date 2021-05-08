@@ -36,8 +36,8 @@ function addInputDate(campo) {
 }
 function remInputDate(campo) {
 	//setTimeout(() => {
-		campo.setAttribute('type', 'text');
-		campo.value = campo.value.split('-').reverse().join('/');
+	campo.setAttribute('type', 'text');
+	campo.value = campo.value.split('-').reverse().join('/');
 	//}, 1000);
 }
 
@@ -164,7 +164,7 @@ function valorAtuacao(valor, linha) {
 	if (atuacao == "Tutor") ValorAtuac = curso_input_name3;
 	if (atuacao == "Multiplicador") ValorAtuac = curso_input_name4;
 	if (atuacao == "Facilitador") ValorAtuac = curso_input_name5;
-	if (atuacao == "Monitor") ValorAtuac = curso_input_name6;	
+	if (atuacao == "Monitor") ValorAtuac = curso_input_name6;
 	if (atuacao == "Conteudista Presencial") ValorAtuac = curso_input_name7;
 	if (atuacao == "Conteudista Remoto Síncrono") ValorAtuac = curso_input_name8;
 	if (atuacao == "Conteudista Remoto Assíncrono") ValorAtuac = curso_input_name9;
@@ -417,6 +417,7 @@ window.onload = function () {
 
 	//BOTOES ABAS  *************************************************************** 
 
+	$("#post-body-content").attr("class", "postbox conteudo conteudo1");
 	$("#eixo_id").attr("class", "postbox conteudo conteudo1");
 	$("#ativado_id").attr("class", "postbox conteudo conteudo1");
 	$("#contexto_id").attr("class", "postbox conteudo conteudo1");
@@ -445,9 +446,6 @@ window.onload = function () {
 	$("#msgfinal_id").attr("class", "postbox conteudo conteudo4");
 	$("#submit_id").attr("class", "postbox conteudo conteudo4");
 
-	$(".conteudo1").show();
-	$(".abas li:first div").addClass("selected");
-
 	var ehresp = $("#ehresp").val();
 	if (ehresp == 0) {
 		$("#showpagamento").hide();
@@ -459,7 +457,7 @@ window.onload = function () {
 		$("#msgfinal").hide();
 	}
 
-	$(".aba").click(function () {
+	/*$(".aba").click(function () {
 		var indice = $(this).attr("value");
 
 		if ((indice == 3 || indice == 4) && ehresp == "0" && testacampos(2) == 0) {
@@ -487,7 +485,41 @@ window.onload = function () {
 	$(".aba").hover(
 		function () { $(this).addClass("ativa") },
 		function () { $(this).removeClass("ativa") }
-	);
+	);*/
+
+	$(".conteudo1").show();
+	$(".abas li:first div").addClass("selected");
+
+	var pag = 1;
+
+	$(".prev").click(function () {
+		if (pag > 1) {
+			pag--;
+			//console.log(pag);
+			$(".conteudo").hide();
+			$(".conteudo" + pag).show();
+			$('html, body').animate({ scrollTop: 0 }, 500);
+		}
+	});
+
+	$(".next").click(function () {
+		if (pag < 4) {
+			pag++;
+			//console.log(pag);
+			if (pag == 3 && ehresp == "0" && testacampos(2) == 0) {
+				$("#quadro").show();
+			} else if (pag == 4 && ehresp == "0" && testacampos(3) == 0) {
+				$("#quadro").show();
+			} else {
+				$(".conteudo").hide();
+				$(".conteudo" + pag).show();
+				$('html, body').animate({ scrollTop: 0 }, 500);
+			}
+		}
+	});
+
+
+
 
 	//preparar email para o(s) conteudista(s) ***************************************************************
 	var emailconteudista = $("#emailconteudista").val();

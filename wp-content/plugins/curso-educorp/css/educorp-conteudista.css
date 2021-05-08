@@ -9,8 +9,8 @@ body {
 }
 
 #BlocoTab {
-    bottom: -30px !important;
-    left: 30%;
+    top: 99%;
+    left: 40%;
 }
 
 #header {

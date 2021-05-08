@@ -187,26 +187,16 @@ function abas()
 
 		<div id="BlocoTab">
 			<ul class="abas">
-				<li>
-					<div value="1" class="aba">
-						<span>Passo 1</span>
-					</div>
-				</li>
-				<li>
-					<div value="2" class="aba">
-						<span>Passo 2</span>
-					</div>
-				</li>
-				<li>
-					<div value="3" class="aba">
-						<span>Passo 3</span>
-					</div>
-				</li>
-				<li>
-					<div value="4" class="aba">
-						<span>Passo 4</span>
-					</div>
-				</li>
+			<li>
+				<div class="prev">
+					<span>Anterior</span>
+				</div>
+			</li>
+			<li>
+				<div class="next">
+					<span>Próximo</span>
+				</div>
+			</li>
 			</ul>
 		</div>
 

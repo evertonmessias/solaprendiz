@@ -39,10 +39,10 @@
 		<a href="/" class="logo mr-auto educorp-logo"><img src="<?php echo SITEPATH; ?>assets/img/educorp-logo.png" alt="" class="img-fluid"></a>
 
     <?php if(is_user_logged_in()){?>
-      <a href="/propostas" class="get-started-btn">Propostas</a>
+      <a href="/cursos" class="get-started-btn">Cursos</a>
       <a href="/wp-login.php?action=logout" class="get-started-btn">Sair</a>
     <?php  }else{ ?>
-      <a href="/propostas" class="get-started-btn">Login</a>
+      <a href="/cursos" class="get-started-btn">Login</a>
 		<?php } ?>
 
 	</div>

@@ -109,7 +109,7 @@ class cursoEducorp
 include ABSPATH . '/wp-content/plugins/curso-educorp/includes/functions.php';
 
 //USER ***************************************************
-include ABSPATH . '/wp-content/plugins/curso-educorp/includes/user.php';
+//include ABSPATH . '/wp-content/plugins/curso-educorp/includes/user.php';
 
 // PAGES ************************************************
 include ABSPATH . '/wp-content/plugins/curso-educorp/includes/page-relatorios.php';

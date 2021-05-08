@@ -3,9 +3,9 @@
 function curso_page_sobre(){?>
     <link rel='stylesheet' href='/wp-content/plugins/curso-educorp/css/educorp-pages.css'>
     <div class="sobre">
-        <h1 style="color:#f00;">Sobre o curso Educorp</h1>
+        <h1 style="color:#f00;">Sobre o <i>Curso Educorp</i></h1>
         <p style="text-align:justify;font-size:16px">
-            O plugin 'curso Educorp' foi criado para permitir a inclusão de cursos pelo Wordpress.<br><br>
+            O plugin '<i>Curso Educorp</i>' foi criado para permitir a inclusão de cursos pelo Wordpress.<br><br>
             <a href="https://github.com/evertonmessias/solaprendiz" target="_blank">Projeto</a>
         </p>
     </div>
