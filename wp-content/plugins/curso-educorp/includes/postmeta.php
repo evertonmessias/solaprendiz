@@ -208,8 +208,8 @@ function campo_conteudista($post)
 ?>
 	<input type="hidden" id="cont" value="<?php echo implode(',', $nomes); ?>">
 	<div id="conteudista">
-		<h4 class="wp-heading-inline">8. CONTEUDISTA(s) DA curso</h4>
-		<p class="post-sub-title">Selecione o(s) conteudista(s) para esta curso. ( será enviado um e-mail ao(s) conteudista(s) )</p>
+		<h4 class="wp-heading-inline">8. CONTEUDISTA(s) DO CURSO</h4>
+		<p class="post-sub-title">Selecione o(s) conteudista(s) para este curso. ( será enviado um e-mail ao(s) conteudista(s) )</p>
 
 		<select name="conteudista[]" class="selectpicker" multiple="multiple" data-live-search="true">
 			<option value="">Ninguém</option>
@@ -454,10 +454,10 @@ function campo_bibliografia($post)
 {
 	$value = get_post_meta($post->ID, 'bibliografia', true);
 ?><div id="bibliografia">
-		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA</h4>
+		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA e COMENTÁRIOS</h4>
 		<p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.<br>
 		(máx. 2000 caracteres)</p>
-		<textarea maxlength="2000" name="bibliografia" rows="5"><?php echo $value; ?></textarea>
+		<?php wp_editor( $value, 'post_meta_box', array('textarea_name'=>'bibliografia')); ?>
 	</div>
 <?php }
 
