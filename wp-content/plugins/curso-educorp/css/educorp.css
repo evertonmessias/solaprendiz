@@ -177,6 +177,29 @@ label {
     font-weight: normal;
 }
 
+#eixo table {
+    width: 400px;
+    border-spacing: 0px;
+}
+
+#eixo table td {
+    border: 1px solid #999;
+    padding: 10px;
+    vertical-align: top;
+}
+
+#eixo table td.ce {
+    text-align: right;
+    width: 150px;
+}
+
+#eixo table td.cd {
+    text-align: left;
+    width: 250px;
+}
+
+
+
 #ativado_id {
     position: relative;
     width: 18em !important;

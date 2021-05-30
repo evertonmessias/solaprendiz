@@ -2,29 +2,6 @@
 
 // FIELDS POST META **********************************
 
-// EIXO TEMÁTICO **********************************
-
-function campo_box_eixo()
-{
-	add_meta_box('eixo_id', 'eixo', 'campo_eixo', 'curso');
-}
-add_action('add_meta_boxes', 'campo_box_eixo');
-function campo_eixo($post)
-{
-	$value = get_post_meta($post->ID, 'eixo', true);
-
-?><div id="eixo">
-		<h4 class="wp-heading-inline">1.1. Eixo Temático</h4>
-		<p class="post-sub-title">Marque um dos eixos abaixo.</p>
-		<label><input type="radio" name="eixo" <?php if ($value == "Academia") echo "checked"; ?> value="Academia">
-			&ensp;Academia</label><br>
-		<label><input type="radio" name="eixo" <?php if ($value == "Suporte") echo "checked"; ?> value="Suporte">
-			&ensp;Suporte</label><br>
-		<label><input type="radio" name="eixo" <?php if ($value == "Liderança") echo "checked"; ?> value="Liderança">
-			&ensp;Liderança</label><br>
-	</div>
-<?php }
-
 // ATIVADO **********************************
 
 function campo_box_ativado()
@@ -41,10 +18,109 @@ function campo_ativado($post)
 		$checked = "";
 	}
 ?> <div id="ativado">
-		<label class="post-sub-title"><b>1.2. Ativa a edição dessa curso?</b>
+		<label class="post-sub-title"><b>1.1. Ativa a edição dessa curso?</b>
 			<input type="checkbox" name="ativado" <?php echo $checked; ?> /></label>
 	</div>
 
+<?php }
+
+// EIXO TEMÁTICO **********************************
+
+function campo_box_eixo()
+{
+	add_meta_box('eixo_id', 'eixo', 'campo_eixo', 'curso');
+}
+add_action('add_meta_boxes', 'campo_box_eixo');
+function campo_eixo($post)
+{
+	$value = get_post_meta($post->ID, 'eixo', true);
+
+?><div id="eixo">
+		<h4 class="wp-heading-inline">1.2. Eixo Temático</h4>
+		<p class="post-sub-title">Marque um dos eixos abaixo.</p>
+		<table>
+			<tr>
+				<td class="ce">					
+						<strong>Eixo Temático</strong>
+				</td>
+				<td class="cd">					
+						<strong>Pilar de formação</strong>
+				</td>
+			</tr>
+
+			<tr>
+				<td rowspan="3" class="ce">Conexão</td>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Comunicação") echo "checked"; ?> value="Comunicação">
+						&ensp;Comunicação</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Liderança") echo "checked"; ?> value="Liderança">
+						&ensp;Liderança</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Gestão") echo "checked"; ?> value="Gestão">
+						&ensp;Gestão</label></td>
+			</tr>
+
+			<tr>
+				<td rowspan="3" class="ce">Academia</td>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Apoio Acadêmico") echo "checked"; ?> value="Apoio Acadêmico">
+						&ensp;Apoio Acadêmico</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Apoio Técnico") echo "checked"; ?> value="Apoio Técnico">
+						&ensp;Apoio Técnico</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Geração e Gestão de Parceria") echo "checked"; ?> value="Geração e Gestão de Parceria">
+						&ensp;Geração e Gestão de Parceria</label></td>
+			</tr>
+
+			<tr>
+				<td rowspan="5" class="ce">Suporte</td>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Tecnologia e Aplicativos") echo "checked"; ?> value="Tecnologia e Aplicativos">
+						&ensp;Tecnologia e Aplicativos</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Serviços") echo "checked"; ?> value="Serviços">
+						&ensp;Serviços</label></td>
+			</tr>
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Colaboradores") echo "checked"; ?> value="Colaboradores">
+						&ensp;Colaboradores</label></td>
+			</tr>
+
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Ambiente e Sustentabilidade") echo "checked"; ?> value="Ambiente e Sustentabilidade">
+						&ensp;Ambiente e Sustentabilidade</label></td>
+			</tr>
+
+			<tr>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Assistência à Saúde") echo "checked"; ?> value="Assistência à Saúde">
+						&ensp;Assistência à Saúde</label></td>
+			</tr>
+
+			<tr>
+				<td class="ce">Transversal</td>
+				<td class="cd"><label>
+						<input type="radio" name="eixo" <?php if ($value == "Transversal") echo "checked"; ?> value="Transversal">
+						&ensp;Transversal</label></td>
+			</tr>
+
+		</table>
+
+	</div>
 <?php }
 
 // CONTEXTO **********************************
@@ -61,7 +137,7 @@ function campo_contexto($post)
 	<div id="contexto">
 		<h4 class="wp-heading-inline">2. ANÁLISE CONTEXTUAL</h4>
 		<p class="post-sub-title">Contextualize detalhadamente o cenário na Unicamp que justifica o oferecimento da capacitação, inclusive indicando legislação regulamentadora do assunto, quando couber.<br>
-		(máx. 1500 caracteres)</p>
+			(máx. 1500 caracteres)</p>
 		<textarea maxlength="1500" name="contexto" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -89,22 +165,22 @@ function campo_objetivo($post)
 ?><div id="objetivo">
 		<h4 class="wp-heading-inline">3. OBJETIVO ESTRATÉGICO PLANES 2021-2025</h4>
 		<p class="post-sub-title">Marque com um X os objetivos estratégicos com os quais a capacitação curso contribuirá</p>
-		<p><b>1. Resultados para a SOCIEDADE:</b></p>
-		<label><input type="checkbox" name="objetivo1" <?php echo $checked[1]; ?> />&ensp;1.1. Ampliar o acesso e a diversidade da comunidade universitária e as políticas de inclusão, permanência e apoio acadêmico.</label><br>
-		<label><input type="checkbox" name="objetivo2" <?php echo $checked[2]; ?> />&ensp;1.2. Promover a inovação, extensão, cultura e transferência de conhecimento, intensificando a cooperação dialógica com o poder público e a sociedade, em consonância com os Objetivos de Desenvolvimento Sustentável.</label><br>
-		<label><input type="checkbox" name="objetivo3" <?php echo $checked[3]; ?> />&ensp;1.3. Desenvolver uma cultura de interação com os egressos, contribuindo para o aprimoramento da Universidade</label><br>
-		<label><input type="checkbox" name="objetivo4" <?php echo $checked[4]; ?> />&ensp;1.4. Ampliar e fortalecer a comunicação efetiva com os diversos setores da sociedade, buscando dar visibilidade às nossas atividades e seus impactos.</label><br>
-		<p><b>2. Para excelência no ENSINO, PESQUISA E EXTENSÃO:</b></p>
-		<label><input type="checkbox" name="objetivo5" <?php echo $checked[5]; ?> />&ensp;2.1. Ampliar visibilidade dos programas de ensino, em todos os níveis, para que mais estudantes se sintam atraídos pela experiência formativa da UNICAMP.</label><br>
-		<label><input type="checkbox" name="objetivo6" <?php echo $checked[6]; ?> />&ensp;2.2. Ter currículos atualizados, flexíveis, centrados no estudante, que utilizem recursos tecnológicos e incorporem atividades extra curriculares, co-curriculares e de extensão em todos os níveis de ensino.</label><br>
-		<label><input type="checkbox" name="objetivo7" <?php echo $checked[7]; ?> />&ensp;2.3. Promover pesquisas integradas de forma a assumir o protagonismo frente aos desafios da sociedade contemporânea.</label><br>
-		<label><input type="checkbox" name="objetivo8" <?php echo $checked[8]; ?> />&ensp;2.4. Reconhecer e valorizar as atividades de extensão na carreira docente e no ambiente acadêmico discente.</label><br>
-		<label><input type="checkbox" name="objetivo9" <?php echo $checked[9]; ?> />&ensp;2.5. Intensificar as parcerias com diferentes setores da sociedade como forma de diversificar as fontes de captação nacional e internacional de recursos de pesquisa.</label><br>
-		<p><b>3. Para excelência na GESTÃO:</b></p>
-		<label><input type="checkbox" name="objetivo10" <?php echo $checked[10]; ?> />&ensp;3.1. Aprimorar a atratividade das carreiras da Universidade visando a preservação dos quadros de alto nível condizentes com a missão e a visão de futuro da UNICAMP.</label><br>
-		<label><input type="checkbox" name="objetivo11" <?php echo $checked[11]; ?> />&ensp;3.2. Garantir a sustentabilidade orçamentária, financeira, operacional e de infraestrutura da Universidade.</label><br>
-		<label><input type="checkbox" name="objetivo12" <?php echo $checked[12]; ?> />&ensp;3.3. Aperfeiçoar e modernizar o modelos de gestão administrativa e acadêmica que garanta o bom desenvolvimento das atividades-fim da Universidade.</label><br>
-		<label><input type="checkbox" name="objetivo13" <?php echo $checked[13]; ?> />&ensp;3.4. Estabelecer um modelo sustentável de gestão financeira e administrativa para a área da saúde.</label><br>
+		<p><b>Resultados para a SOCIEDADE:</b></p>
+		<label><input type="checkbox" name="objetivo1" <?php echo $checked[1]; ?> />&ensp;01 - Ampliar o acesso e a diversidade da comunidade universitária e as políticas de inclusão, permanência e apoio acadêmico.</label><br>
+		<label><input type="checkbox" name="objetivo2" <?php echo $checked[2]; ?> />&ensp;02 - Promover a inovação, extensão, cultura e transferência de conhecimento, intensificando a cooperação dialógica com o poder público e a sociedade, em consonância com os Objetivos de Desenvolvimento Sustentável.</label><br>
+		<label><input type="checkbox" name="objetivo3" <?php echo $checked[3]; ?> />&ensp;03 - Desenvolver uma cultura de interação com os egressos, contribuindo para o aprimoramento da Universidade</label><br>
+		<label><input type="checkbox" name="objetivo4" <?php echo $checked[4]; ?> />&ensp;04 - Ampliar e fortalecer a comunicação efetiva com os diversos setores da sociedade, buscando dar visibilidade às nossas atividades e seus impactos.</label><br>
+		<p><b>Para excelência no ENSINO, PESQUISA E EXTENSÃO:</b></p>
+		<label><input type="checkbox" name="objetivo5" <?php echo $checked[5]; ?> />&ensp;05 - Ampliar visibilidade dos programas de ensino, em todos os níveis, para que mais estudantes se sintam atraídos pela experiência formativa da UNICAMP.</label><br>
+		<label><input type="checkbox" name="objetivo6" <?php echo $checked[6]; ?> />&ensp;06 - Ter currículos atualizados, flexíveis, centrados no estudante, que utilizem recursos tecnológicos e incorporem atividades extra curriculares, co-curriculares e de extensão em todos os níveis de ensino.</label><br>
+		<label><input type="checkbox" name="objetivo7" <?php echo $checked[7]; ?> />&ensp;07 - Promover pesquisas integradas de forma a assumir o protagonismo frente aos desafios da sociedade contemporânea.</label><br>
+		<label><input type="checkbox" name="objetivo8" <?php echo $checked[8]; ?> />&ensp;08 - Reconhecer e valorizar as atividades de extensão na carreira docente e no ambiente acadêmico discente.</label><br>
+		<label><input type="checkbox" name="objetivo9" <?php echo $checked[9]; ?> />&ensp;09 - Intensificar as parcerias com diferentes setores da sociedade como forma de diversificar as fontes de captação nacional e internacional de recursos de pesquisa.</label><br>
+		<p><b>Para excelência na GESTÃO:</b></p>
+		<label><input type="checkbox" name="objetivo10" <?php echo $checked[10]; ?> />&ensp;10 - Aprimorar a atratividade das carreiras da Universidade visando a preservação dos quadros de alto nível condizentes com a missão e a visão de futuro da UNICAMP.</label><br>
+		<label><input type="checkbox" name="objetivo11" <?php echo $checked[11]; ?> />&ensp;11 - Garantir a sustentabilidade orçamentária, financeira, operacional e de infraestrutura da Universidade.</label><br>
+		<label><input type="checkbox" name="objetivo12" <?php echo $checked[12]; ?> />&ensp;12 - Aperfeiçoar e modernizar o modelos de gestão administrativa e acadêmica que garanta o bom desenvolvimento das atividades-fim da Universidade.</label><br>
+		<label><input type="checkbox" name="objetivo13" <?php echo $checked[13]; ?> />&ensp;13 - Estabelecer um modelo sustentável de gestão financeira e administrativa para a área da saúde.</label><br>
 	</div>
 <?php }
 
@@ -123,7 +199,7 @@ function campo_capacitacao($post)
 	<div id="capacitacao">
 		<h4 class="wp-heading-inline">4. OBJETIVOS DA CAPACITAÇÃO</h4>
 		<p class="post-sub-title">Explicite quais as necessidades específicas do negócio serão atendidas com essa capacitação.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="capacitacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -142,7 +218,7 @@ function campo_publico($post)
 ?><div id="publico">
 		<h4 class="wp-heading-inline">5. PÚBLICO-ALVO</h4>
 		<p class="post-sub-title">Detalhe o público alvo que deverá participar da capacitação, indicando local/área/processos de trabalho, nível de decisão (ingressante no processo, experiente, gerente) e outras informações que caracterizem bem esse público, indicando a quantidade estimada de todo público a ser treinado. Esta informação é importante para divulgação e priorização das inscrições nas turmas.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="publico" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -161,7 +237,7 @@ function campo_estimativa($post)
 ?><div id="estimativa">
 		<h4 class="wp-heading-inline">6. ESTIMATIVA DE QUANTIDADE DE PÚBLICO-ALVO</h4>
 		<p class="post-sub-title">Dimensione a quantidade total de pessoas na UNICAMP que necessita dessa capacitação.<br>
-		(máx. 50 caracteres)</p>
+			(máx. 50 caracteres)</p>
 		<textarea maxlength="50" name="estimativa" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -179,7 +255,7 @@ function campo_aplicacao($post)
 ?><div id="aplicacao">
 		<h4 class="wp-heading-inline">7. APLICAÇÃO</h4>
 		<p class="post-sub-title">Indique o que os participantes farão diferentemente e melhor nos seus locais de trabalho após vivenciarem essa capacitação.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="aplicacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -237,7 +313,7 @@ function campo_ementa($post)
 		<h1><b>II. CARACTERIZAÇÃO DO CURSO</b></h1>
 		<h4 class="wp-heading-inline">1. EMENTA</h4>
 		<p class="post-sub-title">Resumo dos principais temas/tópicos/disciplinas que caracterizam o curso.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="ementa" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -256,7 +332,7 @@ function campo_conteudo($post)
 ?><div id="conteudo">
 		<h4 class="wp-heading-inline">2. CONTEÚDO PROGRAMÁTICO</h4>
 		<p class="post-sub-title">Desdobramento da ementa, explicitando o conteúdo a ser abordado, dividindo-o em aulas.<br>
-		(máx. 2000 caracteres)</p>
+			(máx. 2000 caracteres)</p>
 		<textarea maxlength="2000" name="conteudo" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -305,7 +381,7 @@ function campo_metodologia($post)
 ?><div id="metodologia">
 		<h4 class="wp-heading-inline">4. METODOLOGIA/ESTRATÉGIAS DE APRENDIZAGEM</h4>
 		<p class="post-sub-title">Explicite quais as técnicas, métodos e ferramentas que utilizará nas aulas, para estimular e promover o aprendizado do conteúdo nos alunos.<br>
-		(máx. 1000 caracteres)</p>
+			(máx. 1000 caracteres)</p>
 		<textarea maxlength="1000" name="metodologia" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -324,7 +400,7 @@ function campo_avaliacao($post)
 ?><div id="avaliacao">
 		<h4 class="wp-heading-inline">5. AVALIAÇÃO DE APRENDIZAGEM</h4>
 		<p class="post-sub-title">Indique como realizará a avaliação de aprendizagem e a partir de qual instrumento aplicado saberá que o aluno aprendeu o conteúdo do curso.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="avaliacao" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -343,7 +419,7 @@ function campo_criterios($post)
 ?><div id="criterios">
 		<h4 class="wp-heading-inline">6. CRITÉRIOS PARA APROVAÇÃO</h4>
 		<p class="post-sub-title">Informe aqui qual a nota, conceito ou requisito que o aluno precisará atingir para ser considerado aprovado. Não indique frequência, que é requisito obrigatório da Escola e não se refere ao aprendizado do aluno.<br>
-		(máx. 600 caracteres)</p>
+			(máx. 600 caracteres)</p>
 		<textarea maxlength="600" name="criterios" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -369,14 +445,13 @@ function campo_carga($post)
 ?>
 	<div id="carga">
 		<h4 class="wp-heading-inline">7. CARGA HORÁRIA DA CAPACITAÇÃO</h4>
-		<p class="post-sub-title">Indique a carga horária de cada objeto de aprendizagem que compõe a capacitação. Siga a Instrução Normativa 04/2020. Se não houver digite zero.</p>
-
-		<label><input type="number" min="0" max="999" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);">H&emsp;(a) Videoaula gravada</label><br>
-		<label><input type="number" min="0" max="999" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);">H&emsp;(b) Videos diversos</label><br>
-		<label><input type="number" min="0" max="999" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);">H&emsp;(c) Textos, artigos, capítulos de livros e similares</label><br>
-		<label><input type="number" min="0" max="999" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);">H&emsp;(d) Aulas síncronas ou presenciais</label><br>
-		<label><input type="number" min="0" max="999" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);">H&emsp;(e) Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas</label><br>
-		<label><input type="number" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">H&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO (3a+3b+2c+d+e)</label><br>
+		<p class="post-sub-title">Indique a duração de cada objeto de aprendizagem que compõe a capacitação. O cálculo será feito automaticamente, considerando a Instrução Normativa 03/2021.<br>Digite zero para objetivos de aprendizagem não existentes no curso.</p>
+		<label><input type="number" min="0" max="999" step="0.5" id="carga1" name="carga1" maxlength="2" value="<?php echo $value1; ?>" oninput="calcularcarga(this.value);">H&emsp;(a) Videoaula gravada; Inserir a somatória da duração de todas as videoaulas gravadas.</label><br>
+		<label><input type="number" min="0" max="999" step="0.5" id="carga2" name="carga2" maxlength="2" value="<?php echo $value2; ?>" oninput="calcularcarga(this.value);">H&emsp;(b) Videos diversos; Inserir a somatória da duração de todos os vídeos considerados como atividades obrigatórias.</label><br>
+		<label><input type="number" min="0" max="999" step="0.5" id="carga3" name="carga3" maxlength="2" value="<?php echo $value3; ?>" oninput="calcularcarga(this.value);">H&emsp;(c) Textos, artigos, capítulos de livros e similares; Inserir a quantidade de páginas dos textos, artigos, capítulos de livros e similares, considerando 2.600 caracteres ou impressão A4 por página.</label><br>
+		<label><input type="number" min="0" max="999" step="0.5" id="carga4" name="carga4" maxlength="2" value="<?php echo $value4; ?>" oninput="calcularcarga(this.value);">H&emsp;(d) Aulas síncronas ou presenciais; Inserir a somatória da duração de todas as aulas síncronas ou presenciais.</label><br>
+		<label><input type="number" min="0" max="999" step="0.5" id="carga5" name="carga5" maxlength="2" value="<?php echo $value5; ?>" oninput="calcularcarga(this.value);">H&emsp;(e) Elaboração de projetos, mapeamentos de processos, TCCs e demais atividades práticas; Inserir o tempo estimado para sua elaboração pelo aluno.</label><br>
+		<label><input type="number" id="cargatotal" name="cargatotal" maxlength="2" value="<?php echo $valuetotal; ?>" readonly="true">H&emsp;TOTAL DA CARGA HORÁRIA DA CAPACITAÇÃO (2a+2b+2c+d+e); </label><br>
 
 	</div>
 <?php }
@@ -404,7 +479,7 @@ function campo_equipe($post)
 ?>
 	<div id="equipe">
 		<h4 class="wp-heading-inline">8. EQUIPE DA CAPACITAÇÃO</h4>
-		<p class="post-sub-title">Indique a contribuição de cada um dos componentes da equipe de capacitação, explicitando a(s) formas(s) de atuação de cada um e a respectiva carga horária de cada tipo de atuação. Sendo uma única pessoa responsável por todo o curso, explicite a carga horária nas diferentes formas de atuação, para elaboração e oferecimento do curso. Siga a Instrução Normativa 04/2020 e acrescente quantos itens forem necessários à tabela abaixo.</p>
+		<p class="post-sub-title">Indique a contribuição de cada um dos componentes da equipe de capacitação, explicitando a(s) formas(s) de atuação de cada um e a respectiva carga horária de cada tipo de atuação. Sendo uma única pessoa responsável por todo o curso, explicite a carga horária nas diferentes formas de atuação, para elaboração e oferecimento do curso. Siga a Instrução Normativa 03/2021 e acrescente quantos itens forem necessários à tabela abaixo.</p>
 		<input type="hidden" id="nl" name="nl" value="<?php echo $valuenl; ?>">
 		<table>
 			<tr>
@@ -424,7 +499,7 @@ function campo_equipe($post)
 				<td><input type="text" name="equipe4[]" value="<?php echo $value4; ?>" class="equipe4"></td>
 				<td><input oninput="atualizaValor(this.value,1,5);filterChar(this.value,this)" onfocusin="addInputNumber(this);" onfocusout="remInputNumber(this);" type="text" name="equipe5[]" value="<?php echo $value5; ?>" class="equipe5"></td>
 				<td><select name="equipe6[]" class="equipe6" oninput="atualizaValor(this.value,1,6)">
-						<option hidden selected><?php echo $value6; ?></option>						
+						<option hidden selected><?php echo $value6; ?></option>
 						<option>Instrutor</option>
 						<option>Orientador</option>
 						<option>Tutor</option>
@@ -455,9 +530,9 @@ function campo_bibliografia($post)
 	$value = get_post_meta($post->ID, 'bibliografia', true);
 ?><div id="bibliografia">
 		<h4 class="wp-heading-inline">9. BIBLIOGRAFIA e COMENTÁRIOS</h4>
-		<p class="post-sub-title">Indique a bibliografia obrigatório e complementar do curso, se possível, disponibilizando links.<br>
-		(máx. 2000 caracteres)</p>
-		<?php wp_editor( $value, 'post_meta_box', array('textarea_name'=>'bibliografia')); ?>
+		<p class="post-sub-title">Indique a bibliografia obrigatória e complementar do curso,  disponibilizando links, caso disponíveis.<br>
+			(máx. 9000 caracteres)</p>
+		<?php wp_editor($value, 'post_meta_box', array('textarea_name' => 'bibliografia')); ?>
 	</div>
 <?php }
 
@@ -541,7 +616,7 @@ function campo_local($post)
 ?><div id="local">
 		<h4 class="wp-heading-inline">2. LOCAL</h4>
 		<p class="post-sub-title">Indique a sala da EDUCORP, se presencial. Se remoto, indique o link para acesso ao conteúdo assíncrono e o link do google meet para acesso à sala virtual no encontro síncrono.<br>
-		(máx. 100 caracteres)</p>
+			(máx. 100 caracteres)</p>
 		<textarea maxlength="100" name="local" rows="5"><?php echo $value; ?></textarea>
 	</div>
 <?php }
@@ -608,7 +683,7 @@ function campo_pagamento($post)
 		<input type="hidden" id="curso_input_name9" value="<?php echo $curso_input_name9; ?>">
 
 		<label class="post-sob-title"><b>Personalizar Valores de Pagamento ?</b>
-		&ensp;<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> />
+			&ensp;<input onchange="personalPag(this)" id="personpagamento" type="checkbox" name="personpagamento" <?php echo $checked; ?> />
 		</label>
 		<br>
 		<div id="personal">
