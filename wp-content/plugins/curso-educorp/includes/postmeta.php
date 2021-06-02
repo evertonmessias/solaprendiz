@@ -573,7 +573,7 @@ function campo_calendario($post)
 				<th>Data Fim</th>
 				<th>Dia da Semana</th>
 				<th>Horário</th>
-				<th>Instrutor</th>
+				<th>Nome</th>
 				<th>Carga Horária</th>
 				<th>Atuação</th>
 			</tr>
